@@ -2,13 +2,8 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import './globals.css'
 import {ReactNode} from "react";
-import {i18nConfig} from '../../i18n-config'
 
 const inter = Inter({subsets: ['latin']})
-
-export async function generateStaticParams() {
-    return i18nConfig.locales.map((locale) => ({lang: locale}))
-}
 
 export const metadata: Metadata = {
     title: {
@@ -19,18 +14,11 @@ export const metadata: Metadata = {
 
 type Props = {
     children: ReactNode
-    params: Promise<{ lang: string }>
 }
 
-export default async function RootLayout({
-                                             children,
-                                             params
-                                         }: Props) {
-
-    const { lang } = await params;
-
+export default function RootLayout({ children }: Props) {
     return (
-        <html lang={lang}>
+        <html lang="ru">
         <body className={inter.className}>{children}</body>
         </html>
     )
