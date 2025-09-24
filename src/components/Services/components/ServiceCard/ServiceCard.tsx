@@ -1,72 +1,102 @@
-import {useEffect, useState} from "react";
-import {Button, Card} from "antd";
+"use client"
+import { Card } from "antd";
 import styles from "@/components/Services/Services.module.scss";
+import {Service, ServicesTranslations} from "@/components/Services/model/types";
 
-export const ServiceCard = ({ service }: { service: any }) => {
-    const [currentPriceIndex, setCurrentPriceIndex] = useState(0);
+interface ServiceCardProps {
+    service: Service;
+    lang: 'ru' | 'he';
+    translations: {
+        services: ServicesTranslations;
+        header: {
+            companyName: string;
+        };
+    };
+}
 
-    useEffect(() => {
-        if (service.hasPriceSlider && service.prices) {
-            const interval = setInterval(() => {
-                setCurrentPriceIndex((prev) =>
-                    prev === service.prices.length - 1 ? 0 : prev + 1
-                );
-            }, 3000);
+export const ServiceCard = ({ service, lang, translations }: ServiceCardProps) => {
+    const t = translations.services;
+    const companyName = translations.header.companyName;
 
-            return () => clearInterval(interval);
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": companyName
+        },
+        "areaServed": "IL"
+    };
+
+    const getRoomLabel = (roomCount: number): string => {
+        if (lang === 'he') {
+            return roomCount === 1 ? t.labels.rooms : t.labels.rooms_plural;
+        } else {
+            if (roomCount === 1) return t.labels.rooms;
+            if (roomCount >= 2 && roomCount <= 4) return t.labels.rooms_plural;
+            return t.labels.rooms_plural;
         }
-    }, [service.hasPriceSlider, service.prices]);
+    };
 
-    const currentPrice = service.hasPriceSlider
-        ? service.prices[currentPriceIndex]
-        : null;
+    const formatPrice = (price: string): string => {
+        return price;
+    };
+
+    const hasPrices = (service: Service): service is Service & { prices: NonNullable<Service['prices']> } => {
+        return service.hasPriceSlider && !!service.prices;
+    };
+
+    const hasFixedPrice = (service: Service): service is Service & { price: string } => {
+        return !service.hasPriceSlider && !!service.price;
+    };
 
     return (
-        <Card className={styles.card}>
-            <div className={styles.iconWrapper}>
-                <div className={styles.icon}>
-                    {service.icon}
-                </div>
-            </div>
+        <article className={styles.cardWrapper} itemScope itemType="https://schema.org/Service">
+            <Card className={styles.card}>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                />
 
-            <h3 className={styles.cardTitle}>{service.title}</h3>
-            <p className={styles.description}>{service.description}</p>
-
-            <ul className={styles.featuresList}>
-                {service.features.map((feature: string, idx: number) => (
-                    <li key={idx} className={styles.featureItem}>
-                        {feature}
-                    </li>
-                ))}
-            </ul>
-
-            {service.hasPriceSlider && service.prices && (
-                <div className={styles.priceSlider}>
-                    <div className={styles.priceDisplay}>
-                        <span className={styles.priceLabel}>от</span>
-                        <span className={styles.priceValue}>{currentPrice?.price}</span>
-                        <span className={styles.roomsLabel}>
-              за {currentPrice?.rooms} {currentPrice?.rooms === 1 ? 'комнату' :
-                            currentPrice?.rooms === 2 ? 'комнаты' : 'комнат'}
-            </span>
-                    </div>
-                    <div className={styles.priceDots}>
-                        {service.prices.map((_: any, index: number) => (
-                            <div
-                                key={index}
-                                className={`${styles.dot} ${index === currentPriceIndex ? styles.activeDot : ''}`}
-                                onClick={() => setCurrentPriceIndex(index)}
-                            />
-                        ))}
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}>
+                        {service.icon}
                     </div>
                 </div>
-            )}
 
-            {!service.hasPriceSlider && service.price && (
-                <div className={styles.fixedPrice}>
-                    <span className={styles.priceValue}>{service.price}</span>
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.description}>{service.description}</p>
+
+                <ul className={styles.featuresList}>
+                    {service.features.map((feature: string, idx: number) => (
+                        <li key={idx} className={styles.featureItem}>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+
+                <div className={styles.pricing}>
+                    {hasPrices(service) ? (
+                        <div className={styles.priceList}>
+                            <span className={styles.priceLabel}>{t.labels.prices}</span>
+                            {service.prices.map((price, index: number) => (
+                                <div key={index} className={styles.priceItem}>
+                                    <span>
+                                        {price.rooms} {getRoomLabel(price.rooms)}:
+                                    </span>
+                                    <strong>{formatPrice(price.price)}</strong>
+                                </div>
+                            ))}
+                        </div>
+                    ) : hasFixedPrice(service) ? (
+                        <div className={styles.fixedPrice}>
+                            <strong>{formatPrice(service.price)}</strong>
+                        </div>
+                    ) : null}
                 </div>
-            )}
-        </Card>
+            </Card>
+        </article>
     );
 };

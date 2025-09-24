@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -38,6 +38,11 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.cardWrapper {
+  position: relative;
+  height: 100%;
 }
 
 .card {
@@ -127,58 +132,44 @@
   }
 }
 
-
-.priceSlider {
+.pricing {
   margin: 20px 0;
-  text-align: center;
 }
 
-.priceDisplay {
-  margin-bottom: 15px;
+.priceList {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .priceLabel {
-  font-size: 0.9rem;
+  display: block;
+  font-size: 1rem;
   color: #7f8c8d;
-  margin-right: 5px;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-.priceValue {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #e74c3c;
-  margin: 0 5px;
-}
-
-.roomsLabel {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-left: 5px;
-}
-
-.priceDots {
+.priceItem {
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 10px;
-}
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ddd;
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    background: #bbb;
+  &:last-child {
+    border-bottom: none;
   }
-}
 
-.activeDot {
-  background: #e74c3c;
-  transform: scale(1.2);
+  span {
+    color: #5a6c7d;
+    font-size: 0.95rem;
+  }
+
+  strong {
+    color: #e74c3c;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
 }
 
 .fixedPrice {
@@ -186,26 +177,44 @@
   margin: 20px 0;
 
   .priceValue {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: #27ae60;
+    display: block;
   }
 }
 
-//.orderButton {
-//  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-//  border: none;
-//  border-radius: 25px;
-//  height: 45px;
-//  font-weight: 600;
-//  margin-top: auto;
-//
-//  &:hover {
-//    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-//    transform: translateY(-2px);
-//    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-//  }
-//}
+.button {
+  width: 100%;
+  height: 48px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  }
+}
+
+// Скрытые SEO-элементы
+.seoPrices {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.priceRange {
+  font-size: 0;
+  opacity: 0;
+  height: 0;
+  pointer-events: none;
+}
 
 @media (max-width: 992px) {
   .services {
@@ -219,6 +228,12 @@
   .subtitle {
     font-size: 1.1rem;
     margin-bottom: 50px;
+  }
+
+  .card {
+    :global(.ant-card-body) {
+      padding: 30px 25px;
+    }
   }
 }
 
@@ -234,6 +249,16 @@
   .subtitle {
     font-size: 1rem;
     margin-bottom: 40px;
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
   }
 }
 
@@ -251,4 +276,15 @@
     margin-bottom: 30px;
   }
 
+  .card {
+    :global(.ant-card-body) {
+      padding: 25px 20px;
+    }
+  }
+
+  .priceItem {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
 }

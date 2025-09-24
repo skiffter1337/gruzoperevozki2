@@ -1,14 +1,14 @@
-import { FooterData } from '@/types/footer';
+import {FooterData} from "@/components/Footer/model/type";
 
 export const getFooterData = (lang: 'ru' | 'he') => {
     const footerData: FooterData = {
         ru: {
-            phone: '89644923399',
+            phone: '+7 901 281 8032',
             email: 'test@mail.com',
             address: 'Израиль, ул. Пушкина'
         },
         he: {
-            phone: '89644923399',
+            phone: '+7 901 281 8032',
             email: 'test@mail.com',
             address: 'ישראל, רחוב פושקין'
         }

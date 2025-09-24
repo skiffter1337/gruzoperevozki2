@@ -2,10 +2,11 @@
   padding: 100px 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  position: relative;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -16,6 +17,7 @@
   margin-bottom: 20px;
   color: white;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .subtitle {
@@ -26,6 +28,12 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
+}
+
+.cardWrapper {
+  height: 100%;
+  display: block;
 }
 
 .card {
@@ -36,265 +44,127 @@
   background: rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  height: 100%;
 
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-
-    .overlay {
-      opacity: 1;
-    }
   }
 
   :global(.ant-card-body) {
-    padding: 0;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 }
 
 .imageContainer {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .placeholderImage {
-  height: 100%;
+  height: 150px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-  color: white;
+  border-radius: 15px;
 
   img {
-    width: 150px;
-  }
-}
-
-.carIcon {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.viewButton {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
+    max-width: 80%;
+    max-height: 120px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
   }
 }
 
 .cardContent {
-  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .vehicleName {
   font-size: 1.4rem;
   font-weight: 600;
   color: white;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.vehicleDescription {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin-bottom: 15px;
+  flex-grow: 1;
 }
 
 .specs {
-  display: flex;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 .specItem {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  align-self: center;
-}
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-.specIcon {
-  font-size: 1.5rem;
-  color: #74b9ff;
-  margin-bottom: 5px;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+  }
+
+  span {
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
 }
 
 .features {
-  margin-bottom: 20px;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.9rem;
 }
 
-.featureIcon {
-  color: #00b894;
-  margin-right: 8px;
-  font-size: 0.8rem;
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
 }
 
-.price {
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #fdcb6e;
-  margin-bottom: 20px;
-}
+.feature {
+  padding: 6px 0;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.85rem;
+  line-height: 1.3;
 
-.orderButton {
-  background: linear-gradient(135deg, #00b894 0%, #00a382 100%);
-  border: none;
-  border-radius: 25px;
-  height: 45px;
-  font-weight: 600;
-
-  &:hover {
-    background: linear-gradient(135deg, #00a382 0%, #008f72 100%);
-    transform: translateY(-2px);
+  &::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #00b894;
+    font-weight: bold;
   }
 }
 
-// Modal Styles
-.modal {
-  :global(.ant-modal-content) {
-    border-radius: 20px;
-    overflow: hidden;
-  }
-
-  :global(.ant-modal-close) {
-    color: white;
-  }
-
-  :global(.ant-modal-header) {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-  }
-}
-
-.modalContent {
-  display: flex;
-  gap: 30px;
-}
-
-.modalImage {
-  flex: 1;
-}
-
-.placeholderImageLarge {
-  height: 300px;
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.carIconLarge {
-  font-size: 4rem;
-  margin-bottom: 15px;
-}
-
-.modalInfo {
-  flex: 1;
-}
-
-.modalSpecs {
-  margin: 20px 0;
-}
-
-.modalSpec {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  color: #555;
-
-  svg {
-    margin-right: 10px;
-    color: #667eea;
-    font-size: 1.1rem;
-  }
-}
-
-.modalFeatures {
-  margin: 25px 0;
-
-  h4 {
-    margin-bottom: 15px;
-    color: #333;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-      color: #666;
-
-      svg {
-        color: #00b894;
-        margin-right: 8px;
-      }
-    }
-  }
-}
-
-.modalPrice {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 25px 0;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 10px;
-}
-
-.priceLabel {
-  font-weight: 600;
-  color: #333;
-}
-
-.priceValue {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #e17055;
-}
-
-.modalOrderButton {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  border-radius: 25px;
-  height: 50px;
-  font-size: 1.1rem;
-  font-weight: 600;
-
-  &:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-  }
+// Скрытый SEO контент
+.seoContent {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 // Адаптивность
@@ -309,14 +179,7 @@
 
   .subtitle {
     font-size: 1.1rem;
-  }
-
-  .modalContent {
-    flex-direction: column;
-  }
-
-  .placeholderImageLarge {
-    height: 200px;
+    margin-bottom: 50px;
   }
 }
 
@@ -331,18 +194,22 @@
 
   .subtitle {
     font-size: 1rem;
+    margin-bottom: 40px;
   }
 
-  .card {
-    margin-bottom: 20px;
+  .placeholderImage {
+    height: 120px;
+
+    img {
+      max-height: 100px;
+    }
   }
 
-  .imageContainer {
-    height: 180px;
-  }
-
-  .carIcon {
-    font-size: 2.5rem;
+  .specItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    text-align: left;
   }
 }
 
@@ -357,15 +224,16 @@
 
   .subtitle {
     font-size: 0.95rem;
+    margin-bottom: 30px;
   }
 
-  .specs {
-    flex-direction: column;
-    gap: 10px;
+  .card {
+    :global(.ant-card-body) {
+      padding: 20px 15px;
+    }
   }
 
-  .modal {
-    width: 95% !important;
-    max-width: none;
+  .vehicleName {
+    font-size: 1.2rem;
   }
 }

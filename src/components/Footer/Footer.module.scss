@@ -1,0 +1,208 @@
+// components/Footer/Footer.module.scss
+.footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  padding: 60px 0 20px;
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.mainContent {
+  margin-bottom: 40px;
+}
+
+.companyInfo {
+  .companyName {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  .contacts {
+    .contactItem {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      gap: 8px;
+
+      svg {
+        margin-right: 10px;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+  display: flex;
+  gap: 8px;
+}
+
+.paymentMethods {
+ display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+
+.whatsappButton {
+  all: unset;
+  cursor: pointer;
+  transition: all 0.3s
+  ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.phoneButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px;
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s
+  ease;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.socialLink {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+  }
+}
+
+.socialIcon {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.bottomFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.copyright {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.legalLinks {
+  display: flex;
+  gap: 25px;
+
+  .legalLink {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: white;
+    }
+
+    svg {
+      margin: 0 5px;
+    }
+  }
+}
+
+.whatsappModal {
+  .modalContent {
+    p {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Скрытый SEO контент
+.seoContent {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 15px;
+  }
+
+  .mainContent {
+    margin-bottom: 30px;
+  }
+
+  .paymentMethods {
+    grid-template-columns: 1fr;
+  }
+
+  .legalLinks {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .bottomFooter {
+    text-align: center;
+
+    .ant-row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .companyName {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+}

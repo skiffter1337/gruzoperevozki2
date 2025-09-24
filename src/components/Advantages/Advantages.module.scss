@@ -5,7 +5,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -16,6 +16,10 @@
   margin-bottom: 60px;
   color: white;
   font-weight: 700;
+}
+
+.cardWrapper {
+  height: 100%;
 }
 
 .card {
@@ -125,4 +129,12 @@
   .description {
     font-size: 0.85rem;
   }
+}
+
+.seoContent {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
 }

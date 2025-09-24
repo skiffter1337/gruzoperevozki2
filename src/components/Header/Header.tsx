@@ -1,37 +1,160 @@
-import {useState} from 'react';
-import {Col, Row, Select} from 'antd';
-import styles from './Header.module.scss';
+"use client"
+import {useRouter} from 'next/navigation'
+import {useState, useEffect} from 'react'
+import {Col, Row, Select, Switch, Tooltip, Button, Space} from 'antd'
+import {FontSizeOutlined, EyeOutlined, UndoOutlined} from '@ant-design/icons'
+import styles from './Header.module.scss'
+import {useTranslation} from '@/hooks/use-translation'
+import {applyAccessibilitySettings} from "@/components/Header/model/helpers";
+import {AccessibilitySettings} from "@/components/Header/model/types";
 
-const Header = () => {
-    const [language, setLanguage] = useState('ru');
+interface HeaderProps {
+    lang: string
+}
+
+
+const Header = ({lang}: HeaderProps) => {
+    const [language, setLanguage] = useState(lang)
+    const [accessibilitySettings, setAccessibilitySettings] = useState<AccessibilitySettings>({
+        highContrast: false,
+        grayscale: false
+    })
+    const [showAccessibilityPanel, setShowAccessibilityPanel] = useState(false)
+    const router = useRouter()
+    const translations = useTranslation(lang as 'ru' | 'he')
+
+    useEffect(() => {
+        setLanguage(lang)
+        const savedSettings = localStorage.getItem('accessibilitySettings')
+        if (savedSettings) {
+            setAccessibilitySettings(JSON.parse(savedSettings))
+            applyAccessibilitySettings(JSON.parse(savedSettings))
+        }
+    }, [lang])
+
+    const handleLanguageChange = (value: string) => {
+        setLanguage(value)
+        if (value === 'ru') {
+            router.push('/')
+        } else {
+            router.push(`/${value}`)
+        }
+    }
+
+    const handleAccessibilitySettingChange = (setting: keyof AccessibilitySettings, value: boolean) => {
+        const newSettings = {
+            ...accessibilitySettings,
+            [setting]: value
+        }
+
+        setAccessibilitySettings(newSettings)
+        applyAccessibilitySettings(newSettings)
+
+        localStorage.setItem('accessibilitySettings', JSON.stringify(newSettings))
+    }
+
+    const resetAccessibilitySettings = () => {
+        const defaultSettings = {
+            highContrast: false,
+            largeText: false,
+            grayscale: false
+        }
+
+        setAccessibilitySettings(defaultSettings)
+        applyAccessibilitySettings(defaultSettings)
+
+        localStorage.removeItem('accessibilitySettings')
+
+        document.documentElement.style.cssText = ''
+        document.body.style.cssText = ''
+    }
+
+    const toggleAccessibilityPanel = () => {
+        setShowAccessibilityPanel(!showAccessibilityPanel)
+    }
 
     return (
-        <header className={styles.header}>
-            <div className={styles.container}>
-                <Row align="middle" justify="space-between">
-                    <Col>
-                        <div className={styles.logo}>
-                            <img src="/favicon.ico" alt="Грузоперевозки" />
-                            <span>ГрузовичОК</span>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div className={styles.contacts}>
-                            <Select
-                                value={language}
-                                onChange={setLanguage}
-                                className={styles.languageSelect}
-                                options={[
-                                    { value: 'ru', label: 'RU' },
-                                    { value: 'en', label: 'HE' },
-                                ]}
-                            />
-                        </div>
-                    </Col>
-                </Row>
-            </div>
-        </header>
-    );
-};
+        <>
+            <header className={styles.header}>
+                <div className={styles.container}>
+                    <Row align="middle" justify="space-between">
+                        <Col>
+                            <div className={styles.logo}>
+                                <img
+                                    src="/favicon.ico"
+                                    alt={translations.header?.companyName || 'Грузоперевозки'}
+                                />
+                                <span>{translations.header?.companyName}</span>
+                            </div>
+                        </Col>
+                        <Col>
+                            <Space size="middle">
+                                    <Button
+                                        type="text"
+                                        icon={<EyeOutlined />}
+                                        onClick={toggleAccessibilityPanel}
+                                        className={styles.accessibilityButton}
+                                        aria-label={translations.header?.accessibilitySettings}
+                                    />
 
-export default Header;
+                                <div className={styles.contacts}>
+                                    <Select
+                                        value={language}
+                                        onChange={handleLanguageChange}
+                                        className={styles.languageSelect}
+                                        options={[
+                                            {value: 'ru', label: 'RU'},
+                                            {value: 'he', label: 'HE'},
+                                        ]}
+                                    />
+                                </div>
+                            </Space>
+                        </Col>
+                    </Row>
+                </div>
+            </header>
+
+
+            {showAccessibilityPanel && (
+                <div className={styles.accessibilityPanel}>
+                    <div className={styles.panelContent}>
+                        <h3>{translations.header?.accessibilitySettings}</h3>
+
+                        <Space direction="vertical" size="middle">
+                            <div className={styles.settingItem}>
+
+                                    <span>{translations.header?.highContrast }</span>
+
+                                <Switch
+                                    checked={accessibilitySettings.highContrast}
+                                    onChange={(checked) => handleAccessibilitySettingChange('highContrast', checked)}
+                                    aria-label={translations.header?.highContrast}
+                                />
+                            </div>
+
+                            <div className={styles.settingItem}>
+                                    <span>{translations.header?.grayscaleMode}</span>
+                                <Switch
+                                    checked={accessibilitySettings.grayscale}
+                                    onChange={(checked) => handleAccessibilitySettingChange('grayscale', checked)}
+                                    aria-label={translations.header?.grayscaleMode}
+                                />
+                            </div>
+
+                            <Button
+                                type="default"
+                                icon={<UndoOutlined />}
+                                onClick={resetAccessibilitySettings}
+                                className={styles.resetButton}
+                            >
+                                {translations.header?.resetSettings}
+                            </Button>
+                        </Space>
+                    </div>
+                </div>
+            )}
+        </>
+    )
+}
+
+export default Header
