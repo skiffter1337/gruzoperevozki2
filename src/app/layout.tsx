@@ -17,15 +17,20 @@ export const metadata: Metadata = {
     },
 }
 
-export default function RootLayout({
-  children,
-  params
-}: {
+type Props = {
     children: ReactNode
-    params: { lang: string }
-}) {
+    params: Promise<{ lang: string }>
+}
+
+export default async function RootLayout({
+                                             children,
+                                             params
+                                         }: Props) {
+
+    const { lang } = await params;
+
     return (
-        <html lang={params.lang}>
+        <html lang={lang}>
         <body className={inter.className}>{children}</body>
         </html>
     )
