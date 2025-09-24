@@ -3,10 +3,11 @@ import { ReactNode } from "react";
 
 type Props = {
     children: ReactNode
-    params: { lang: string }
+    params: Promise<{ lang: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+
     const { lang } = await params;
     const { metadata } = await import(`@/locales/${lang}.json`)
 
@@ -36,11 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function LangLayout({
- children,
- params
-}: Props) {
+                                             children,
+                                             params
+                                         }: Props) {
 
     const { lang } = await params;
+
     return (
         <div dir={lang === 'he' ? 'rtl' : 'ltr'}>
             {children}
