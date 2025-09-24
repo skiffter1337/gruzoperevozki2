@@ -1,0 +1,254 @@
+.services {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+  }
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+    .iconWrapper {
+      transform: scale(1.1);
+    }
+
+    .icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+  }
+
+  :global(.ant-card-body) {
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.featureItem {
+  padding: 8px 0;
+  color: #5a6c7d;
+  position: relative;
+  padding-left: 20px;
+
+  &::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+  }
+}
+
+
+.priceSlider {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.priceDisplay {
+  margin-bottom: 15px;
+}
+
+.priceLabel {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-right: 5px;
+}
+
+.priceValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin: 0 5px;
+}
+
+.roomsLabel {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-left: 5px;
+}
+
+.priceDots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ddd;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #bbb;
+  }
+}
+
+.activeDot {
+  background: #e74c3c;
+  transform: scale(1.2);
+}
+
+.fixedPrice {
+  text-align: center;
+  margin: 20px 0;
+
+  .priceValue {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #27ae60;
+  }
+}
+
+//.orderButton {
+//  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+//  border: none;
+//  border-radius: 25px;
+//  height: 45px;
+//  font-weight: 600;
+//  margin-top: auto;
+//
+//  &:hover {
+//    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+//    transform: translateY(-2px);
+//    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+//  }
+//}
+
+@media (max-width: 992px) {
+  .services {
+    padding: 80px 0;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 60px 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+}

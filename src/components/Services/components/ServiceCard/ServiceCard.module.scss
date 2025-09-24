@@ -1,0 +1,239 @@
+.card {
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+    .iconWrapper {
+      transform: scale(1.1);
+    }
+
+    .icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+  }
+
+  :global(.ant-card-body) {
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.featureItem {
+  padding: 8px 0;
+  color: #5a6c7d;
+  position: relative;
+  padding-left: 20px;
+
+  &::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+  }
+}
+
+
+.priceSlider {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.priceDisplay {
+  margin-bottom: 15px;
+}
+
+.priceLabel {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-right: 5px;
+}
+
+.priceValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin: 0 5px;
+}
+
+.roomsLabel {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-left: 5px;
+}
+
+.priceDots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ddd;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #bbb;
+  }
+}
+
+.activeDot {
+  background: #e74c3c;
+  transform: scale(1.2);
+}
+
+.fixedPrice {
+  text-align: center;
+  margin: 20px 0;
+
+  .priceValue {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #27ae60;
+  }
+}
+
+.orderButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 25px;
+  height: 45px;
+  font-weight: 600;
+  margin-top: auto;
+
+  &:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+  }
+}
+
+
+@media (max-width: 992px) {
+
+  .card :global(.ant-card-body) {
+    padding: 30px 25px;
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .priceValue {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .card :global(.ant-card-body) {
+    padding: 25px 20px;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .priceValue {
+    font-size: 1.2rem;
+  }
+
+  .orderButton {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .card :global(.ant-card-body) {
+    padding: 20px 15px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .featureItem {
+    font-size: 0.9rem;
+  }
+
+  .priceValue {
+    font-size: 1.1rem;
+  }
+}

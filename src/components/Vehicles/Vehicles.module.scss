@@ -1,0 +1,371 @@
+.vehicles {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  border: none !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+    .overlay {
+      opacity: 1;
+    }
+  }
+
+  :global(.ant-card-body) {
+    padding: 0;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.placeholderImage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+
+  img {
+    width: 150px;
+  }
+}
+
+.carIcon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.viewButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.cardContent {
+  padding: 25px;
+}
+
+.vehicleName {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.specs {
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  align-self: center;
+}
+
+.specIcon {
+  font-size: 1.5rem;
+  color: #74b9ff;
+  margin-bottom: 5px;
+}
+
+.features {
+  margin-bottom: 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.featureIcon {
+  color: #00b894;
+  margin-right: 8px;
+  font-size: 0.8rem;
+}
+
+.price {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fdcb6e;
+  margin-bottom: 20px;
+}
+
+.orderButton {
+  background: linear-gradient(135deg, #00b894 0%, #00a382 100%);
+  border: none;
+  border-radius: 25px;
+  height: 45px;
+  font-weight: 600;
+
+  &:hover {
+    background: linear-gradient(135deg, #00a382 0%, #008f72 100%);
+    transform: translateY(-2px);
+  }
+}
+
+// Modal Styles
+.modal {
+  :global(.ant-modal-content) {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  :global(.ant-modal-close) {
+    color: white;
+  }
+
+  :global(.ant-modal-header) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+  }
+}
+
+.modalContent {
+  display: flex;
+  gap: 30px;
+}
+
+.modalImage {
+  flex: 1;
+}
+
+.placeholderImageLarge {
+  height: 300px;
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.carIconLarge {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.modalInfo {
+  flex: 1;
+}
+
+.modalSpecs {
+  margin: 20px 0;
+}
+
+.modalSpec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #555;
+
+  svg {
+    margin-right: 10px;
+    color: #667eea;
+    font-size: 1.1rem;
+  }
+}
+
+.modalFeatures {
+  margin: 25px 0;
+
+  h4 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      color: #666;
+
+      svg {
+        color: #00b894;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.modalPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.priceLabel {
+  font-weight: 600;
+  color: #333;
+}
+
+.priceValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e17055;
+}
+
+.modalOrderButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 25px;
+  height: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  &:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  }
+}
+
+// Адаптивность
+@media (max-width: 992px) {
+  .vehicles {
+    padding: 80px 0;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .modalContent {
+    flex-direction: column;
+  }
+
+  .placeholderImageLarge {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vehicles {
+    padding: 60px 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .imageContainer {
+    height: 180px;
+  }
+
+  .carIcon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicles {
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .specs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal {
+    width: 95% !important;
+    max-width: none;
+  }
+}
