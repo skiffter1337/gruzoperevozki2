@@ -7,8 +7,12 @@ import {getServerTranslations} from "@/lib/server-translations";
 import {Footer} from "@/components/Footer/Footer";
 import {HeroSection} from "@/components/HeroSection/HeroSection";
 
-export default async function Home(params: Promise<{ lang: string }>) {
-    const { lang } = await params;
+type Props = {
+    params: Promise<{ lang: string }>
+}
+
+export default async function Home({params}: Props) {
+    const {lang} = await params;
     const translations = await getServerTranslations(lang)
 
     return (
