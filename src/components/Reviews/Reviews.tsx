@@ -11,15 +11,22 @@ import {
 } from '@ant-design/icons';
 import styles from './Reviews.module.scss';
 import {getCompanyStats, getReviewsData} from "@/components/Reviews/model/helpers";
+import {Review, ReviewsTranslations} from "@/components/Reviews/model/types";
+import {ServicesTranslations} from "@/components/Services/model/types";
 
 interface ReviewsProps {
     lang: 'ru' | 'he';
-    translations: any;
+    translations: {
+        reviews: ReviewsTranslations;
+        header: {
+            companyName: string;
+        };
+    };
 }
 
-function ReviewsStructuredData({ lang, reviewsData, companyName }: {
+function ReviewsStructuredData({lang, reviewsData, companyName}: {
     lang: string;
-    reviewsData: any[];
+    reviewsData: Review[];
     companyName: string;
 }) {
     const structuredData = {
@@ -65,7 +72,7 @@ function ReviewsStructuredData({ lang, reviewsData, companyName }: {
     );
 }
 
-export const Reviews = ({ lang, translations }: ReviewsProps) => {
+export const Reviews = ({lang, translations}: ReviewsProps) => {
     const [currentReview, setCurrentReview] = useState(0);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -238,7 +245,7 @@ export const Reviews = ({ lang, translations }: ReviewsProps) => {
                             <h3 className={styles.companyTitle}>{t.companyTitle}</h3>
 
                             <div className={styles.companyDescription}>
-                                <p dangerouslySetInnerHTML={{ __html: t.companyDescription.part1 }} />
+                                <p dangerouslySetInnerHTML={{__html: t.companyDescription.part1}}/>
                                 <p>{t.companyDescription.part2}</p>
                             </div>
 
@@ -281,7 +288,7 @@ export const Reviews = ({ lang, translations }: ReviewsProps) => {
                                     />
                                     <Button
                                         type="primary"
-                                        icon={<SendOutlined />}
+                                        icon={<SendOutlined/>}
                                         loading={isLoading}
                                         onClick={handlePhoneSubmit}
                                         className={styles.sendButton}
