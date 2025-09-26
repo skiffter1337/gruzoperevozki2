@@ -1,7 +1,7 @@
 "use client"
 import {FC, useState} from 'react';
-import {Form, Input, Checkbox, DatePicker, Row, Col, Card, message, Flex} from 'antd';
-import {UserOutlined, PhoneOutlined, EnvironmentOutlined, CalendarOutlined} from '@ant-design/icons';
+import {Card, Checkbox, Col, DatePicker, Flex, Form, Input, message, Row} from 'antd';
+import {CalendarOutlined, EnvironmentOutlined, PhoneOutlined, UserOutlined} from '@ant-design/icons';
 import styles from './HeroSection.module.scss';
 import Image from "next/image";
 import {HeroTranslations, IForm} from "@/components/HeroSection/model/types";
@@ -112,10 +112,41 @@ export const HeroSection: FC<HeroSectionProps> = ({lang, translations}) => {
             : 'Профессиональные грузчики для переезда в Израиле';
     };
 
+    const startWhatsAppChat = () => {
+        // const phone = getWhatsAppPhone();
+        // const message = encodeURIComponent(translations.footer.quickContact.whatsappMessage);
+        // window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    };
+
+    const startPhoneCall = () => {
+        // const phoneNumber = footerData.phone;
+        // window.location.href = `tel:${phoneNumber}`;
+    };
+
     return (
         <section className={styles.hero} id="hero" itemScope itemType="https://schema.org/LocalBusiness">
             <HeroStructuredData lang={lang} companyName={companyName}/>
-
+            <Flex vertical gap={32}>
+            <Flex gap={32} justify="center">
+                <button onClick={startWhatsAppChat} className={styles.whatsappButton}>
+                    <Image
+                        src="/whatsapp.svg"
+                        width={48}
+                        height={48}
+                        alt="WhatsApp"
+                        priority={true}
+                    />
+                </button>
+                <button onClick={startPhoneCall} className={styles.phoneButton}>
+                    <Image
+                        src="/phone.svg"
+                        width={26}
+                        height={26}
+                        alt="Позвонить"
+                        priority={true}
+                    />
+                </button>
+            </Flex>
             <div className={styles.container}>
                 <Row gutter={[60, 40]} align="middle">
                     <Col xs={24} lg={14}>
@@ -135,11 +166,11 @@ export const HeroSection: FC<HeroSectionProps> = ({lang, translations}) => {
                                         <meta itemProp="bestRating" content="5"/>
 
                                         <div className={styles.statItem}>
-                                            <span className={styles.statNumber} itemProp="reviewCount">500+</span>
+                                            <span className={styles.statNumber} itemProp="reviewCount">740+</span>
                                             <span className={styles.statText}>{t.stats.clients}</span>
                                         </div>
                                         <div className={styles.statItem}>
-                                            <span className={styles.statNumber}>1200+</span>
+                                            <span className={styles.statNumber}>1360+</span>
                                             <span className={styles.statText}>{t.stats.moves}</span>
                                         </div>
                                     </div>
@@ -352,6 +383,7 @@ export const HeroSection: FC<HeroSectionProps> = ({lang, translations}) => {
                     </Col>
                 </Row>
             </div>
+            </Flex>
         </section>
     );
 };

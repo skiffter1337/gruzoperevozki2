@@ -12,10 +12,10 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['Упаковка вещей', 'Погрузка/разгрузка', 'Сборка мебели'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: '500 ₪'},
-                    {rooms: 2, price: '1000 ₪'},
-                    {rooms: 3, price: '1500 ₪'},
-                    {rooms: 4, price: '1800 ₪'}
+                    {rooms: 1, price: 'от 500 ₪'},
+                    {rooms: 2, price: 'от 1000 ₪'},
+                    {rooms: 3, price: 'от 1500 ₪'},
+                    {rooms: 4, price: 'от 1800 ₪'}
                 ]
             },
             {
@@ -26,10 +26,10 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['Работа в нерабочее время', 'Перевозка оргтехники', 'Установка на новом месте'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: '800 ₪'},
-                    {rooms: 2, price: '1500 ₪'},
-                    {rooms: 3, price: '2200 ₪'},
-                    {rooms: 4, price: '2800 ₪'}
+                    {rooms: 1, price: 'от 800 ₪'},
+                    {rooms: 2, price: 'от 1500 ₪'},
+                    {rooms: 3, price: 'от 2200 ₪'},
+                    {rooms: 4, price: 'от 2800 ₪'}
                 ]
             },
             {
@@ -40,10 +40,10 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['Грузчики с опытом', 'Спецтехника', 'Упаковка хрупких вещей'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: '1200 ₪'},
-                    {rooms: 2, price: '2000 ₪'},
-                    {rooms: 3, price: '2800 ₪'},
-                    {rooms: 4, price: '3500 ₪'}
+                    {rooms: 1, price: 'от 1200 ₪'},
+                    {rooms: 2, price: 'от 2000 ₪'},
+                    {rooms: 3, price: 'от 2800 ₪'},
+                    {rooms: 4, price: 'от 3500 ₪'}
                 ]
             },
             {
@@ -65,10 +65,10 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['אריזת חפצים', 'טעינה/פריקה', 'הרכבת רהיטים'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: '500 ₪'},
-                    {rooms: 2, price: '1000 ₪'},
-                    {rooms: 3, price: '1500 ₪'},
-                    {rooms: 4, price: '1800 ₪'}
+                    {rooms: 1, price: 'מ-500 ₪'},
+                    {rooms: 2, price: 'מ-1000 ₪'},
+                    {rooms: 3, price: 'מ-1500 ₪'},
+                    {rooms: 4, price: 'מ-1800 ₪'}
                 ]
             },
             {
@@ -79,10 +79,10 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['עבודה בשעות לא עבודה', 'הובלת ציוד משרדי', 'התקנה במקום החדש'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: '800 ₪'},
-                    {rooms: 2, price: '1500 ₪'},
-                    {rooms: 3, price: '2200 ₪'},
-                    {rooms: 4, price: '2800 ₪'}
+                    {rooms: 1, price: 'מ-800 ₪'},
+                    {rooms: 2, price: 'מ-1500 ₪'},
+                    {rooms: 3, price: 'מ-2200 ₪'},
+                    {rooms: 4, price: 'מ-2800 ₪'}
                 ]
             },
             {
@@ -93,10 +93,10 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['סבלים עם ניסיון', 'ציוד מיוחד', 'אריזת חפצים שבירים'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: '1200 ₪'},
-                    {rooms: 2, price: '2000 ₪'},
-                    {rooms: 3, price: '2800 ₪'},
-                    {rooms: 4, price: '3500 ₪'}
+                    {rooms: 1, price: 'מ-1200 ₪'},
+                    {rooms: 2, price: 'מ-2000 ₪'},
+                    {rooms: 3, price: 'מ-2800 ₪'},
+                    {rooms: 4, price: 'מ-3500 ₪'}
                 ]
             },
             {

@@ -12,6 +12,7 @@ export interface FooterTranslations {
             mastercard: string;
             googlePay: string;
             applePay: string;
+            bit: string;
         };
     };
     quickContact: {

@@ -94,14 +94,14 @@ export const getReviewsData = (lang: 'ru' | 'he') => {
 export const getCompanyStats = (lang: 'ru' | 'he') => {
     const stats = {
         ru: [
-            {icon: <TeamOutlined/>, number: '500+', text: 'Довольных клиентов'},
-            {icon: <CheckCircleOutlined/>, number: '1200+', text: 'Успешных переездов'},
-            {icon: <TrophyOutlined/>, number: '5 лет', text: 'На рынке услуг'},
+            {icon: <TeamOutlined/>, number: '740+ ', text: 'Довольных клиентов'},
+            {icon: <CheckCircleOutlined/>, number: '1360+', text: 'Успешных переездов'},
+            {icon: <TrophyOutlined/>, number: '7 лет', text: 'На рынке услуг'},
             {icon: <SafetyCertificateOutlined/>, number: '100%', text: 'Страхование груза'}
         ],
         he: [
-            {icon: <TeamOutlined/>, number: '500+', text: 'לקוחות מרוצים'},
-            {icon: <CheckCircleOutlined/>, number: '1200+', text: 'מעברים מוצלחים'},
+            {icon: <TeamOutlined/>, number: '740+ ', text: 'לקוחות מרוצים'},
+            {icon: <CheckCircleOutlined/>, number: '1360+', text: 'מעברים מוצלחים'},
             {icon: <TrophyOutlined/>, number: '5 שנים', text: 'בשוק השירותים'},
             {icon: <SafetyCertificateOutlined/>, number: '100%', text: 'ביטוח מטען'}
         ]

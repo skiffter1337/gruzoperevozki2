@@ -58,7 +58,7 @@
 }
 
 .phoneScreen {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-green);
   height: 100%;
   border-radius: 30px;
   padding: 25px;
@@ -66,6 +66,27 @@
   position: relative;
   display: flex;
   flex-direction: column;
+
+  touch-action: pan-y;
+  user-select: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &.swipeHint::after {
+    opacity: 1;
+  }
 }
 
 .reviewContent {
@@ -75,7 +96,18 @@
   color: white;
   position: relative;
   flex: 1;
-  min-height: 0; /* Важно для корректного скролла в flex-контейнере */
+  min-height: 0;
+  transition: transform 0.3s ease;
+
+  &.swipeLeft {
+    transform: translateX(-10px);
+    opacity: 0.7;
+  }
+
+  &.swipeRight {
+    transform: translateX(10px);
+    opacity: 0.7;
+  }
 }
 
 .reviewHeader {
@@ -158,7 +190,7 @@
   opacity: 0.95;
   font-style: italic;
   overflow-y: auto;
-  min-height: 100px; /* Минимальная высота для текста */
+  min-height: 100px;
   padding-right: 5px;
   flex-shrink: 1;
 
@@ -345,7 +377,7 @@
 }
 
 .ctaBlock {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-green);
   padding: clamp(20px, 5vw, 30px);
   border-radius: 20px;
   color: white;
@@ -460,6 +492,9 @@
   .phoneScreen {
     padding: 18px;
     border-radius: 25px;
+    &::after {
+      opacity: 1;
+    }
   }
 
   .reviewHeader {
@@ -642,7 +677,6 @@
   line-height: 1.4;
 }
 
-// Адаптивные стили для мобильных устройств
 @media (max-width: 768px) {
   .phoneInputContainer {
     flex-direction: column;
@@ -651,10 +685,25 @@
   .sendButton {
     width: 100%;
   }
+  .navButton {
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {
   .phoneInputContainer {
     gap: 8px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .navButton {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .dot {
+    min-height: 12px;
+    min-width: 12px;
   }
 }
