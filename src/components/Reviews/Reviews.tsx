@@ -170,9 +170,10 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
             />
 
             <div className={styles.container}>
-                <h2 className={styles.title} itemProp="name">{t.title}</h2>
-                <p className={styles.subtitle}>{t.subtitle}</p>
-
+                <div className={styles.header}>
+                    <h2 className={styles.title} itemProp="name">{t.title}</h2>
+                    <p className={styles.subtitle}>{t.subtitle}</p>
+                </div>
                 <Row gutter={[60, 40]}>
                     <Col xs={24} lg={10}>
                         <div className={styles.phoneContainer}>

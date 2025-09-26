@@ -25,7 +25,7 @@ export const getVehiclesData = (lang: 'ru' | 'he') => {
             },
             {
                 id: 3,
-                name: 'JAC Truck',
+                name: 'Isuzu sumo ',
                 capacity: 'до 5 тонн',
                 volume: '25 м³',
                 image: '/jac.svg',
@@ -57,7 +57,7 @@ export const getVehiclesData = (lang: 'ru' | 'he') => {
             },
             {
                 id: 3,
-                name: 'JAC Truck',
+                name: 'Isuzu sumo',
                 capacity: 'עד 5 טון',
                 volume: '25 מ"ק',
                 image: '/jac.svg',

@@ -22,17 +22,18 @@ export const Services: FC<ServicesProps> = ({lang, translations}) => {
     return (
         <section className={styles.services} id="services">
             <div className={styles.container}>
-                <h2 className={styles.title}>{t.title}</h2>
-                <p className={styles.subtitle}>{t.subtitle}</p>
-
+                <div className={styles.header}>
+                    <h2 className={styles.title}>{t.title}</h2>
+                    <p className={styles.subtitle}>{t.subtitle}</p>
+                </div>
                 <Row gutter={[30, 30]}>
                     {servicesData.map((service: Service) => (
                         <Col xs={24} md={12} lg={8} key={service.id}>
-                                <ServiceCard
-                                    service={service}
-                                    lang={lang}
-                                    translations={translations}
-                                />
+                            <ServiceCard
+                                service={service}
+                                lang={lang}
+                                translations={translations}
+                            />
                         </Col>
                     ))}
                 </Row>

@@ -1,6 +1,8 @@
 .services {
   padding: 100px 0;
-  background: #f8f9fa;
+  background-image: url("/background.PNG");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
@@ -9,11 +11,18 @@
   padding: 0 20px;
 }
 
+.header {
+  padding: 16px;
+  border-radius: 16px;
+  background: darkslategray;
+  margin-bottom: 30px;
+}
+
 .title {
   text-align: center;
   font-size: 2.8rem;
   margin-bottom: 20px;
-  color: #2c3e50;
+  color: white;
   font-weight: 700;
   position: relative;
 
@@ -33,8 +42,7 @@
 .subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: #7f8c8d;
-  margin-bottom: 60px;
+  color: white;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -219,6 +227,8 @@
 @media (max-width: 992px) {
   .services {
     padding: 80px 0;
+    background-repeat: repeat;
+    background-size: contain;
   }
 
   .title {
@@ -227,7 +237,6 @@
 
   .subtitle {
     font-size: 1.1rem;
-    margin-bottom: 50px;
   }
 
   .card {
@@ -248,7 +257,6 @@
 
   .subtitle {
     font-size: 1rem;
-    margin-bottom: 40px;
   }
 
   .icon {
@@ -273,7 +281,6 @@
 
   .subtitle {
     font-size: 0.95rem;
-    margin-bottom: 30px;
   }
 
   .card {
