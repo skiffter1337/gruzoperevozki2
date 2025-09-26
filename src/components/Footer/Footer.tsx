@@ -1,19 +1,12 @@
 'use client';
 
 import {FC} from 'react';
-import {Row, Col, Flex} from 'antd';
-import {
-    PhoneOutlined,
-    MailOutlined,
-    EnvironmentOutlined,
-    SafetyCertificateOutlined,
-    FileTextOutlined
-} from '@ant-design/icons';
+import {Col, Flex, Row} from 'antd';
+import {EnvironmentOutlined, MailOutlined, PhoneOutlined, SafetyCertificateOutlined} from '@ant-design/icons';
 import styles from './Footer.module.scss';
 import Image from 'next/image';
 import {FooterTranslations} from "@/components/Footer/model/type";
 import {getFooterData, getWhatsAppPhone} from "@/components/Footer/model/helpers";
-import Link from "next/link";
 
 interface FooterProps {
     lang: 'ru' | 'he';
@@ -89,6 +82,8 @@ export const Footer: FC<FooterProps> = ({lang, translations}) => {
                 return methods.googlePay;
             case 'apple-pay':
                 return methods.applePay;
+            case 'bit':
+                return methods.bit;
             default:
                 return paymentMethod;
         }
@@ -133,54 +128,62 @@ export const Footer: FC<FooterProps> = ({lang, translations}) => {
                             <div className={styles.paymentMethods}>
                                 <Image
                                     src="/visa.svg"
-                                    width={120}
-                                    height={80}
+                                    width={60}
+                                    height={40}
                                     alt={getAltText('visa')}
                                 />
                                 <Image
                                     src="/mastercard.svg"
-                                    width={120}
-                                    height={80}
+                                    width={40}
+                                    height={40}
                                     alt={getAltText('mastercard')}
                                 />
                                 <Image
                                     src="/google-pay.svg"
-                                    width={120}
-                                    height={80}
+                                    width={60}
+                                    height={40}
                                     alt={getAltText('google-pay')}
                                 />
                                 <Image
                                     src="/apple-pay.svg"
-                                    width={120}
-                                    height={80}
+                                    width={60}
+                                    height={40}
                                     alt={getAltText('apple-pay')}
+                                />
+                                <Image
+                                    src="/bit.svg"
+                                    width={60}
+                                    height={40}
+                                    alt={getAltText('bit')}
                                 />
                             </div>
                         </div>
                     </Col>
 
                     <Col xs={24} md={8}>
-                        <h4 className={styles.sectionTitle}>{translations.footer.quickContact.title}</h4>
-                        <Flex gap={8}>
-                        <button onClick={startWhatsAppChat} className={styles.whatsappButton}>
-                            <Image
-                                src="/whatsapp.svg"
-                                width={48}
-                                height={48}
-                                alt="WhatsApp"
-                                priority={true}
-                            />
-                        </button>
-                        <button onClick={startPhoneCall} className={styles.phoneButton}>
-                            <Image
-                                src="/phone.svg"
-                                width={26}
-                                height={26}
-                                alt="Позвонить"
-                                priority={true}
-                            />
-                        </button>
-                        </Flex>
+                        <div className={styles.contactsSection}>
+                            <h4 className={styles.sectionTitle}>{translations.footer.quickContact.title}</h4>
+                            <Flex gap={8}>
+                                <button onClick={startWhatsAppChat} className={styles.whatsappButton}>
+                                    <Image
+                                        src="/whatsapp.svg"
+                                        width={48}
+                                        height={48}
+                                        alt="WhatsApp"
+                                        priority={true}
+                                    />
+                                </button>
+                                <button onClick={startPhoneCall} className={styles.phoneButton}>
+                                    <Image
+                                        src="/phone.svg"
+                                        width={26}
+                                        height={26}
+                                        alt="Позвонить"
+                                        priority={true}
+                                    />
+                                </button>
+                            </Flex>
+                        </div>
                     </Col>
                 </Row>
 

@@ -1,8 +1,9 @@
-import {Card, Col, Row} from 'antd';
+"use client"
+import {Card, Col, Flex, Row} from 'antd';
 import styles from './Vehicles.module.scss';
-import {FC} from "react";
-import {Vehicle, VehiclesTranslations} from "@/components/Vehicles/model/types";
-import {getVehiclesData} from "@/components/Vehicles/model/helpers";
+import { FC, useEffect, useState } from "react";
+import { Vehicle, VehiclesTranslations } from "@/components/Vehicles/model/types";
+import { getVehiclesData } from "@/components/Vehicles/model/helpers";
 
 interface VehiclesProps {
     lang: 'ru' | 'he';
@@ -15,10 +16,10 @@ interface VehiclesProps {
 }
 
 function VehiclesStructuredData({
-   lang,
-   vehiclesData,
-   companyName
-}: {
+                                    lang,
+                                    vehiclesData,
+                                    companyName
+                                }: {
     lang: string;
     vehiclesData: Vehicle[];
     companyName: string;
@@ -61,10 +62,38 @@ function VehiclesStructuredData({
     );
 }
 
-export const Vehicles: FC<VehiclesProps> = ({lang, translations}) => {
+export const Vehicles: FC<VehiclesProps> = ({ lang, translations }) => {
     const vehiclesData = getVehiclesData(lang);
     const t = translations.vehicles;
     const companyName = translations.header.companyName;
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+    // Автопереключение слайдов каждые 5 секунд
+    useEffect(() => {
+        if (!isAutoPlaying) return;
+
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % vehiclesData.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [vehiclesData.length, isAutoPlaying]);
+
+    const goToSlide = (index: number) => {
+        setCurrentSlide(index);
+        setIsAutoPlaying(false);
+        // Возобновляем автоплеер через 10 секунд после ручного переключения
+        setTimeout(() => setIsAutoPlaying(true), 10000);
+    };
+
+    const nextSlide = () => {
+        goToSlide((currentSlide + 1) % vehiclesData.length);
+    };
+
+    const prevSlide = () => {
+        goToSlide((currentSlide - 1 + vehiclesData.length) % vehiclesData.length);
+    };
 
     const getAltText = (vehicle: Vehicle) => {
         return lang === 'he'
@@ -77,6 +106,71 @@ export const Vehicles: FC<VehiclesProps> = ({lang, translations}) => {
             ? `השכרת ${vehicle.name} למעברים`
             : `Аренда ${vehicle.name} для переездов`;
     };
+
+    const renderVehicleCard = (vehicle: Vehicle, index: number) => (
+        <article
+            className={styles.cardWrapper}
+            itemScope
+            itemType="https://schema.org/Product"
+            key={vehicle.id}
+        >
+            <Card
+                className={styles.card}
+                cover={
+                    <div className={styles.imageContainer}>
+                        <div className={styles.placeholderImage}>
+                            <img
+                                src={vehicle.image}
+                                alt={getAltText(vehicle)}
+                                title={getTitleText(vehicle)}
+                                loading="lazy"
+                                itemProp="image"
+                            />
+                        </div>
+                    </div>
+                }
+            >
+                <div className={styles.cardContent}>
+                    <h3 className={styles.vehicleName} itemProp="name">
+                        {vehicle.name}
+                    </h3>
+                    <p className={styles.vehicleDescription} itemProp="description">
+                        {vehicle.description}
+                    </p>
+
+                    <div className={styles.specs} itemScope itemType="https://schema.org/QuantitativeValue">
+                        <div className={styles.specItem}>
+                            <strong>{t.labels.capacity}</strong>
+                            <span itemProp="weight">{vehicle.capacity}</span>
+                        </div>
+                        <div className={styles.specItem}>
+                            <strong>{t.labels.volume}</strong>
+                            <span itemProp="volume">{vehicle.volume}</span>
+                        </div>
+                        <div className={styles.specItem}>
+                            <strong>{t.labels.type}</strong>
+                            <span itemProp="vehicleType">{vehicle.type}</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.features}>
+                        <strong>{t.labels.features}</strong>
+                        <ul className={styles.featuresList}>
+                            {vehicle.features.map((feature, index) => (
+                                <li key={index} className={styles.feature}>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <meta itemProp="category" content={lang === 'he' ? "הובלות" : "Грузоперевозки"}/>
+                    <meta itemProp="areaServed" content="IL"/>
+                    <meta itemProp="serviceType" content={lang === 'he' ? "השכרת רכבי משא" : "Аренда грузового транспорта"}/>
+                </div>
+            </Card>
+        </article>
+    );
 
     return (
         <section className={styles.vehicles} id="vehicles" itemScope itemType="https://schema.org/ItemList">
@@ -94,73 +188,64 @@ export const Vehicles: FC<VehiclesProps> = ({lang, translations}) => {
                     {t.subtitle}
                 </p>
 
-                <Row gutter={[30, 30]}>
-                    {vehiclesData.map((vehicle) => (
-                        <Col xs={24} md={12} lg={8} key={vehicle.id}>
-                            <article className={styles.cardWrapper} itemScope itemType="https://schema.org/Product">
-                                <Card
-                                    className={styles.card}
-                                    cover={
-                                        <div className={styles.imageContainer}>
-                                            <div className={styles.placeholderImage}>
-                                                <img
-                                                    src={vehicle.image}
-                                                    alt={getAltText(vehicle)}
-                                                    title={getTitleText(vehicle)}
-                                                    loading="lazy"
-                                                    itemProp="image"
-                                                />
-                                            </div>
-                                        </div>
-                                    }
-                                >
-                                    <div className={styles.cardContent}>
-                                        <h3 className={styles.vehicleName} itemProp="name">
-                                            {vehicle.name}
-                                        </h3>
-                                        <p className={styles.vehicleDescription} itemProp="description">
-                                            {vehicle.description}
-                                        </p>
+                {/* Десктопная версия */}
+                <div className={styles.desktopVersion}>
+                    <Row gutter={[30, 30]}>
+                        {vehiclesData.map((vehicle) => (
+                            <Col xs={24} md={12} lg={8} key={vehicle.id}>
+                                {renderVehicleCard(vehicle, 0)}
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
 
-                                        <div className={styles.specs} itemScope
-                                             itemType="https://schema.org/QuantitativeValue">
-                                            <div className={styles.specItem}>
-                                                <strong>{t.labels.capacity}</strong>
-                                                <span itemProp="weight">{vehicle.capacity}</span>
-                                            </div>
-                                            <div className={styles.specItem}>
-                                                <strong>{t.labels.volume}</strong>
-                                                <span itemProp="volume">{vehicle.volume}</span>
-                                            </div>
-                                            <div className={styles.specItem}>
-                                                <strong>{t.labels.type}</strong>
-                                                <span itemProp="vehicleType">{vehicle.type}</span>
-                                            </div>
-                                        </div>
+                {/* Мобильная версия - слайдер */}
+                <div className={styles.mobileSlider}>
+                    <div className={styles.sliderContainer}>
+                        <div
+                            className={styles.sliderTrack}
+                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                        >
+                            {vehiclesData.map((vehicle, index) => (
+                                <div key={vehicle.id} className={styles.slide}>
+                                    {renderVehicleCard(vehicle, index)}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
-                                        <div className={styles.features}>
-                                            <strong>{t.labels.features}</strong>
-                                            <ul className={styles.featuresList}>
-                                                {vehicle.features.map((feature, index) => (
-                                                    <li key={index} className={styles.feature}>
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                    <Flex justify="space-between" >
+                    <button
+                        className={`${styles.navButton} ${styles.prevButton}`}
+                        onClick={prevSlide}
+                        aria-label={lang === 'he' ? "רכב קודם" : "Предыдущий транспорт"}
+                    >
+                        {lang === 'he' ? '‹' : '‹'}
+                    </button>
+                    {/* Навигационные точки */}
+                    <div className={styles.dots}>
+                        {vehiclesData.map((_, index) => (
+                            <button
+                                key={index}
+                                className={`${styles.dot} ${index === currentSlide ? styles.active : ''}`}
+                                onClick={() => goToSlide(index)}
+                                aria-label={lang === 'he'
+                                    ? `עבור לרכב ${index + 1}`
+                                    : `Перейти к транспорту ${index + 1}`
+                                }
+                            />
+                        ))}
+                    </div>
 
-                                        {/* Скрытые микроразметки для SEO */}
-                                        <meta itemProp="category"
-                                              content={lang === 'he' ? "הובלות" : "Грузоперевозки"}/>
-                                        <meta itemProp="areaServed" content="IL"/>
-                                        <meta itemProp="serviceType"
-                                              content={lang === 'he' ? "השכרת רכבי משא" : "Аренда грузового транспорта"}/>
-                                    </div>
-                                </Card>
-                            </article>
-                        </Col>
-                    ))}
-                </Row>
+                    <button
+                        className={`${styles.navButton} ${styles.nextButton}`}
+                        onClick={nextSlide}
+                        aria-label={lang === 'he' ? "רכב הבא" : "Следующий транспорт"}
+                    >
+                        {lang === 'he' ? '›' : '›'}
+                    </button>
+                    </Flex>
+                </div>
 
                 {/* Дополнительный SEO контент */}
                 <div className={styles.seoContent} aria-hidden="true">

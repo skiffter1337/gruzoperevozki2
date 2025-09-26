@@ -75,7 +75,8 @@
         "visa": "Visa",
         "mastercard": "Mastercard",
         "googlePay": "Google Pay",
-        "applePay": "Apple Pay"
+        "applePay": "Apple Pay",
+        "bit": "Bit"
       }
     },
     "quickContact": {

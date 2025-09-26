@@ -1,6 +1,6 @@
 .vehicles {
   padding: 100px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-green);
   color: white;
   position: relative;
 }
@@ -31,13 +31,41 @@
   line-height: 1.6;
 }
 
+// Десктопная версия
+.desktopVersion {
+  display: block;
+}
+
+// Мобильный слайдер
+.mobileSlider {
+  display: none;
+  position: relative;
+}
+
+.sliderContainer {
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.sliderTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
 .cardWrapper {
   height: 100%;
   display: block;
 }
 
 .card {
-  border: none !important;
   border-radius: 20px !important;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -69,7 +97,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
   border-radius: 15px;
 
   img {
@@ -158,6 +185,64 @@
   }
 }
 
+// Навигационные точки
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.active {
+    background: white;
+    transform: scale(1.2);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+// Кнопки навигации
+.navButton {
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &.prevButton {
+    left: 10px;
+  }
+
+  &.nextButton {
+    right: 10px;
+  }
+}
+
 // Скрытый SEO контент
 .seoContent {
   position: absolute;
@@ -197,6 +282,15 @@
     margin-bottom: 40px;
   }
 
+  // Показываем слайдер на мобильных устройствах
+  .desktopVersion {
+    display: none;
+  }
+
+  .mobileSlider {
+    display: block;
+  }
+
   .placeholderImage {
     height: 120px;
 
@@ -210,6 +304,12 @@
     align-items: flex-start;
     gap: 5px;
     text-align: left;
+  }
+
+  .navButton {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
   }
 }
 
@@ -235,5 +335,15 @@
 
   .vehicleName {
     font-size: 1.2rem;
+  }
+
+  .slide {
+    padding: 0 5px;
+  }
+
+  .navButton {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
   }
 }

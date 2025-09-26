@@ -1,18 +1,10 @@
 "use client"
 import {useState} from 'react';
-import {Row, Col, Rate, Avatar, Input, Button, message} from 'antd';
-import {
-    PhoneOutlined,
-    StarFilled,
-    UserOutlined,
-    EnvironmentOutlined,
-    CalendarOutlined,
-    SendOutlined,
-} from '@ant-design/icons';
+import {Avatar, Button, Col, Input, message, Rate, Row} from 'antd';
+import {CalendarOutlined, EnvironmentOutlined, SendOutlined, StarFilled, UserOutlined,} from '@ant-design/icons';
 import styles from './Reviews.module.scss';
 import {getCompanyStats, getReviewsData} from "@/components/Reviews/model/helpers";
 import {Review, ReviewsTranslations} from "@/components/Reviews/model/types";
-import {ServicesTranslations} from "@/components/Services/model/types";
 
 interface ReviewsProps {
     lang: 'ru' | 'he';
@@ -76,9 +68,14 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
     const [currentReview, setCurrentReview] = useState(0);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
     const reviewsData = getReviewsData(lang);
     const companyStats = getCompanyStats(lang);
     const t = translations.reviews;
+
+    // Минимальное расстояние свайпа для срабатывания
+    const minSwipeDistance = 50;
 
     const nextReview = () => {
         setCurrentReview((prev) => (prev === reviewsData.length - 1 ? 0 : prev + 1));
@@ -86,6 +83,29 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
 
     const prevReview = () => {
         setCurrentReview((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1));
+    };
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            nextReview();
+        } else if (isRightSwipe) {
+            prevReview();
+        }
     };
 
     const formatDisplayDate = (dateString: string) => {
@@ -157,7 +177,12 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                     <Col xs={24} lg={10}>
                         <div className={styles.phoneContainer}>
                             <div className={styles.phone}>
-                                <div className={styles.phoneScreen}>
+                                <div
+                                    className={styles.phoneScreen}
+                                    onTouchStart={onTouchStart}
+                                    onTouchMove={onTouchMove}
+                                    onTouchEnd={onTouchEnd}
+                                >
                                     <article className={styles.reviewContent} itemScope
                                              itemType="https://schema.org/Review">
                                         <div className={styles.reviewHeader}>
