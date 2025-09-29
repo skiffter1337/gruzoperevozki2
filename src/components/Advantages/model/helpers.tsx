@@ -1,15 +1,13 @@
 import {
     CarOutlined,
-    CreditCardOutlined,
     DollarOutlined,
-    FastBackwardOutlined,
     PhoneOutlined,
     SafetyCertificateOutlined,
     ThunderboltOutlined,
     UserOutlined
 } from "@ant-design/icons";
 
-export const getAdvantagesData = (lang: 'ru' | 'he') => {
+export const getAdvantagesData = (lang: 'ru' | 'he' | 'en') => {
     const advantages = {
         ru: [
             {
@@ -84,6 +82,44 @@ export const getAdvantagesData = (lang: 'ru' | 'he') => {
                 icon: <ThunderboltOutlined />,
                 title: 'אפשרות הגעה ביום ההזמנה',
                 description: 'הגעת רכב מהירה למעברים דחופים',
+                schemaType: 'SpeedyService'
+            }
+        ],
+        en: [
+            {
+                icon: <PhoneOutlined />,
+                title: 'Operators Always Available',
+                description: '24/7 support for moving services questions',
+                schemaType: 'CustomerService'
+            },
+            {
+                icon: <CarOutlined />,
+                title: 'Large Vehicle Fleet',
+                description: 'Various capacities for all types of relocations',
+                schemaType: 'AutomotiveBusiness'
+            },
+            {
+                icon: <SafetyCertificateOutlined />,
+                title: 'Guaranteed Cargo Safety',
+                description: 'Careful and reliable packing',
+                schemaType: 'Insurance'
+            },
+            {
+                icon: <DollarOutlined />,
+                title: 'All Payment Methods Accepted',
+                description: 'Cash, cards, bank transfers',
+                schemaType: 'PaymentMethod'
+            },
+            {
+                icon: <UserOutlined />,
+                title: 'Special Prices for Students',
+                description: 'Discounts for students on all types of moves',
+                schemaType: 'Discount'
+            },
+            {
+                icon: <ThunderboltOutlined />,
+                title: 'Same-Day Service Available',
+                description: 'Quick vehicle dispatch for urgent moves',
                 schemaType: 'SpeedyService'
             }
         ]

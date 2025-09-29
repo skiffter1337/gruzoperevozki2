@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export interface VehicleFeature {
     id: number;
     name: string;
@@ -21,6 +19,7 @@ export interface Vehicle {
 export interface VehiclesData {
     ru: Vehicle[];
     he: Vehicle[];
+    en: Vehicle[];
 }
 
 export interface VehiclesTranslations {

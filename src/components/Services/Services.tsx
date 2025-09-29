@@ -6,7 +6,7 @@ import {Service, ServicesTranslations} from "@/components/Services/model/types";
 import {getServicesData} from "@/components/Services/model/helpers";
 
 interface ServicesProps {
-    lang: 'ru' | 'he';
+    lang: 'ru' | 'he' | 'en';
     translations: {
         services: ServicesTranslations;
         header: {

@@ -42,15 +42,35 @@
   position: relative;
 }
 
+// Обертка для слайдера с dir="ltr"
+.sliderWrapper {
+  direction: ltr;
+  text-align: center;
+}
+
+.rtl {
+  * {
+    direction: rtl;
+  }
+}
+
 .sliderContainer {
   overflow: hidden;
   border-radius: 20px;
   margin-bottom: 30px;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .sliderTrack {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .slide {
@@ -73,11 +93,6 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   height: 100%;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  }
 
   :global(.ant-card-body) {
     padding: 25px 20px;
@@ -111,6 +126,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+
+  // Сбрасываем направление для контента внутри карточки
+  direction: initial;
 }
 
 .vehicleName {
@@ -185,12 +203,23 @@
   }
 }
 
+// Контейнер для элементов управления слайдером
+.sliderControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  // Сбрасываем направление для элементов управления
+  direction: initial;
+}
+
 // Навигационные точки
 .dots {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  flex-grow: 1;
 }
 
 .dot {
@@ -214,7 +243,6 @@
 
 // Кнопки навигации
 .navButton {
-  transform: translateY(-50%);
   width: 40px;
   height: 40px;
   border: none;
@@ -228,18 +256,23 @@
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 10;
+  flex-shrink: 0;
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   &.prevButton {
-    left: 10px;
+    order: 1;
   }
 
   &.nextButton {
-    right: 10px;
+    order: 3;
   }
 }
 
@@ -250,6 +283,13 @@
   height: 0;
   overflow: hidden;
   pointer-events: none;
+}
+
+// Анимация перетаскивания
+.dragging {
+  .sliderTrack {
+    transition: none;
+  }
 }
 
 // Адаптивность
@@ -311,6 +351,10 @@
     height: 35px;
     font-size: 18px;
   }
+
+  .sliderControls {
+    gap: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -345,5 +389,38 @@
     width: 30px;
     height: 30px;
     font-size: 16px;
+  }
+
+  .dots {
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+// Индикатор свайпа (опционально)
+.swipeHint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  animation: swipeHint 2s infinite;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+@keyframes swipeHint {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
   }
 }

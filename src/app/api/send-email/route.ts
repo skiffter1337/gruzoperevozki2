@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
                         </tr>
                     </table>
                     <p style="color: #666; font-size: 12px; margin-top: 20px;">
-                        Отправлено: ${new Date().toLocaleString('ru-RU')}
+                        Отправлено: ${new Date().toLocaleString('en-RU')}
                     </p>
                 </div>
             `,

@@ -1,6 +1,6 @@
 import {VehiclesData} from "@/components/Vehicles/model/types";
 
-export const getVehiclesData = (lang: 'ru' | 'he') => {
+export const getVehiclesData = (lang: 'ru' | 'he' | 'en') => {
     const vehiclesData: VehiclesData = {
         ru: [
             {
@@ -64,6 +64,38 @@ export const getVehiclesData = (lang: 'ru' | 'he') => {
                 description: 'משאית למעברים גדולים והובלות מסחריות',
                 type: 'משאית',
                 features: ['יכולת נשיאה גדולה', 'ניידות', 'למטענים גדולים']
+            },
+        ],
+        en: [
+            {
+                id: 1,
+                name: 'Renault Kangoo',
+                capacity: 'up to 1.5 tons',
+                volume: '9 m³',
+                image: '/kangoo.svg',
+                description: 'Compact van for small moves and transportation',
+                type: 'Minivan',
+                features: ['Economical', 'Maneuverable', 'Suitable for narrow streets']
+            },
+            {
+                id: 2,
+                name: 'Mercedes Sprinter',
+                capacity: 'up to 3 tons',
+                volume: '16 m³',
+                image: '/mercedes.svg',
+                description: 'Medium cargo van for apartment relocations',
+                type: 'Van',
+                features: ['Spacious', 'Reliable', 'Suitable for standard moves']
+            },
+            {
+                id: 3,
+                name: 'Isuzu sumo',
+                capacity: 'up to 5 tons',
+                volume: '25 m³',
+                image: '/jac.svg',
+                description: 'Truck for large moves and commercial transportation',
+                type: 'Truck',
+                features: ['High load capacity', 'Mobility', 'For oversized cargo']
             },
         ]
     };

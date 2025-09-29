@@ -1,7 +1,7 @@
 import {BankOutlined, HomeOutlined, ToolOutlined} from "@ant-design/icons";
 import {ServicesData} from "@/components/Services/model/types";
 
-export const getServicesData = (lang: 'ru' | 'he') => {
+export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
     const services: ServicesData = {
         ru: [
             {
@@ -107,6 +107,59 @@ export const getServicesData = (lang: 'ru' | 'he') => {
                 features: ['פירוק/הרכבה', 'אריזה מגנה', 'הבטחת שלמות'],
                 hasPriceSlider: false,
                 price: 'מ-200 ₪ ליחידה'
+            },
+        ],
+        en: [
+            {
+                id: 1,
+                icon: <HomeOutlined/>,
+                title: 'Apartment Relocation',
+                description: 'Fast and accurate apartment relocation of any complexity with professional packing',
+                features: ['Item packing', 'Loading/unloading', 'Furniture assembly'],
+                hasPriceSlider: true,
+                prices: [
+                    {rooms: 1, price: 'from 500 ₪'},
+                    {rooms: 2, price: 'from 1000 ₪'},
+                    {rooms: 3, price: 'from 1500 ₪'},
+                    {rooms: 4, price: 'from 1800 ₪'}
+                ]
+            },
+            {
+                id: 2,
+                icon: <HomeOutlined/>,
+                title: 'Office Relocation',
+                description: 'Organized office relocation without stopping the workflow',
+                features: ['Work during non-working hours', 'Office equipment transportation', 'Installation at new location'],
+                hasPriceSlider: true,
+                prices: [
+                    {rooms: 1, price: 'from 800 ₪'},
+                    {rooms: 2, price: 'from 1500 ₪'},
+                    {rooms: 3, price: 'from 2200 ₪'},
+                    {rooms: 4, price: 'from 2800 ₪'}
+                ]
+            },
+            {
+                id: 3,
+                icon: <BankOutlined/>,
+                title: 'Private House Relocation',
+                description: 'Relocation from a private house considering large area and number of items',
+                features: ['Experienced movers', 'Special equipment', 'Fragile items packing'],
+                hasPriceSlider: true,
+                prices: [
+                    {rooms: 1, price: 'from 1200 ₪'},
+                    {rooms: 2, price: 'from 2000 ₪'},
+                    {rooms: 3, price: 'from 2800 ₪'},
+                    {rooms: 4, price: 'from 3500 ₪'}
+                ]
+            },
+            {
+                id: 4,
+                icon: <ToolOutlined/>,
+                title: 'Furniture Transportation',
+                description: 'Careful transportation of furniture of any size and complexity',
+                features: ['Disassembly/assembly', 'Protective packaging', 'Safety guarantee'],
+                hasPriceSlider: false,
+                price: 'from 200 ₪ per unit'
             },
         ]
     };

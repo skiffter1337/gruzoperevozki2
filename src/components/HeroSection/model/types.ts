@@ -5,6 +5,10 @@ export interface HeroTranslations {
         clients: string;
         moves: string;
     };
+    quickContact: {
+        title: string;
+        whatsappMessage: string;
+    };
     form: {
         name: {
             label: string;

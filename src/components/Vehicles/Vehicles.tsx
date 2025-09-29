@@ -1,12 +1,12 @@
 "use client"
-import {Card, Col, Flex, Row} from 'antd';
+import {Card, Col, Row} from 'antd';
 import styles from './Vehicles.module.scss';
-import { FC, useEffect, useState } from "react";
-import { Vehicle, VehiclesTranslations } from "@/components/Vehicles/model/types";
-import { getVehiclesData } from "@/components/Vehicles/model/helpers";
+import {FC, useEffect, useState, useRef, useCallback} from "react";
+import {Vehicle, VehiclesTranslations} from "@/components/Vehicles/model/types";
+import {getVehiclesData} from "@/components/Vehicles/model/helpers";
 
 interface VehiclesProps {
-    lang: 'ru' | 'he';
+    lang: 'ru' | 'he' | 'en';
     translations: {
         vehicles: VehiclesTranslations;
         header: {
@@ -24,13 +24,48 @@ function VehiclesStructuredData({
     vehiclesData: Vehicle[];
     companyName: string;
 }) {
+
+    const getDescription = () => {
+        switch (lang) {
+            case 'he':
+                return "צי מקצועי של רכבי משא עם יכולות נשיאה שונות למעבר דירה בישראל";
+            case 'en':
+                return "Professional fleet of cargo vehicles with different load capacities for relocation in Israel";
+            case 'ru':
+            default:
+                return "Профессиональный автопарк грузовых автомобилей различной грузоподъемности для переездов в Израиле";
+        }
+    };
+
+    const getCapacityValue = (capacity: string) => {
+        switch (lang) {
+            case 'he':
+                return capacity.replace('עד ', '');
+            case 'en':
+                return capacity.replace('up to ', '');
+            case 'ru':
+            default:
+                return capacity.replace('до ', '');
+        }
+    };
+
+    const getVolumeValue = (volume: string) => {
+        switch (lang) {
+            case 'he':
+                return volume.replace(' מ"ק', '');
+            case 'en':
+                return volume.replace(' m³', '');
+            case 'ru':
+            default:
+                return volume.replace(' м³', '');
+        }
+    };
+
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": companyName,
-        "description": lang === 'he'
-            ? "צי מקצועי של רכבי משא עם יכולות נשיאה שונות למעבר דירה בישראל"
-            : "Профессиональный автопарк грузовых автомобилей различной грузоподъемности для переездов в Израиле",
+        "description": getDescription(),
         "numberOfItems": vehiclesData.length,
         "itemListElement": vehiclesData.map((vehicle, index) => ({
             "@type": "ListItem",
@@ -42,12 +77,12 @@ function VehiclesStructuredData({
                 "vehicleType": vehicle.type,
                 "weight": {
                     "@type": "QuantitativeValue",
-                    "value": vehicle.capacity.replace(lang === 'he' ? 'עד ' : 'до ', ''),
+                    "value": getCapacityValue(vehicle.capacity),
                     "unitCode": "TON"
                 },
                 "volume": {
                     "@type": "QuantitativeValue",
-                    "value": vehicle.volume.replace(lang === 'he' ? ' מ"ק' : ' м³', ''),
+                    "value": getVolumeValue(vehicle.volume),
                     "unitCode": "MTQ"
                 }
             }
@@ -62,49 +97,160 @@ function VehiclesStructuredData({
     );
 }
 
-export const Vehicles: FC<VehiclesProps> = ({ lang, translations }) => {
+export const Vehicles: FC<VehiclesProps> = ({lang, translations}) => {
     const vehiclesData = getVehiclesData(lang);
     const t = translations.vehicles;
     const companyName = translations.header.companyName;
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [currentX, setCurrentX] = useState(0);
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const isHebrew = lang === "he";
 
-    // Автопереключение слайдов каждые 5 секунд
     useEffect(() => {
-        if (!isAutoPlaying) return;
+        if (!isAutoPlaying || isDragging) return;
 
         const interval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % vehiclesData.length);
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [vehiclesData.length, isAutoPlaying]);
+    }, [vehiclesData.length, isAutoPlaying, isDragging]);
 
-    const goToSlide = (index: number) => {
+    const goToSlide = useCallback((index: number) => {
         setCurrentSlide(index);
         setIsAutoPlaying(false);
-        // Возобновляем автоплеер через 10 секунд после ручного переключения
         setTimeout(() => setIsAutoPlaying(true), 10000);
-    };
+    }, []);
 
-    const nextSlide = () => {
+    const nextSlide = useCallback(() => {
         goToSlide((currentSlide + 1) % vehiclesData.length);
-    };
+    }, [currentSlide, vehiclesData.length, goToSlide]);
 
-    const prevSlide = () => {
+    const prevSlide = useCallback(() => {
         goToSlide((currentSlide - 1 + vehiclesData.length) % vehiclesData.length);
-    };
+    }, [currentSlide, vehiclesData.length, goToSlide]);
+
+    const handleTouchStart = useCallback((e: React.TouchEvent) => {
+        setIsDragging(true);
+        setStartX(e.touches[0].clientX);
+        setCurrentX(e.touches[0].clientX);
+        setIsAutoPlaying(false);
+    }, []);
+
+    const handleTouchMove = useCallback((e: React.TouchEvent) => {
+        if (!isDragging) return;
+        setCurrentX(e.touches[0].clientX);
+    }, [isDragging]);
+
+    const handleTouchEnd = useCallback(() => {
+        if (!isDragging) return;
+
+        const diff = startX - currentX;
+        const threshold = 50;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+
+        setIsDragging(false);
+        setTimeout(() => setIsAutoPlaying(true), 10000);
+    }, [isDragging, startX, currentX, nextSlide, prevSlide]);
+
+    const handleMouseDown = useCallback((e: React.MouseEvent) => {
+        setIsDragging(true);
+        setStartX(e.clientX);
+        setCurrentX(e.clientX);
+        setIsAutoPlaying(false);
+    }, []);
+
+    const handleMouseMove = useCallback((e: React.MouseEvent) => {
+        if (!isDragging) return;
+        setCurrentX(e.clientX);
+    }, [isDragging]);
+
+    const handleMouseUp = useCallback(() => {
+        if (!isDragging) return;
+
+        const diff = startX - currentX;
+        const threshold = 50;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+
+        setIsDragging(false);
+        setTimeout(() => setIsAutoPlaying(true), 10000);
+    }, [isDragging, startX, currentX, nextSlide, prevSlide]);
 
     const getAltText = (vehicle: Vehicle) => {
-        return lang === 'he'
-            ? `${vehicle.name} - ${vehicle.capacity} יכולת נשיאה`
-            : `${vehicle.name} - ${vehicle.capacity} грузоподъемность`;
+        switch (lang) {
+            case 'he':
+                return `${vehicle.name} - ${vehicle.capacity} יכולת נשיאה`;
+            case 'en':
+                return `${vehicle.name} - ${vehicle.capacity} load capacity`;
+            case 'ru':
+            default:
+                return `${vehicle.name} - ${vehicle.capacity} грузоподъемность`;
+        }
     };
 
     const getTitleText = (vehicle: Vehicle) => {
-        return lang === 'he'
-            ? `השכרת ${vehicle.name} למעברים`
-            : `Аренда ${vehicle.name} для переездов`;
+        switch (lang) {
+            case 'he':
+                return `השכרת ${vehicle.name} למעברים`;
+            case 'en':
+                return `${vehicle.name} rental for moves`;
+            case 'ru':
+            default:
+                return `Аренда ${vehicle.name} для переездов`;
+        }
+    };
+
+    const getDotLabel = (index: number) => {
+        switch (lang) {
+            case 'he':
+                return `עבור לרכב ${index + 1}`;
+            case 'en':
+                return `Go to vehicle ${index + 1}`;
+            case 'ru':
+            default:
+                return `Перейти к транспорту ${index + 1}`;
+        }
+    };
+
+    const getCategory = () => {
+        switch (lang) {
+            case 'he':
+                return "הובלות";
+            case 'en':
+                return "Transportation";
+            case 'ru':
+            default:
+                return "Грузоперевозки";
+        }
+    };
+
+    const getServiceType = () => {
+        switch (lang) {
+            case 'he':
+                return "השכרת רכבי משא";
+            case 'en':
+                return "Cargo vehicle rental";
+            case 'ru':
+            default:
+                return "Аренда грузового транспорта";
+        }
     };
 
     const renderVehicleCard = (vehicle: Vehicle, index: number) => (
@@ -164,9 +310,9 @@ export const Vehicles: FC<VehiclesProps> = ({ lang, translations }) => {
                         </ul>
                     </div>
 
-                    <meta itemProp="category" content={lang === 'he' ? "הובלות" : "Грузоперевозки"}/>
+                    <meta itemProp="category" content={getCategory()}/>
                     <meta itemProp="areaServed" content="IL"/>
-                    <meta itemProp="serviceType" content={lang === 'he' ? "השכרת רכבי משא" : "Аренда грузового транспорта"}/>
+                    <meta itemProp="serviceType" content={getServiceType()}/>
                 </div>
             </Card>
         </article>
@@ -189,7 +335,7 @@ export const Vehicles: FC<VehiclesProps> = ({ lang, translations }) => {
                 </p>
 
                 {/* Десктопная версия */}
-                <div className={styles.desktopVersion}>
+                <div className={`${styles.desktopVersion} ${isHebrew && styles.rtl}`} >
                     <Row gutter={[30, 30]}>
                         {vehiclesData.map((vehicle) => (
                             <Col xs={24} md={12} lg={8} key={vehicle.id}>
@@ -201,50 +347,47 @@ export const Vehicles: FC<VehiclesProps> = ({ lang, translations }) => {
 
                 {/* Мобильная версия - слайдер */}
                 <div className={styles.mobileSlider}>
-                    <div className={styles.sliderContainer}>
+                    <div className={styles.sliderWrapper}>
                         <div
-                            className={styles.sliderTrack}
-                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                            className={styles.sliderContainer}
+                            ref={sliderRef}
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                            onMouseDown={handleMouseDown}
+                            onMouseMove={handleMouseMove}
+                            onMouseUp={handleMouseUp}
+                            onMouseLeave={handleMouseUp}
                         >
-                            {vehiclesData.map((vehicle, index) => (
-                                <div key={vehicle.id} className={styles.slide}>
-                                    {renderVehicleCard(vehicle, index)}
-                                </div>
-                            ))}
+                            <div
+                                className={styles.sliderTrack}
+                                style={{
+                                    transform: `translateX(-${currentSlide * 100}%)`,
+                                    transition: isDragging ? 'none' : 'transform 0.3s ease'
+                                }}
+                            >
+                                {vehiclesData.map((vehicle, index) => (
+                                    <div key={vehicle.id} className={`${styles.slide} ${isHebrew && styles.rtl}`}>
+                                        {renderVehicleCard(vehicle, index)}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    <Flex justify="space-between" >
-                    <button
-                        className={`${styles.navButton} ${styles.prevButton}`}
-                        onClick={prevSlide}
-                        aria-label={lang === 'he' ? "רכב קודם" : "Предыдущий транспорт"}
-                    >
-                        {lang === 'he' ? '‹' : '‹'}
-                    </button>
-                    {/* Навигационные точки */}
-                    <div className={styles.dots}>
-                        {vehiclesData.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`${styles.dot} ${index === currentSlide ? styles.active : ''}`}
-                                onClick={() => goToSlide(index)}
-                                aria-label={lang === 'he'
-                                    ? `עבור לרכב ${index + 1}`
-                                    : `Перейти к транспорту ${index + 1}`
-                                }
-                            />
-                        ))}
-                    </div>
+                    <div className={styles.sliderControls}>
 
-                    <button
-                        className={`${styles.navButton} ${styles.nextButton}`}
-                        onClick={nextSlide}
-                        aria-label={lang === 'he' ? "רכב הבא" : "Следующий транспорт"}
-                    >
-                        {lang === 'he' ? '›' : '›'}
-                    </button>
-                    </Flex>
+                        <div className={styles.dots}>
+                            {vehiclesData.map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={`${styles.dot} ${index === currentSlide ? styles.active : ''}`}
+                                    onClick={() => goToSlide(index)}
+                                    aria-label={getDotLabel(index)}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* Дополнительный SEO контент */}

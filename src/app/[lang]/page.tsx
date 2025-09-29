@@ -20,13 +20,13 @@ export default async function Home({params}: Props) {
             <Header lang={lang}/>
 
             <main>
-                <HeroSection lang={lang as "ru" | "he"} translations={translations}/>
-                <Advantages lang={lang as "ru" | "he"} translations={translations}/>
-                <Services lang={lang as "ru" | "he"} translations={translations}/>
-                <Vehicles lang={lang as "ru" | "he"} translations={translations}/>
-                <Reviews lang={lang as "ru" | "he"} translations={translations}/>
+                <HeroSection lang={lang as "ru" | "he" | 'en'} translations={translations}/>
+                <Advantages lang={lang as "ru" | "he" | 'en'} translations={translations}/>
+                <Services lang={lang as "ru" | "he" | 'en'} translations={translations}/>
+                <Vehicles lang={lang as "ru" | "he" | 'en'} translations={translations}/>
+                <Reviews lang={lang as "ru" | "he" | 'en'} translations={translations}/>
             </main>
-            <Footer lang={lang as "ru" | "he"} translations={translations}/>
+            <Footer lang={lang as "ru" | "he" | 'en'} translations={translations}/>
         </div>
     )
 }

@@ -11,7 +11,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang } = await params;
     const { metadata } = await import(`@/locales/${lang}.json`)
 
+    const localeMap: Record<string, string> = {
+        'he': 'he_IL',
+        'ru': 'ru_RU',
+        'en': 'en_US'
+    }
+
     const isHebrew = lang === 'he'
+    const isEnglish = lang === 'en'
 
     return {
         title: metadata.title,
@@ -21,15 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: metadata.title,
             description: metadata.description,
             type: 'website',
-            locale: isHebrew ? 'he_IL' : 'ru_RU',
+            locale: localeMap[lang] || 'en_US',
         },
         robots: 'index, follow',
-        ...(isHebrew && {
+        ...((isHebrew || isEnglish) && {
             alternates: {
                 canonical: 'https://yourdomain.com',  // TODO вставить домен
                 languages: {
-                    'ru': 'https://yourdomain.com', // TODO вставить домен
-                    'he': 'https://yourdomain.com/he',  // TODO вставить домен
+                    'ru': 'https://yourdomain.com/ru',
+                    'he': 'https://yourdomain.com/he',
+                    'en': 'https://yourdomain.com/en',  // TODO вставить домен
                 }
             }
         })
@@ -43,8 +51,14 @@ export default async function LangLayout({
 
     const { lang } = await params;
 
+    const directionMap: Record<string, 'rtl' | 'ltr'> = {
+        'he': 'rtl',
+        'ru': 'ltr',
+        'en': 'ltr'
+    }
+
     return (
-        <div dir={lang === 'he' ? 'rtl' : 'ltr'}>
+        <div dir={directionMap[lang] || 'ltr'}>
             {children}
         </div>
     )

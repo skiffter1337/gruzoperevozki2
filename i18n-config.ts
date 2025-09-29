@@ -1,5 +1,5 @@
 export const i18nConfig = {
-    locales: ['ru', 'he'],
+    locales: ['ru', 'he', 'en'],
     defaultLocale: 'ru',
     prefixDefault: false,
 } as const;

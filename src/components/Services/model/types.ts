@@ -19,6 +19,7 @@ export interface Service {
 export interface ServicesData {
     ru: Service[];
     he: Service[];
+    en: Service[];
 }
 
 export interface ServicesTranslations {

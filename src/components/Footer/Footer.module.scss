@@ -70,7 +70,7 @@
 }
 
 .phoneButton {
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffd700;
   border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
   padding: 10px;
@@ -82,7 +82,6 @@
   backdrop-filter: blur(10px);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
   }
 

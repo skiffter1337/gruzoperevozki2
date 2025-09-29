@@ -1,8 +1,8 @@
 "use client"
 import {useRouter} from 'next/navigation'
-import {useState, useEffect} from 'react'
-import {Col, Row, Select, Switch, Tooltip, Button, Space} from 'antd'
-import {FontSizeOutlined, EyeOutlined, UndoOutlined} from '@ant-design/icons'
+import {useEffect, useState} from 'react'
+import {Button, Col, Row, Select, Space, Switch} from 'antd'
+import {EyeOutlined, UndoOutlined} from '@ant-design/icons'
 import styles from './Header.module.scss'
 import {useTranslation} from '@/hooks/use-translation'
 import {applyAccessibilitySettings} from "@/components/Header/model/helpers";
@@ -12,7 +12,6 @@ interface HeaderProps {
     lang: string
 }
 
-
 const Header = ({lang}: HeaderProps) => {
     const [language, setLanguage] = useState(lang)
     const [accessibilitySettings, setAccessibilitySettings] = useState<AccessibilitySettings>({
@@ -21,7 +20,7 @@ const Header = ({lang}: HeaderProps) => {
     })
     const [showAccessibilityPanel, setShowAccessibilityPanel] = useState(false)
     const router = useRouter()
-    const translations = useTranslation(lang as 'ru' | 'he')
+    const translations = useTranslation(lang as 'ru' | 'he' | 'en')
 
     useEffect(() => {
         setLanguage(lang)
@@ -34,11 +33,7 @@ const Header = ({lang}: HeaderProps) => {
 
     const handleLanguageChange = (value: string) => {
         setLanguage(value)
-        if (value === 'ru') {
-            router.push('/')
-        } else {
-            router.push(`/${value}`)
-        }
+        router.push(`/${value}`)
     }
 
     const handleAccessibilitySettingChange = (setting: keyof AccessibilitySettings, value: boolean) => {
@@ -81,21 +76,21 @@ const Header = ({lang}: HeaderProps) => {
                         <Col>
                             <div className={styles.logo}>
                                 <img
-                                    src="/favicon.ico"
-                                    alt={translations.header?.companyName || 'Грузоперевозки'}
+                                    src="/logo.png"
+                                    alt={translations.header?.companyName}
                                 />
                                 <span>{translations.header?.companyName}</span>
                             </div>
                         </Col>
                         <Col>
                             <Space size="middle">
-                                    <Button
-                                        type="text"
-                                        icon={<EyeOutlined />}
-                                        onClick={toggleAccessibilityPanel}
-                                        className={styles.accessibilityButton}
-                                        aria-label={translations.header?.accessibilitySettings}
-                                    />
+                                <Button
+                                    type="text"
+                                    icon={<EyeOutlined/>}
+                                    onClick={toggleAccessibilityPanel}
+                                    className={styles.accessibilityButton}
+                                    aria-label={translations.header?.accessibilitySettings}
+                                />
 
                                 <div className={styles.contacts}>
                                     <Select
@@ -105,6 +100,7 @@ const Header = ({lang}: HeaderProps) => {
                                         options={[
                                             {value: 'ru', label: 'RU'},
                                             {value: 'he', label: 'HE'},
+                                            {value: 'en', label: 'EN'},
                                         ]}
                                     />
                                 </div>
@@ -123,7 +119,7 @@ const Header = ({lang}: HeaderProps) => {
                         <Space direction="vertical" size="middle">
                             <div className={styles.settingItem}>
 
-                                    <span>{translations.header?.highContrast }</span>
+                                <span>{translations.header?.highContrast}</span>
 
                                 <Switch
                                     checked={accessibilitySettings.highContrast}
@@ -133,7 +129,7 @@ const Header = ({lang}: HeaderProps) => {
                             </div>
 
                             <div className={styles.settingItem}>
-                                    <span>{translations.header?.grayscaleMode}</span>
+                                <span>{translations.header?.grayscaleMode}</span>
                                 <Switch
                                     checked={accessibilitySettings.grayscale}
                                     onChange={(checked) => handleAccessibilitySettingChange('grayscale', checked)}
@@ -143,7 +139,7 @@ const Header = ({lang}: HeaderProps) => {
 
                             <Button
                                 type="default"
-                                icon={<UndoOutlined />}
+                                icon={<UndoOutlined/>}
                                 onClick={resetAccessibilitySettings}
                                 className={styles.resetButton}
                             >

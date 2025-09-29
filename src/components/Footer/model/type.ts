@@ -35,4 +35,5 @@ export interface ContactInfo {
 export interface FooterData {
     ru: ContactInfo;
     he: ContactInfo;
+    en: ContactInfo;
 }

@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
                         </tr>
                         <tr>
                             <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">Время заявки:</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;">${new Date(timestamp).toLocaleString('ru-RU')}</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">${new Date(timestamp).toLocaleString('en-RU')}</td>
                         </tr>
                     </table>
                     

@@ -12,10 +12,16 @@ export function middleware(request: NextRequest) {
     if (pathnameHasLocale) return
 
 
+    if (request.headers.get('accept-language')?.includes('ru')) {
+        request.nextUrl.pathname = `/ru${pathname}`
+    }
+
     if (request.headers.get('accept-language')?.includes('he')) {
         request.nextUrl.pathname = `/he${pathname}`
-    } else {
-        request.nextUrl.pathname = `/ru${pathname}`
+    }
+
+    if (request.headers.get('accept-language')?.includes('en')) {
+        request.nextUrl.pathname = `/en${pathname}`
     }
 
     return NextResponse.redirect(request.nextUrl)

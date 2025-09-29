@@ -6,10 +6,11 @@ import {EnvironmentOutlined, MailOutlined, PhoneOutlined, SafetyCertificateOutli
 import styles from './Footer.module.scss';
 import Image from 'next/image';
 import {FooterTranslations} from "@/components/Footer/model/type";
-import {getFooterData, getWhatsAppPhone} from "@/components/Footer/model/helpers";
+import {getFooterData} from "@/components/Footer/model/helpers";
+import {getWhatsAppPhone} from "@/lib/getWhatsAppPhone";
 
 interface FooterProps {
-    lang: 'ru' | 'he';
+    lang: 'ru' | 'he' | 'en';
     translations: {
         header: {
             companyName: string;

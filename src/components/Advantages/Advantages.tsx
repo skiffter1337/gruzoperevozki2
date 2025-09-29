@@ -4,7 +4,7 @@ import {getAdvantagesData} from "@/components/Advantages/model/helpers";
 import {AdvantagesTranslations} from "@/components/Advantages/model/types";
 
 interface AdvantagesProps {
-    lang: 'ru' | 'he';
+    lang: 'ru' | 'he' | 'en';
     translations: {
         advantages: AdvantagesTranslations;
         header: {
@@ -14,25 +14,84 @@ interface AdvantagesProps {
 }
 
 function AdvantagesStructuredData({lang, companyName}: { lang: string; companyName: string }) {
-    const advantagesData = getAdvantagesData(lang as 'ru' | 'he');
+    const advantagesData = getAdvantagesData(lang as 'ru' | 'he' | 'en');
+
+    // Функции для получения текста в зависимости от языка
+    const getServiceName = () => {
+        switch (lang) {
+            case 'he':
+                return "שירותי הובלות גרוזוביצ'וק";
+            case 'en':
+                return "UrbanMoving Transportation Services";
+            case 'ru':
+            default:
+                return "Услуги грузоперевозок UrbanMoving";
+        }
+    };
+
+    const getServiceDescription = () => {
+        switch (lang) {
+            case 'he':
+                return "שירותים מקצועיים למעבר עם יתרונות: תמיכה 24/7, ביטוח מטען, תשלום גמיש";
+            case 'en':
+                return "Professional relocation services with advantages: 24/7 support, cargo insurance, flexible payment";
+            case 'ru':
+            default:
+                return "Профессиональные услуги по переездам с преимуществами: круглосуточная поддержка, страхование груза, гибкая оплата";
+        }
+    };
+
+    const getProviderDescription = () => {
+        switch (lang) {
+            case 'he':
+                return "הובלות מקצועיות בישראל";
+            case 'en':
+                return "Professional transportation services in Israel";
+            case 'ru':
+            default:
+                return "Профессиональные грузоперевозки в Израиле";
+        }
+    };
+
+    const getServiceType = () => {
+        switch (lang) {
+            case 'he':
+                return "הובלות ומעבר דירה";
+            case 'en':
+                return "Transportation and relocation services";
+            case 'ru':
+            default:
+                return "Грузоперевозки и переезды";
+        }
+    };
+
+    const getCatalogName = () => {
+        switch (lang) {
+            case 'he':
+                return "יתרונות השירותים שלנו";
+            case 'en':
+                return "Our Service Advantages";
+            case 'ru':
+            default:
+                return "Преимущества наших услуг";
+        }
+    };
 
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": lang === 'he' ? "שירותי הובלות גרוזוביצ'וק" : "Услуги грузоперевозок UrbanMoving",
-        "description": lang === 'he'
-            ? "שירותים מקצועיים למעבר עם יתרונות: תמיכה 24/7, ביטוח מטען, תשלום גמיש"
-            : "Профессиональные услуги по переездам с преимуществами: круглосуточная поддержка, страхование груза, гибкая оплата",
+        "name": getServiceName(),
+        "description": getServiceDescription(),
         "provider": {
             "@type": "LocalBusiness",
             "name": companyName,
-            "description": lang === 'he' ? "הובלות מקצועיות בישראל" : "Профессиональные грузоперевозки в Израиле",
+            "description": getProviderDescription(),
             "areaServed": "IL",
-            "serviceType": lang === 'he' ? "הובלות ומעבר דירה" : "Грузоперевозки и переезды"
+            "serviceType": getServiceType()
         },
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": lang === 'he' ? "יתרונות השירותים שלנו" : "Преимущества наших услуг",
+            "name": getCatalogName(),
             "itemListElement": advantagesData.map((advantage, index) => ({
                 "@type": "Offer",
                 "itemOffered": {

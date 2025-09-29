@@ -7,7 +7,7 @@ import {getCompanyStats, getReviewsData} from "@/components/Reviews/model/helper
 import {Review, ReviewsTranslations} from "@/components/Reviews/model/types";
 
 interface ReviewsProps {
-    lang: 'ru' | 'he';
+    lang: 'ru' | 'he' | 'en';
     translations: {
         reviews: ReviewsTranslations;
         header: {
@@ -21,13 +21,24 @@ function ReviewsStructuredData({lang, reviewsData, companyName}: {
     reviewsData: Review[];
     companyName: string;
 }) {
+
+    const getDescription = () => {
+        switch (lang) {
+            case 'he':
+                return "שירותים מקצועיים למעבר דירה והובלות בישראל";
+            case 'en':
+                return "Professional apartment relocation and transportation services in Israel";
+            case 'ru':
+            default:
+                return "Профессиональные услуги по переездам и грузоперевозкам в Израиле";
+        }
+    };
+
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": companyName,
-        "description": lang === 'he'
-            ? "שירותים מקצועיים למעבר דירה והובלות בישראל"
-            : "Профессиональные услуги по переездам и грузоперевозкам в Израиле",
+        "description": getDescription(),
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
@@ -74,7 +85,6 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
     const companyStats = getCompanyStats(lang);
     const t = translations.reviews;
 
-    // Минимальное расстояние свайпа для срабатывания
     const minSwipeDistance = 50;
 
     const nextReview = () => {
@@ -109,17 +119,30 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
     };
 
     const formatDisplayDate = (dateString: string) => {
-        const locale = lang === 'he' ? 'he-IL' : 'ru-RU';
+        const locale = lang === 'he' ? 'he-IL' : lang === 'en' ? 'en-US' : 'en-RU';
         return new Date(dateString).toLocaleDateString(locale);
     };
 
     const getAltText = (name: string) => {
-        return lang === 'he' ? `אווטר ${name}` : `Аватар ${name}`;
+        switch (lang) {
+            case 'he':
+                return `אווטר ${name}`;
+            case 'en':
+                return `${name}'s avatar`;
+            case 'ru':
+            default:
+                return `Аватар ${name}`;
+        }
     };
 
     const handlePhoneSubmit = async () => {
         if (!phoneNumber.trim()) {
-            message.error(lang === 'he' ? 'נא להזין מספר טלפון' : 'Пожалуйста, введите номер телефона');
+            const errorMessage = lang === 'he'
+                ? 'נא להזין מספר טלפון'
+                : lang === 'en'
+                    ? 'Please enter a phone number'
+                    : 'Пожалуйста, введите номер телефона';
+            message.error(errorMessage);
             return;
         }
 
@@ -142,14 +165,29 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
             const result = await response.json();
 
             if (result.success) {
-                message.success(lang === 'he' ? 'הטלפון נשלח בהצלחה! נחזור אליך בהקדם' : 'Номер отправлен! Мы свяжемся с вами в ближайшее время');
+                const successMessage = lang === 'he'
+                    ? 'הטלפון נשלח בהצלחה! נחזור אליך בהקדם'
+                    : lang === 'en'
+                        ? 'Phone number sent successfully! We will contact you shortly'
+                        : 'Номер отправлен! Мы свяжемся с вами в ближайшее время';
+                message.success(successMessage);
                 setPhoneNumber('');
             } else {
-                message.error(lang === 'he' ? 'שגיאה בשליחת הטלפון' : 'Ошибка при отправке номера');
+                const errorMessage = lang === 'he'
+                    ? 'שגיאה בשליחת הטלפון'
+                    : lang === 'en'
+                        ? 'Error sending phone number'
+                        : 'Ошибка при отправке номера';
+                message.error(errorMessage);
             }
         } catch (error) {
             console.error('Error sending phone:', error);
-            message.error(lang === 'he' ? 'שגיאת רשת' : 'Ошибка сети');
+            const networkErrorMessage = lang === 'he'
+                ? 'שגיאת רשת'
+                : lang === 'en'
+                    ? 'Network error'
+                    : 'Ошибка сети';
+            message.error(networkErrorMessage);
         } finally {
             setIsLoading(false);
         }
@@ -158,6 +196,38 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
     const handleKeyPress = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             handlePhoneSubmit();
+        }
+    };
+
+    const getPhonePlaceholder = () => {
+        switch (lang) {
+            case 'he':
+                return 'הזן מספר טלפון';
+            case 'en':
+                return 'Enter phone number';
+            case 'ru':
+            default:
+                return 'Введите номер телефона';
+        }
+    };
+
+    const getSendButtonText = () => {
+        switch (lang) {
+            case 'he':
+                return 'שלח';
+            case 'en':
+                return 'Send';
+            case 'ru':
+            default:
+                return 'Отправить';
+        }
+    };
+
+    const getArrowDirection = (direction: 'prev' | 'next') => {
+        if (lang === 'he') {
+            return direction === 'prev' ? '→' : '←';
+        } else {
+            return direction === 'prev' ? '←' : '→';
         }
     };
 
@@ -190,6 +260,7 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                                             <Avatar
                                                 size={60}
                                                 icon={<UserOutlined/>}
+                                                src={reviewsData[currentReview].avatar}
                                                 className={styles.avatar}
                                                 alt={getAltText(reviewsData[currentReview].name)}
                                             />
@@ -240,7 +311,7 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                                                 onClick={prevReview}
                                                 aria-label={t.navigation.prev}
                                             >
-                                                {lang === 'he' ? '→' : '←'}
+                                                {getArrowDirection('prev')}
                                             </button>
                                             <div className={styles.dots}>
                                                 {reviewsData.map((_, index) => (
@@ -257,7 +328,7 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                                                 onClick={nextReview}
                                                 aria-label={t.navigation.next}
                                             >
-                                                {lang === 'he' ? '←' : '→'}
+                                                {getArrowDirection('next')}
                                             </button>
                                         </div>
                                     </article>
@@ -304,7 +375,7 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
 
                                 <div className={styles.phoneInputContainer}>
                                     <Input
-                                        placeholder={lang === 'he' ? 'הזן מספר טלפון' : 'Введите номер телефона'}
+                                        placeholder={getPhonePlaceholder()}
                                         value={phoneNumber}
                                         onChange={(e) => setPhoneNumber(e.target.value)}
                                         onKeyPress={handleKeyPress}
@@ -320,7 +391,7 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                                         className={styles.sendButton}
                                         size="large"
                                     >
-                                        {lang === 'he' ? 'שלח' : 'Отправить'}
+                                        {getSendButtonText()}
                                     </Button>
                                 </div>
 

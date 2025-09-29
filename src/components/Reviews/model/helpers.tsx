@@ -1,89 +1,131 @@
 import {CheckCircleOutlined, SafetyCertificateOutlined, TeamOutlined, TrophyOutlined} from "@ant-design/icons";
 
-export const getReviewsData = (lang: 'ru' | 'he') => {
+export const getReviewsData = (lang: 'ru' | 'he' | 'en') => {
     const reviews = {
         ru: [
             {
                 id: 1,
                 name: 'Анна Иванова',
-                location: 'Тель-Авив, ул. Кауфман',
+                location: 'Нетания, ул Смилянски',
                 date: '2024-12-15',
                 rating: 5,
                 text: 'Очень довольна переездом! Ребята работали быстро и аккуратно. Все вещи доставлены в целости и сохранности. Особенно порадовала бережная упаковка хрупких предметов.',
-                avatar: '/avatars/avatar1.jpg',
+                avatar: '/avatarWoman.png',
                 service: 'Квартирный переезд'
             },
             {
                 id: 2,
                 name: 'Михаил Петров',
-                location: 'Тель-Авив, ул. Кауфман',
+                location: 'Холон, ул Соколов',
                 date: '2024-12-08',
-                rating: 1,
-                text: 'Пиздец! Все расхуярили!',
-                avatar: '/avatars/avatar2.jpg',
+                rating: 5,
+                text: 'Переезд офиса прошёл быстро и без проблем. Всё упаковали аккуратно, мебель собрали на месте. Отличная работа, рекомендую!',
+                avatar: '/avatarMan.png',
                 service: 'Офисный переезд'
             },
             {
                 id: 3,
                 name: 'Елена Смирнова',
-                location: 'Тель-Авив, ул. Кауфман',
+                location: 'Хайфа, ул Хадар',
                 date: '2024-12-02',
                 rating: 5,
                 text: 'Лучший сервис по переездам! Заказывала переезд из трехкомнатной квартиры. Все сделали быстро, качественно и по адекватной цене. Рекомендую всем!',
-                avatar: '/avatars/avatar3.jpg',
+                avatar: '/avatarWoman4.png',
                 service: 'Квартирный переезд'
             },
             {
                 id: 4,
                 name: 'Дмитрий Козлов',
-                location: 'Тель-Авив, ул. Кауфман',
+                location: 'Ришон-ле-Цион, ул Пика',
                 date: '2024-11-25',
                 rating: 5,
                 text: 'Перевозили пианино и антикварную мебель. Отнеслись с максимальной осторожностью. Все доставлено без единой царапины. Большое спасибо команде!',
-                avatar: '/avatars/avatar4.jpg',
+                avatar: '/avatarMan3.png',
                 service: 'Перевозка мебели'
             }
         ],
         he: [
             {
                 id: 1,
-                name: 'אנה איבנובה',
-                location: 'תל אביב, רחוב קאופמן',
+                name: ' פליקס בנסמן',
+                location: 'אגוז, כפר יונה',
                 date: '2024-12-15',
                 rating: 5,
-                text: 'מרוצה מאוד מהמעבר! העובדים עבדו במהירות ובזהירות. כל החפצים הועברו בשלמותם.',
-                avatar: '/avatars/avatar1.jpg',
+                text: 'החבר\'ה היו נהדרים. הם עטפו את כל הרהיטים היטב ולא שברו כלום. הם עשו עבודה של 5 כוכבים במעבר הדירה!',
+                avatar: '/avatarMan4.png',
                 service: 'מעבר דירה'
             },
             {
                 id: 2,
-                name: 'מיכאיל פטרוב',
-                location: 'תל אביב, רחוב קאופמן',
-                date: '2024-12-08',
-                rating: 1,
-                text: 'Пиздец! Все расхуярили!',
-                avatar: '/avatars/avatar2.jpg',
-                service: 'מעבר משרד'
+                name: 'תאיר חיימוביץ',
+                location: 'בר אילן, הרצליה',
+                date: '2025-04-06',
+                rating: 5,
+                text: 'הזמנתי ספה להובלה לכאן, והם ארזו אותה היטב. לא הצלחתי להכניס אותה למעלית, הייתי צריך לסחוב אותה במעלה המדרגות. אהבתי הכל.',
+                avatar: '/avatarMan6.png',
+                service: 'הובלת רהיטים'
             },
             {
                 id: 3,
-                name: 'ילנה סמירנובה',
-                location: 'תל אביב, רחוב קאופמן',
-                date: '2024-12-02',
+                name: 'אייל חדד',
+                location: 'חרמון, אור יהודה',
+                date: '2025-09-05',
                 rating: 5,
-                text: 'השירות הטוב ביותר למעבר דירה! הזמנתי מעבר מדירה שלושה חדרים. הכל נעשה במהירות, באיכות ובמחיר סביר. ממליצה לכולם!',
-                avatar: '/avatars/avatar3.jpg',
+                text: 'הזמנתי מעבר דירה כולל אריזה. הם הגיעו עם קופסאות וחומרי אריזה ועשו את העבודה במהירות. אני ממליץ עליהם בחום!',
+                avatar: '/avatarMan7.png',
                 service: 'מעבר דירה'
             },
             {
                 id: 4,
                 name: 'דמיטרי קוזלוב',
-                location: 'תל אביב, רחוב קאופמן',
-                date: '2024-11-25',
+                location: 'אנפה, זכרון יעקב',
+                date: '2025-01-25',
                 rating: 5,
-                text: 'הובלנו פסנתר ורהיטים עתיקים. התייחסו במקסימום זהירות. הכל הועבר ללא שריטה אחת. תודה רבה לצוות!',
-                avatar: '/avatars/avatar4.jpg',
-                service: 'הובלת רהיטים'
+                text: 'הזמנתי הובלה בעזרת מנוף. החבר\'ה היו נהדרים, הם הגיעו עם שתי משאיות. הם סיימו את העבודה במהירות ועשו עבודה באיכות גבוהה.',
+                avatar: '/avatarMan9.png',
+                service: 'העברת משרד'
+            }
+        ],
+        en: [
+            {
+                id: 1,
+                name: 'Emily Davis',
+                location: 'Tel Aviv-Yafo, Frishman st',
+                date: '2025-01-15',
+                rating: 5,
+                text: 'Very satisfied with the move! The guys worked quickly and carefully. All items were delivered intact. I was especially pleased with the careful packaging of fragile items.',
+                avatar: '/avatarWoman2.png',
+                service: 'Apartment Relocation'
+            },
+            {
+                id: 2,
+                name: 'Michael Johnson',
+                location: 'Ramat Gan, Truman st',
+                date: '2024-12-07',
+                rating: 5,
+                text: 'The office move went quickly and without problems. Everything was packed neatly, furniture was assembled on site. Excellent work, I recommend!',
+                avatar: '/avatarMan2.png',
+                service: 'Office Relocation'
+            },
+            {
+                id: 3,
+                name: 'Sarah Thompson',
+                location: 'Petah Tikva, Rothschild st',
+                date: '2024-11-06',
+                rating: 5,
+                text: 'The best moving service! I ordered a move from a three-room apartment. Everything was done quickly, efficiently and at a reasonable price. I recommend to everyone!',
+                avatar: '/avatarWoman3.png',
+                service: 'Apartment Relocation'
+            },
+            {
+                id: 4,
+                name: 'David Miller',
+                location: 'Tel Aviv, Kaufman St',
+                date: '2024-09-23',
+                rating: 5,
+                text: 'We transported a piano and antique furniture. They treated everything with maximum care. Everything was delivered without a single scratch. Many thanks to the team!',
+                avatar: '/avatarMan8.png',
+                service: 'Furniture Transportation'
             }
         ]
     };
@@ -91,7 +133,7 @@ export const getReviewsData = (lang: 'ru' | 'he') => {
     return reviews[lang] || reviews.ru;
 };
 
-export const getCompanyStats = (lang: 'ru' | 'he') => {
+export const getCompanyStats = (lang: 'ru' | 'he' | 'en') => {
     const stats = {
         ru: [
             {icon: <TeamOutlined/>, number: '740+ ', text: 'Довольных клиентов'},
@@ -102,8 +144,14 @@ export const getCompanyStats = (lang: 'ru' | 'he') => {
         he: [
             {icon: <TeamOutlined/>, number: '740+ ', text: 'לקוחות מרוצים'},
             {icon: <CheckCircleOutlined/>, number: '1360+', text: 'מעברים מוצלחים'},
-            {icon: <TrophyOutlined/>, number: '5 שנים', text: 'בשוק השירותים'},
+            {icon: <TrophyOutlined/>, number: '7 שנים', text: 'בשוק השירותים'},
             {icon: <SafetyCertificateOutlined/>, number: '100%', text: 'ביטוח מטען'}
+        ],
+        en: [
+            {icon: <TeamOutlined/>, number: '740+ ', text: 'Satisfied Clients'},
+            {icon: <CheckCircleOutlined/>, number: '1360+', text: 'Successful Moves'},
+            {icon: <TrophyOutlined/>, number: '7 years', text: 'In Service Market'},
+            {icon: <SafetyCertificateOutlined/>, number: '100%', text: 'Cargo Insurance'}
         ]
     };
 

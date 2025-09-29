@@ -1,7 +1,6 @@
 .hero {
-  margin-top: 20px;
+  margin-top: 60px;
   padding: 120px 0 80px;
-  background: #f8f9fa;;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -22,7 +21,7 @@
 }
 
 .phoneButton {
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffd700;
   border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
   padding: 10px;
@@ -34,7 +33,6 @@
   backdrop-filter: blur(10px);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
   }
 
@@ -443,18 +441,6 @@
 
 .imageWrapper {
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-    opacity: 0.1;
-    z-index: 1;
-  }
 }
 
 
