@@ -1,32 +1,33 @@
-
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { i18nConfig } from '../i18n-config'
+
+const locales = ['ru', 'he', 'en'] as const
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl
-    const pathnameHasLocale = i18nConfig.locales.some(
+
+    if (pathname.match(/\.(png|PNG|jpg|JPG|jpeg|gif|ico|svg|css|js)$/)) {
+        return NextResponse.next()
+    }
+
+    const pathnameHasLocale = locales.some(
         locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
 
     if (pathnameHasLocale) return
 
+    const acceptLanguage = request.headers.get('accept-language') || ''
+    let locale: string = 'ru'
 
-    if (request.headers.get('accept-language')?.includes('ru')) {
-        request.nextUrl.pathname = `/ru${pathname}`
-    }
+    if (acceptLanguage.includes('he')) locale = 'he'
+    else if (acceptLanguage.includes('en')) locale = 'en'
 
-    if (request.headers.get('accept-language')?.includes('he')) {
-        request.nextUrl.pathname = `/he${pathname}`
-    }
-
-    if (request.headers.get('accept-language')?.includes('en')) {
-        request.nextUrl.pathname = `/en${pathname}`
-    }
-
+    request.nextUrl.pathname = `/${locale}${pathname}`
     return NextResponse.redirect(request.nextUrl)
 }
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+    matcher: [
+        '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    ],
 }
