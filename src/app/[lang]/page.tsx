@@ -18,7 +18,7 @@ export default async function Home({params}: Props) {
     return (
         <div>
             <Header lang={lang}/>
-
+            <div style={{marginBottom: 60}}/>
             <main>
                 <HeroSection lang={lang as "ru" | "he" | 'en'} translations={translations}/>
                 <Advantages lang={lang as "ru" | "he" | 'en'} translations={translations}/>

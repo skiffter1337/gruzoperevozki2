@@ -134,11 +134,11 @@
     "form": {
       "name": {
         "label": "שמכם",
-        "placeholder": "שם משפחה"
+        "placeholder": "שם"
       },
       "phone": {
         "label": "מספר טלפון",
-        "placeholder": "שם"
+        "placeholder": "טֵלֵפוֹן"
       },
       "address": {
         "from": {
