@@ -122,6 +122,11 @@
       "clients": "Satisfied Clients",
       "moves": "Successful Moves"
     },
+    "cta": {
+      "title": "Ready for a hassle-free move?",
+      "description": "Submit your request and we'll call you within 15 minutes for a free consultation",
+      "button": "Get Free Consultation"
+    },
     "quickContact": {
       "title": "Quick Contact",
       "whatsappMessage": "Hello! I'd like to order moving services. Can you help?"

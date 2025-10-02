@@ -12,10 +12,10 @@ export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
                 features: ['Упаковка вещей', 'Погрузка/разгрузка', 'Сборка мебели'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: 'от 500 ₪'},
-                    {rooms: 2, price: 'от 1000 ₪'},
-                    {rooms: 3, price: 'от 1500 ₪'},
-                    {rooms: 4, price: 'от 1800 ₪'}
+                    {rooms: 1, price: 'от 700 ₪'},
+                    {rooms: 2, price: 'от 1300 ₪'},
+                    {rooms: 3, price: 'от 1800 ₪'},
+                    {rooms: 4, price: 'от 2200 ₪'}
                 ]
             },
             {
@@ -40,10 +40,10 @@ export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
                 features: ['Грузчики с опытом', 'Спецтехника', 'Упаковка хрупких вещей'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: 'от 1200 ₪'},
-                    {rooms: 2, price: 'от 2000 ₪'},
-                    {rooms: 3, price: 'от 2800 ₪'},
-                    {rooms: 4, price: 'от 3500 ₪'}
+                    {rooms: 1, price: 'от 900 ₪'},
+                    {rooms: 2, price: 'от 1700 ₪'},
+                    {rooms: 3, price: 'от 2300 ₪'},
+                    {rooms: 4, price: 'от 2800 ₪'}
                 ]
             },
             {
@@ -65,10 +65,10 @@ export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
                 features: ['אריזת חפצים', 'טעינה/פריקה', 'הרכבת רהיטים'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: 'מ-500 ₪'},
-                    {rooms: 2, price: 'מ-1000 ₪'},
-                    {rooms: 3, price: 'מ-1500 ₪'},
-                    {rooms: 4, price: 'מ-1800 ₪'}
+                    {rooms: 1, price: 'מ-700 ₪'},
+                    {rooms: 2, price: 'מ-1300 ₪'},
+                    {rooms: 3, price: 'מ-1800 ₪'},
+                    {rooms: 4, price: 'מ-2200 ₪'}
                 ]
             },
             {
@@ -93,10 +93,10 @@ export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
                 features: ['סבלים עם ניסיון', 'ציוד מיוחד', 'אריזת חפצים שבירים'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: 'מ-1200 ₪'},
-                    {rooms: 2, price: 'מ-2000 ₪'},
-                    {rooms: 3, price: 'מ-2800 ₪'},
-                    {rooms: 4, price: 'מ-3500 ₪'}
+                    {rooms: 1, price: 'מ-900 ₪'},
+                    {rooms: 2, price: 'מ-1700 ₪'},
+                    {rooms: 3, price: 'מ-2300 ₪'},
+                    {rooms: 4, price: 'מ-2800 ₪'}
                 ]
             },
             {
@@ -118,10 +118,10 @@ export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
                 features: ['Item packing', 'Loading/unloading', 'Furniture assembly'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: 'from 500 ₪'},
-                    {rooms: 2, price: 'from 1000 ₪'},
-                    {rooms: 3, price: 'from 1500 ₪'},
-                    {rooms: 4, price: 'from 1800 ₪'}
+                    {rooms: 1, price: 'from 700 ₪'},
+                    {rooms: 2, price: 'from 1300 ₪'},
+                    {rooms: 3, price: 'from 1800 ₪'},
+                    {rooms: 4, price: 'from 2200 ₪'}
                 ]
             },
             {
@@ -146,10 +146,10 @@ export const getServicesData = (lang: 'ru' | 'he' | 'en') => {
                 features: ['Experienced movers', 'Special equipment', 'Fragile items packing'],
                 hasPriceSlider: true,
                 prices: [
-                    {rooms: 1, price: 'from 1200 ₪'},
-                    {rooms: 2, price: 'from 2000 ₪'},
-                    {rooms: 3, price: 'from 2800 ₪'},
-                    {rooms: 4, price: 'from 3500 ₪'}
+                    {rooms: 1, price: 'from 900 ₪'},
+                    {rooms: 2, price: 'from 1700 ₪'},
+                    {rooms: 3, price: 'from 2300 ₪'},
+                    {rooms: 4, price: 'from 2800 ₪'}
                 ]
             },
             {

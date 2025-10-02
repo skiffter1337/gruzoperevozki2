@@ -9,6 +9,11 @@ export interface HeroTranslations {
         title: string;
         whatsappMessage: string;
     };
+    cta: {
+        title: string;
+        description: string;
+        button: string;
+    };
     form: {
         name: {
             label: string;

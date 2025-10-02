@@ -24,20 +24,18 @@ function FooterStructuredData({companyName, contactInfo}: {
     contactInfo: {
         phone: string;
         email: string;
-        address: string;
     };
 }) {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": companyName,
-        "url": "https://gruzovichok.com",
+        "url": "https://gruzovichok.com", // TODO поменять
         "telephone": contactInfo.phone,
         "email": contactInfo.email,
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "IL",
-            "addressLocality": contactInfo.address
         },
         "openingHours": "Mo-Su 08:00-22:00",
         "foundingDate": "2025",
@@ -112,10 +110,6 @@ export const Footer: FC<FooterProps> = ({lang, translations}) => {
                                 <div className={styles.contactItem}>
                                     <MailOutlined/>
                                     <span itemProp="email">{footerData.email}</span>
-                                </div>
-                                <div className={styles.contactItem}>
-                                    <EnvironmentOutlined/>
-                                    <span itemProp="address">{footerData.address}</span>
                                 </div>
                             </div>
                         </div>

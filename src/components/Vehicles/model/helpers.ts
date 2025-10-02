@@ -41,7 +41,7 @@ export const getVehiclesData = (lang: 'ru' | 'he' | 'en') => {
                 capacity: 'עד 1.5 טון',
                 volume: '9 מ"ק',
                 image: '/kangoo.svg',
-                description: 'טנדר קומפקטי למעברים קטנים והובלות',
+                description: 'טנדר קומפקטי להובלות קטנות',
                 type: 'מיניבוס',
                 features: ['חסכוני', 'זריז', 'מתאים לרחובות צרים']
             },

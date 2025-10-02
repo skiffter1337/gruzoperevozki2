@@ -51,18 +51,18 @@ export const getAdvantagesData = (lang: 'ru' | 'he' | 'en') => {
             {
                 icon: <PhoneOutlined />,
                 title: 'מפעילים זמינים 24/7',
-                description: 'תמיכה מסביב לשעון בנושאי הובלות',
+                description: 'שומרים על קשר 24/7 בנושא הובלות',
                 schemaType: 'CustomerService'
             },
             {
                 icon: <CarOutlined />,
-                title: 'צי גדול של רכבים',
-                description: 'יכולות נשיאה שונות עבור כל סוגי המעברים',
+                title: 'צי רכבים גדול',
+                description: 'מגוון כלי רכב לכל סוגי ההובלה',
                 schemaType: 'AutomotiveBusiness'
             },
             {
                 icon: <SafetyCertificateOutlined />,
-                title: 'מבטיחים את שלמות המטען שלך',
+                title: 'מבטיחים שלמות המטען שלך',
                 description: 'אריזה זהירה ואמינה',
                 schemaType: 'Insurance'
             },
@@ -81,7 +81,7 @@ export const getAdvantagesData = (lang: 'ru' | 'he' | 'en') => {
             {
                 icon: <ThunderboltOutlined />,
                 title: 'אפשרות הגעה ביום ההזמנה',
-                description: 'הגעת רכב מהירה למעברים דחופים',
+                description: 'הגעת רכב מהירה למעבר דחופ',
                 schemaType: 'SpeedyService'
             }
         ],

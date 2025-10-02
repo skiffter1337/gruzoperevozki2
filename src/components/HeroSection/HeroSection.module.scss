@@ -21,6 +21,8 @@
 }
 
 .phoneButton {
+  width: 70px;
+  height: 70px;
   background: #ffd700;
   border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
@@ -298,6 +300,10 @@
 }
 
 @media (max-width: 768px) {
+
+  .ctaForm {
+    display: none;
+  }
   .hero {
     padding: 80px 0 40px;
   }

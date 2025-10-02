@@ -1,10 +1,11 @@
 "use client"
 import {useState} from 'react';
-import {Avatar, Button, Col, Input, message, Rate, Row} from 'antd';
-import {CalendarOutlined, EnvironmentOutlined, SendOutlined, StarFilled, UserOutlined,} from '@ant-design/icons';
+import {Avatar, Col, Rate, Row} from 'antd';
+import {CalendarOutlined, EnvironmentOutlined, StarFilled, UserOutlined,} from '@ant-design/icons';
 import styles from './Reviews.module.scss';
 import {getCompanyStats, getReviewsData} from "@/components/Reviews/model/helpers";
 import {Review, ReviewsTranslations} from "@/components/Reviews/model/types";
+import {CTAForm} from "@/components/CTAForm/CTAForm";
 
 interface ReviewsProps {
     lang: 'ru' | 'he' | 'en';
@@ -77,8 +78,6 @@ function ReviewsStructuredData({lang, reviewsData, companyName}: {
 
 export const Reviews = ({lang, translations}: ReviewsProps) => {
     const [currentReview, setCurrentReview] = useState(0);
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
     const [touchStart, setTouchStart] = useState<number | null>(null);
     const [touchEnd, setTouchEnd] = useState<number | null>(null);
     const reviewsData = getReviewsData(lang);
@@ -135,100 +134,47 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
         }
     };
 
-    const handlePhoneSubmit = async () => {
-        if (!phoneNumber.trim()) {
-            const errorMessage = lang === 'he'
-                ? 'נא להזין מספר טלפון'
-                : lang === 'en'
-                    ? 'Please enter a phone number'
-                    : 'Пожалуйста, введите номер телефона';
-            message.error(errorMessage);
-            return;
-        }
-
-        setIsLoading(true);
-
-        try {
-            const response = await fetch('/api/send-phone', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    phone: phoneNumber,
-                    source: 'reviews_section',
-                    lang: lang,
-                    timestamp: new Date().toISOString()
-                }),
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                const successMessage = lang === 'he'
-                    ? 'הטלפון נשלח בהצלחה! נחזור אליך בהקדם'
-                    : lang === 'en'
-                        ? 'Phone number sent successfully! We will contact you shortly'
-                        : 'Номер отправлен! Мы свяжемся с вами в ближайшее время';
-                message.success(successMessage);
-                setPhoneNumber('');
-            } else {
-                const errorMessage = lang === 'he'
-                    ? 'שגיאה בשליחת הטלפון'
-                    : lang === 'en'
-                        ? 'Error sending phone number'
-                        : 'Ошибка при отправке номера';
-                message.error(errorMessage);
-            }
-        } catch (error) {
-            console.error('Error sending phone:', error);
-            const networkErrorMessage = lang === 'he'
-                ? 'שגיאת רשת'
-                : lang === 'en'
-                    ? 'Network error'
-                    : 'Ошибка сети';
-            message.error(networkErrorMessage);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const handleKeyPress = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
-            handlePhoneSubmit();
-        }
-    };
-
-    const getPhonePlaceholder = () => {
-        switch (lang) {
-            case 'he':
-                return 'הזן מספר טלפון';
-            case 'en':
-                return 'Enter phone number';
-            case 'ru':
-            default:
-                return 'Введите номер телефона';
-        }
-    };
-
-    const getSendButtonText = () => {
-        switch (lang) {
-            case 'he':
-                return 'שלח';
-            case 'en':
-                return 'Send';
-            case 'ru':
-            default:
-                return 'Отправить';
-        }
-    };
-
     const getArrowDirection = (direction: 'prev' | 'next') => {
         if (lang === 'he') {
             return direction === 'prev' ? '→' : '←';
         } else {
             return direction === 'prev' ? '←' : '→';
         }
+    };
+
+    const ctaTranslations = {
+        title: t.cta.title,
+        description: t.cta.description,
+        phonePlaceholder: lang === 'he'
+            ? 'הזן מספר טלפון'
+            : lang === 'en'
+                ? 'Enter phone number'
+                : 'Введите номер телефона',
+        buttonText: lang === 'he'
+            ? 'שלח'
+            : lang === 'en'
+                ? 'Send'
+                : 'Отправить',
+        successMessage: lang === 'he'
+            ? 'הטלפון נשלח בהצלחה! נחזור אליך בהקדם'
+            : lang === 'en'
+                ? 'Phone number sent successfully! We will contact you shortly'
+                : 'Номер отправлен! Мы свяжемся с вами в ближайшее время',
+        errorMessage: lang === 'he'
+            ? 'שגיאה בשליחת הטלפון'
+            : lang === 'en'
+                ? 'Error sending phone number'
+                : 'Ошибка при отправке номера',
+        networkErrorMessage: lang === 'he'
+            ? 'שגיאת רשת'
+            : lang === 'en'
+                ? 'Network error'
+                : 'Ошибка сети',
+        validationMessage: lang === 'he'
+            ? 'נא להזין מספר טלפון'
+            : lang === 'en'
+                ? 'Please enter a phone number'
+                : 'Пожалуйста, введите номер телефона'
     };
 
     return (
@@ -246,6 +192,7 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                 </div>
                 <Row gutter={[60, 40]}>
                     <Col xs={24} lg={10}>
+                        {/* Блок с отзывами остается без изменений */}
                         <div className={styles.phoneContainer}>
                             <div className={styles.phone}>
                                 <div
@@ -369,33 +316,12 @@ export const Reviews = ({lang, translations}: ReviewsProps) => {
                                 ))}
                             </div>
 
-                            <div className={styles.ctaBlock}>
-                                <h4>{t.cta.title}</h4>
-                                <p>{t.cta.description}</p>
-
-                                <div className={styles.phoneInputContainer}>
-                                    <Input
-                                        placeholder={getPhonePlaceholder()}
-                                        value={phoneNumber}
-                                        onChange={(e) => setPhoneNumber(e.target.value)}
-                                        onKeyPress={handleKeyPress}
-                                        size="large"
-                                        className={styles.phoneInput}
-                                        type="tel"
-                                    />
-                                    <Button
-                                        type="primary"
-                                        icon={<SendOutlined/>}
-                                        loading={isLoading}
-                                        onClick={handlePhoneSubmit}
-                                        className={styles.sendButton}
-                                        size="large"
-                                    >
-                                        {getSendButtonText()}
-                                    </Button>
-                                </div>
-
-                            </div>
+                            {/* Используем новый CTA компонент */}
+                            <CTAForm
+                                lang={lang}
+                                translations={ctaTranslations}
+                                source="reviews_section"
+                            />
                         </div>
                     </Col>
                 </Row>

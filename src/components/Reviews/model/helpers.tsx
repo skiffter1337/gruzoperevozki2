@@ -143,7 +143,7 @@ export const getCompanyStats = (lang: 'ru' | 'he' | 'en') => {
         ],
         he: [
             {icon: <TeamOutlined/>, number: '740+ ', text: 'לקוחות מרוצים'},
-            {icon: <CheckCircleOutlined/>, number: '1360+', text: 'מעברים מוצלחים'},
+            {icon: <CheckCircleOutlined/>, number: '1360+', text: 'הובלות מוצלחים'},
             {icon: <TrophyOutlined/>, number: '7 שנים', text: 'בשוק השירותים'},
             {icon: <SafetyCertificateOutlined/>, number: '100%', text: 'ביטוח מטען'}
         ],

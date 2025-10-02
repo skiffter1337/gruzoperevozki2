@@ -29,7 +29,6 @@ export interface FooterTranslations {
 export interface ContactInfo {
     phone: string;
     email: string;
-    address: string;
 }
 
 export interface FooterData {
