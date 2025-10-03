@@ -53,7 +53,7 @@
   },
   "services": {
     "title": "Our Moving Services",
-    "subtitle": "Full range of services for comfortable relocation in Israel",
+    "subtitle": "Full range of services for comfortable relocation",
     "labels": {
       "prices": "Prices:",
       "rooms": "room",
@@ -116,7 +116,7 @@
     }
   },
   "hero": {
-    "title": "Submit Your Moving Request in Israel",
+    "title": "Submit Your Moving Request",
     "subtitle": "Professional movers, safe transportation, guarantee for your belongings' safety",
     "stats": {
       "clients": "Satisfied Clients",
