@@ -1,11 +1,20 @@
 'use client'
 
-import { Card, Button, Row, Col, Carousel } from 'antd'
+import {Card, Button, Row, Col, Carousel} from 'antd'
 import styles from './Articles.module.scss'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import {useParams} from 'next/navigation'
+import {useState, useEffect} from 'react'
 import {useTranslation} from "@/hooks/use-translation";
+
+type Language = 'ru' | 'he' | 'en'
+
+interface Article {
+    id: string
+    title: string
+    description: string
+    image: string
+}
 
 export function Articles() {
     const params = useParams()
@@ -21,7 +30,8 @@ export function Articles() {
         return () => window.removeEventListener('resize', checkMobile)
     }, [])
 
-    const t = useTranslation(lang as any)
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
 
     if (!mounted) {
         return (
@@ -45,8 +55,7 @@ export function Articles() {
         )
     }
 
-    // Карточка статьи
-    const ArticleCard = ({ article }: { article: any }) => (
+    const ArticleCard = ({article}: { article: Article }) => (
         <Card
             className={styles.articleCard}
             cover={
@@ -61,7 +70,7 @@ export function Articles() {
             <div className={styles.articleContent}>
                 <h3 className={styles.articleTitle}>{article.title}</h3>
                 <p className={styles.articleDescription}>{article.description}</p>
-                <Link href={`/${lang}/articles/${article.id}`}>
+                <Link href={`/${language}/articles/${article.id}`}>
                     <Button type="primary" className={styles.readMoreButton}>
                         {t.articles.readMore}
                     </Button>
@@ -76,26 +85,24 @@ export function Articles() {
                 <h2 className={styles.title}>{t.articles.title}</h2>
 
                 {isMobile ? (
-                    // Мобильная версия - слайдер
                     <div className={styles.mobileSlider}>
                         <Carousel
-                            dots={{ className: styles.carouselDots }}
+                            dots={{className: styles.carouselDots}}
                             arrows
                             className={styles.carousel}
                         >
-                            {t.articles.items.map((article) => (
+                            {t.articles.items.map((article: Article) => (
                                 <div key={article.id} className={styles.slide}>
-                                    <ArticleCard article={article} />
+                                    <ArticleCard article={article}/>
                                 </div>
                             ))}
                         </Carousel>
                     </div>
                 ) : (
-                    // Десктоп версия - сетка
                     <Row gutter={[24, 24]} className={styles.articlesGrid}>
-                        {t.articles.items.map((article) => (
+                        {t.articles.items.map((article: Article) => (
                             <Col xs={24} md={12} lg={6} key={article.id}>
-                                <ArticleCard article={article} />
+                                <ArticleCard article={article}/>
                             </Col>
                         ))}
                     </Row>

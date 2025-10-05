@@ -6,11 +6,34 @@ import styles from './article.module.scss'
 import type {Metadata} from "next";
 import Image from 'next/image';
 
-type Props = {
-    params: Promise<{ lang: string; id: string }>
+type Language = 'ru' | 'en' | 'he';
+
+type ArticleContent = Record<Language, string>;
+
+type ArticleTitle = Record<Language, string>;
+
+type ArticleDescription = Record<Language, string>;
+
+type ArticleReadTime = Record<Language, string>;
+
+type ArticleKeywords = Record<Language, string[]>;
+
+interface ArticleData {
+    title: ArticleTitle;
+    description: ArticleDescription;
+    content: ArticleContent;
+    image: string;
+    readTime: ArticleReadTime;
+    keywords: ArticleKeywords;
 }
 
-const articlesData: Record<string, any> = {
+type ArticlesData = Record<string, ArticleData>;
+
+type Props = {
+    params: Promise<{ lang: Language; id: string }>
+}
+
+const articlesData: ArticlesData = {
     'moving-tips': {
         title: {
             ru: 'Как подготовиться к переезду: 10 советов от профессионалов',
@@ -37,7 +60,7 @@ const articlesData: Record<string, any> = {
         <p>Паспорта, документы на недвижимость, медицинские карты и другие важные бумаги храните отдельно в легко доступном месте.</p>
 
         <h3>4. Создайте аптечку первой необходимости</h3>
-        <p>Включайте лекарства, средства гигиены и вещи, которые могут понадобиться в первый день после переезда.</p>
+        <p>Включайте лекарства, средства гигиены и вещи, которые могут понадобиться в первый день после переезд��.</p>
 
         <h3>5. Подпишите все коробки</h3>
         <p>Указывайте комнату и краткое содержимое на каждой коробке для легкой распаковки.</p>
@@ -382,13 +405,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: article.title[lang],
         description: article.description[lang],
-        keywords: article.keywords?.[lang]?.join(', ')
+        keywords: article.keywords[lang]?.join(', ')
     }
 }
 
 export async function generateStaticParams() {
     const articles = Object.keys(articlesData)
-    const languages = ['ru', 'en', 'he']
+    const languages: Language[] = ['ru', 'en', 'he']
 
     return articles.flatMap((article) =>
         languages.map((lang) => ({
@@ -440,8 +463,8 @@ export default async function ArticlePage({ params }: Props) {
                                     src={article.image}
                                     alt={article.title[lang]}
                                     loading="lazy"
-                                   width={1000}
-                                   height={1000}
+                                    width={1000}
+                                    height={1000}
                                 />
                             </div>
                         )}

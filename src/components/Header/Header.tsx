@@ -7,12 +7,16 @@ import styles from './Header.module.scss'
 import Link from 'next/link'
 import {useTranslation} from "@/hooks/use-translation";
 
+type Language = 'ru' | 'he' | 'en'
+
 interface HeaderProps {
     lang: string
 }
 
 export default function Header({ lang }: HeaderProps) {
-    const t = useTranslation(lang as any)
+
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     const handleLanguageChange = (value: string) => {
@@ -31,7 +35,7 @@ export default function Header({ lang }: HeaderProps) {
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <Link href={`/${lang}`}>
+                    <Link href={`/${language}`}>
                         <span>MoveIsrael</span>
                     </Link>
                 </div>
@@ -46,7 +50,7 @@ export default function Header({ lang }: HeaderProps) {
 
                 <div className={styles.controls}>
                     <Select
-                        defaultValue={lang}
+                        defaultValue={language}
                         style={{ width: 100 }}
                         onChange={handleLanguageChange}
                         options={[

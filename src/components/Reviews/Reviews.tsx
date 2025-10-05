@@ -4,12 +4,15 @@ import {Card, Carousel} from 'antd'
 import styles from './Reviews.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
 
+type Language = 'ru' | 'he' | 'en'
+
 interface ReviewsProps {
     lang: string
 }
 
 export function Reviews({lang}: ReviewsProps) {
-    const t = useTranslation(lang as any)
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
 
     return (
         <section id="reviews" className={styles.reviews}>
