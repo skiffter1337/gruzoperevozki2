@@ -28,7 +28,7 @@ export function Reviews({lang}: ReviewsProps) {
                         <div key={index} className={styles.slide}>
                             <Card className={styles.reviewCard}>
                                 <div className={styles.reviewContent}>
-                                    <p className={styles.reviewText}>"{review.text}"</p>
+                                    <p className={styles.reviewText}>&#34;{review.text}&#34;</p>
                                     <div className={styles.reviewAuthor}>- {review.name}</div>
                                 </div>
                             </Card>
