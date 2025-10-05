@@ -1,32 +1,30 @@
-import Advantages from "@/components/Advantages/Advantages"
-import {Services} from "@/components/Services/Services"
-import {Vehicles} from "@/components/Vehicles/Vehicles"
-import {Reviews} from "@/components/Reviews/Reviews"
+import { About } from "@/components/About/About"
+import { Services } from "@/components/Services/Services"
+import { Reviews } from "@/components/Reviews/Reviews"
 import Header from "@/components/Header/Header"
-import {getServerTranslations} from "@/lib/server-translations";
-import {Footer} from "@/components/Footer/Footer";
-import {HeroSection} from "@/components/HeroSection/HeroSection";
+import { getServerTranslations } from "@/lib/server-translations"
+import { Footer } from "@/components/Footer/Footer"
+import { HeroSection } from "@/components/HeroSection/HeroSection"
+import { Contact } from "@/components/Contact/Contact"
+import {Articles} from "@/components/Articles";
 
 type Props = {
     params: Promise<{ lang: string }>
 }
 
-export default async function Home({params}: Props) {
-    const {lang} = await params;
-    const translations = await getServerTranslations(lang)
+export default async function Home({ params }: Props) {
+    const { lang } = await params
 
     return (
         <div>
-            <Header lang={lang}/>
-            <div style={{marginBottom: 60}}/>
-            <main>
-                <HeroSection lang={lang as "ru" | "he" | 'en'} translations={translations}/>
-                <Advantages lang={lang as "ru" | "he" | 'en'} translations={translations}/>
-                <Services lang={lang as "ru" | "he" | 'en'} translations={translations}/>
-                <Vehicles lang={lang as "ru" | "he" | 'en'} translations={translations}/>
-                <Reviews lang={lang as "ru" | "he" | 'en'} translations={translations}/>
-            </main>
-            <Footer lang={lang as "ru" | "he" | 'en'} translations={translations}/>
+            <Header lang={lang} />
+            <HeroSection lang={lang} />
+            <About lang={lang} />
+            <Services lang={lang} />
+            <Reviews lang={lang} />
+            <Articles />
+            <Contact lang={lang} />
+            <Footer lang={lang} />
         </div>
     )
 }

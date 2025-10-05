@@ -1,181 +1,128 @@
 {
-  "header": {
-    "companyName": "UrbanMoving",
-    "accessibilitySettings": "Accessibility Settings",
-    "highContrast": "High Contrast",
-    "largeText": "Large Text",
-    "grayscaleMode": "Colorblind Mode",
-    "resetSettings": "Reset to Normal Mode"
-  },
   "metadata": {
-    "title": "Moving & Transport Services | UrbanMoving - Professional Services",
-    "description": "Professional moving services, residential and office relocations in Israel. Fast, reliable, affordable.",
-    "keywords": "moving services, relocation, residential moving, office moving, movers"
+    "title": "Freight Transportation in Israel | Office & Apartment Moves",
+    "description": "Professional freight transportation services in Israel. Office, apartment, and house moves. Quality services at affordable prices.",
+    "keywords": "israel freight transportation, moving israel, office relocation, apartment moving, transport services"
   },
-  "advantages": {
-    "title": "Advantages of Choosing UrbanMoving for Moving Services",
-    "subtitle": "Why over 740 clients trust us with their relocations in Israel",
-    "seoContent": {
-      "paragraph": "<strong>UrbanMoving</strong> offers the best conditions for moving services in Israel: 24/7 customer support, modern vehicle fleet, cargo insurance, flexible payment system, and special discounts for students. Professional services for apartment, office, and private house relocations.",
-      "listItems": [
-        "Moving services throughout Israel",
-        "Turnkey residential and office relocations",
-        "Professional experienced movers",
-        "Careful packing and transportation",
-        "Competitive market prices for moving services"
-      ]
-    }
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "reviews": "Reviews",
+    "articles": "Articles",
+    "contact": "Contact"
   },
-  "reviews": {
-    "title": "Customer Reviews of Our Moving Services",
-    "subtitle": "See what our clients say about relocation quality with UrbanMoving",
-    "companyTitle": "Why Choose UrbanMoving for Relocations",
-    "companyDescription": {
-      "part1": "<strong>UrbanMoving</strong> is a professional moving service in Israel that has been helping people and businesses with relocations of any complexity for over 7 years. We take pride in our impeccable service and attentive approach to every client.",
-      "part2": "Our team consists of experienced movers and drivers who undergo regular training. We use modern equipment and quality packing materials to ensure the safety of your belongings."
+  "hero": {
+    "title": "Professional Freight Transportation in Israel",
+    "subtitle": "Reliable office, apartment, and house moves. Quality, speed, and safety guaranteed.",
+    "cta": "Get Consultation"
+  },
+  "about": {
+    "title": "About MoveIsrael Company",
+    "description": "MoveIsrael is a professional transportation company with an impeccable reputation, specializing in comprehensive logistics solutions throughout Israel.",
+    "fullDescription": "We provide professional transportation services for apartments of any size, offices, businesses, and individual items. Our diverse fleet includes modern trucks of various load capacities, specially equipped for the safe transportation of your property.",
+    "features": {
+      "experience": "10+ Years Experience",
+      "team": "Professional Team",
+      "insurance": "Cargo Insurance",
+      "support": "24/7 Support"
     },
-    "cta": {
-      "title": "Ready for a hassle-free move?",
-      "description": "Submit your request and we'll call you within 15 minutes for a free consultation",
-      "button": "Get Free Consultation"
+    "fleet": {
+      "title": "Our Fleet",
+      "large": "Large 7.5-ton trucks for large-scale moves",
+      "medium": "Medium Fiat Ducato trucks for standard transport",
+      "small": "Compact vans for quick deliveries",
+      "special": "Special equipment for complex cargo"
     },
-    "navigation": {
-      "prev": "Previous review",
-      "next": "Next review",
-      "goToReview": "Go to review"
+    "services": {
+      "title": "Additional Services",
+      "crane": "Crane services for heavy and oversized cargo",
+      "carpentry": "Professional carpentry work",
+      "packing": "Packing and unpacking of property",
+      "storage": "Temporary cargo storage"
     },
-    "labels": {
-      "service": "Service:",
-      "rating": "out of 5",
-      "location": "Location",
-      "date": "Date"
+    "team": {
+      "title": "Our Team",
+      "description": "Our team consists of 8 experienced specialists, each of whom has undergone professional training and has years of experience in the transportation industry."
+    },
+    "difference": {
+      "title": "What Makes Us Different",
+      "description": "We stand out from other transportation companies through our commitment to the highest quality work and individual approach to each client. We believe that everyone deserves personal attention and full concentration on the details that are crucial for a successful move."
+    },
+    "coverage": {
+      "title": "Service Area",
+      "description": "The company operates from the central office in Tel Aviv and covers the entire territory of Israel - from the north of the country to the south. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
     }
   },
   "services": {
-    "title": "Our Moving Services",
-    "subtitle": "Full range of services for comfortable relocation",
-    "labels": {
-      "prices": "Prices:",
-      "rooms": "room",
-      "rooms_plural": "rooms",
-      "per_unit": "per unit",
-      "from": "from"
+    "title": "Our Services",
+    "items": {
+      "apartment": "Apartment Moves",
+      "office": "Office Relocation",
+      "house": "House Moves",
+      "international": "International Transport",
+      "furniture": "Furniture Assembly",
+      "storage": "Storage Services"
     }
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "items": [
+      {
+        "name": "Michael",
+        "text": "Excellent service! Quickly and carefully moved all furniture."
+      },
+      {
+        "name": "Anna",
+        "text": "Professional team, very satisfied with the move."
+      }
+    ]
+  },
+  "articles": {
+    "title": "Useful Articles",
+    "readMore": "Read More",
+    "items": [
+      {
+        "id": "moving-tips",
+        "title": "How to Prepare for Moving: 10 Tips",
+        "description": "Practical recommendations for preparing for a successful move without stress and losses",
+        "image": "/gruzchiki1.jpg"
+      },
+      {
+        "id": "packing-guide",
+        "title": "Proper Packing of Belongings",
+        "description": "How to properly pack fragile items, furniture and personal belongings for safe transportation",
+        "image": "/gruzchiki2.jpg"
+      },
+      {
+        "id": "israel-transport",
+        "title": "Features of Moving in Israel",
+        "description": "What you need to know about transport rules and moving features in different cities of Israel",
+        "image": "/gruzchiki3.jpg"
+      },
+      {
+        "id": "office-moving",
+        "title": "Office Moving: Step-by-Step Guide",
+        "description": "Organizing a business move with minimal downtime for your company",
+        "image": "/gruzchiki4.jpg"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Our Work"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send"
   },
   "footer": {
-    "companyName": "UrbanMoving",
-    "contacts": {
-      "phone": "Phone",
-      "email": "Email",
-      "address": "Address"
-    },
-    "paymentSection": {
-      "title": "Payment Methods",
-      "methods": {
-        "visa": "Visa",
-        "mastercard": "Mastercard",
-        "googlePay": "Google Pay",
-        "applePay": "Apple Pay",
-        "bit": "Bit"
-      }
-    },
-    "quickContact": {
-      "title": "Quick Contact",
-      "whatsappMessage": "Hello! I'd like to order moving services. Can you help?"
-    },
-    "copyright": "© {year} UrbanMoving. All rights reserved.",
-    "legalLinks": {
-      "privacyPolicy": "Privacy Policy"
-    },
-    "seoContent": "<strong>UrbanMoving</strong> - professional moving services in Israel. Residential moves, office relocations, furniture transportation, mover services. Serving all Israel: Tel Aviv, Jerusalem, Haifa, Be'er Sheva. Accept all payment methods, cargo insurance, quality guaranteed."
-  },
-  "vehicles": {
-    "title": "Our Vehicle Fleet",
-    "subtitle": "Diverse transportation options for any task",
-    "seoContent": {
-      "paragraph": "<strong>UrbanMoving</strong> offers rental of moving vehicles for relocations in Israel. Our fleet includes vehicles of various capacities: from compact Renault Kangoo vans (1.5 tons) to large Scania trucks (20 tons). We provide transportation for residential moves, office relocations, furniture transportation, and commercial moving services throughout Israel.",
-      "listItems": [
-        "Rental of moving vehicles with driver",
-        "Relocations of any complexity in Tel Aviv, Jerusalem, Haifa",
-        "Capacity from 1.5 to 20 tons",
-        "Cargo volume from 9 to 60 m³",
-        "Professional experienced drivers",
-        "Cargo insurance during transportation"
-      ]
-    },
-    "labels": {
-      "capacity": "Capacity:",
-      "volume": "Cargo volume:",
-      "type": "Type:",
-      "features": "Features:"
-    },
-    "categories": {
-      "minivan": "Minivan",
-      "van": "Van",
-      "truck": "Truck"
-    }
-  },
-  "hero": {
-    "title": "Submit Your Moving Request",
-    "subtitle": "Professional movers, safe transportation, guarantee for your belongings' safety",
-    "stats": {
-      "clients": "Satisfied Clients",
-      "moves": "Successful Moves"
-    },
-    "cta": {
-      "title": "Ready for a hassle-free move?",
-      "description": "Submit your request and we'll call you within 15 minutes for a free consultation",
-      "button": "Get Free Consultation"
-    },
-    "quickContact": {
-      "title": "Quick Contact",
-      "whatsappMessage": "Hello! I'd like to order moving services. Can you help?"
-    },
-    "form": {
-      "name": {
-        "label": "Your Name",
-        "placeholder": "First Last Name"
-      },
-      "phone": {
-        "label": "Phone Number",
-        "placeholder": "Phone"
-      },
-      "address": {
-        "from": {
-          "title": "Pickup From",
-          "label": "Address",
-          "placeholder": "Address"
-        },
-        "to": {
-          "title": "Deliver To",
-          "label": "Address",
-          "placeholder": "Address"
-        },
-        "floor": "Floor",
-        "floorPlaceholder": "2",
-        "hasLift": "Has Elevator",
-        "needCrane": "Need Crane"
-      },
-      "date": {
-        "label": "Moving Date",
-        "placeholder": "Select date"
-      },
-      "services": {
-        "packing": "Cargo Packing",
-        "assembly": "Furniture Assembly/Disassembly"
-      },
-      "comment": {
-        "label": "Comments",
-        "placeholder": "Additional information about cargo, furniture, special requirements..."
-      },
-      "submit": "Submit Request",
-      "validation": {
-        "required": "Required field",
-        "nameRequired": "Enter your name",
-        "phoneRequired": "Enter your phone",
-        "addressRequired": "Enter address"
-      }
-    },
-    "seoText": "Professional moving services in Israel. Qualified movers, furniture transportation, packing services. Fast, reliable, affordable prices."
+    "rights": "All rights reserved",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address"
   }
 }

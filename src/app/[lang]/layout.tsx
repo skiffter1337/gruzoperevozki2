@@ -1,15 +1,14 @@
-import type { Metadata } from 'next'
-import { ReactNode } from "react";
+import type {Metadata} from 'next'
+import {ReactNode} from "react"
 
 type Props = {
     children: ReactNode
     params: Promise<{ lang: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-
-    const { lang } = await params;
-    const { metadata } = await import(`@/locales/${lang}.json`)
+export async function generateMetadata({params}: Props): Promise<Metadata> {
+    const {lang} = await params
+    const {metadata} = await import(`@/locales/${lang}.json`)
 
     const localeMap: Record<string, string> = {
         'he': 'he_IL',
@@ -33,11 +32,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         robots: 'index, follow',
         ...((isHebrew || isEnglish) && {
             alternates: {
-                canonical: 'https://yourdomain.com',  // TODO вставить домен
+                canonical: 'https://moveisrael.com', // TODO исправить
                 languages: {
-                    'ru': 'https://yourdomain.com/ru',
-                    'he': 'https://yourdomain.com/he',
-                    'en': 'https://yourdomain.com/en',  // TODO вставить домен
+                    'ru': 'https://moveisrael.com/ru',
+                    'he': 'https://moveisrael.com/he',
+                    'en': 'https://moveisrael.com/en',
                 }
             }
         })
@@ -48,8 +47,7 @@ export default async function LangLayout({
                                              children,
                                              params
                                          }: Props) {
-
-    const { lang } = await params;
+    const {lang} = await params
 
     const directionMap: Record<string, 'rtl' | 'ltr'> = {
         'he': 'rtl',
@@ -59,7 +57,9 @@ export default async function LangLayout({
 
     return (
         <div dir={directionMap[lang] || 'ltr'}>
-            {children}
+            <main>
+                {children}
+            </main>
         </div>
     )
 }

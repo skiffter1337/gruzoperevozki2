@@ -1,156 +1,77 @@
-"use client"
-import {useRouter} from 'next/navigation'
-import {useEffect, useState} from 'react'
-import {Button, Col, Row, Select, Space, Switch} from 'antd'
-import {EyeOutlined, UndoOutlined} from '@ant-design/icons'
+'use client'
+
+import { useState } from 'react'
+import { Select, Button } from 'antd'
+import { MenuOutlined } from '@ant-design/icons'
 import styles from './Header.module.scss'
-import {useTranslation} from '@/hooks/use-translation'
-import {applyAccessibilitySettings} from "@/components/Header/model/helpers";
-import {AccessibilitySettings} from "@/components/Header/model/types";
+import Link from 'next/link'
+import {useTranslation} from "@/hooks/use-translation";
 
 interface HeaderProps {
     lang: string
 }
 
-const Header = ({lang}: HeaderProps) => {
-    const [language, setLanguage] = useState(lang)
-    const [accessibilitySettings, setAccessibilitySettings] = useState<AccessibilitySettings>({
-        highContrast: false,
-        grayscale: false
-    })
-    const [showAccessibilityPanel, setShowAccessibilityPanel] = useState(false)
-    const router = useRouter()
-    const translations = useTranslation(lang as 'ru' | 'he' | 'en')
-
-    useEffect(() => {
-        setLanguage(lang)
-        const savedSettings = localStorage.getItem('accessibilitySettings')
-        if (savedSettings) {
-            setAccessibilitySettings(JSON.parse(savedSettings))
-            applyAccessibilitySettings(JSON.parse(savedSettings))
-        }
-    }, [lang])
+export default function Header({ lang }: HeaderProps) {
+    const t = useTranslation(lang as any)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     const handleLanguageChange = (value: string) => {
-        setLanguage(value)
-        router.push(`/${value}`)
+        window.location.href = `/${value}`
     }
 
-    const handleAccessibilitySettingChange = (setting: keyof AccessibilitySettings, value: boolean) => {
-        const newSettings = {
-            ...accessibilitySettings,
-            [setting]: value
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
         }
-
-        setAccessibilitySettings(newSettings)
-        applyAccessibilitySettings(newSettings)
-
-        localStorage.setItem('accessibilitySettings', JSON.stringify(newSettings))
-    }
-
-    const resetAccessibilitySettings = () => {
-        const defaultSettings = {
-            highContrast: false,
-            largeText: false,
-            grayscale: false
-        }
-
-        setAccessibilitySettings(defaultSettings)
-        applyAccessibilitySettings(defaultSettings)
-
-        localStorage.removeItem('accessibilitySettings')
-
-        document.documentElement.style.cssText = ''
-        document.body.style.cssText = ''
-    }
-
-    const toggleAccessibilityPanel = () => {
-        setShowAccessibilityPanel(!showAccessibilityPanel)
+        setMobileMenuOpen(false)
     }
 
     return (
-        <>
-            <header className={styles.header}>
-                <div className={styles.container}>
-                    <Row align="middle" justify="space-between">
-                        <Col>
-                            <div className={styles.logo}>
-                                <img
-                                    src="/logo.png"
-                                    alt={translations.header?.companyName}
-                                />
-                                <span>{translations.header?.companyName}</span>
-                            </div>
-                        </Col>
-                        <Col>
-                            <Space size="middle">
-                                <Button
-                                    type="text"
-                                    icon={<EyeOutlined/>}
-                                    onClick={toggleAccessibilityPanel}
-                                    className={styles.accessibilityButton}
-                                    aria-label={translations.header?.accessibilitySettings}
-                                />
-
-                                <div className={styles.contacts}>
-                                    <Select
-                                        value={language}
-                                        onChange={handleLanguageChange}
-                                        className={styles.languageSelect}
-                                        options={[
-                                            {value: 'ru', label: 'RU'},
-                                            {value: 'he', label: 'HE'},
-                                            {value: 'en', label: 'EN'},
-                                        ]}
-                                    />
-                                </div>
-                            </Space>
-                        </Col>
-                    </Row>
+        <header className={styles.header}>
+            <div className={styles.container}>
+                <div className={styles.logo}>
+                    <Link href={`/${lang}`}>
+                        <span>MoveIsrael</span>
+                    </Link>
                 </div>
-            </header>
 
+                <nav className={`${styles.nav} ${mobileMenuOpen ? styles.navOpen : ''}`}>
+                    <button onClick={() => scrollToSection('about')}>{t.header.about}</button>
+                    <button onClick={() => scrollToSection('services')}>{t.header.services}</button>
+                    <button onClick={() => scrollToSection('reviews')}>{t.header.reviews}</button>
+                    <button onClick={() => scrollToSection('articles')}>{t.header.articles}</button>
+                    <button onClick={() => scrollToSection('contact')}>{t.header.contact}</button>
+                </nav>
 
-            {showAccessibilityPanel && (
-                <div className={styles.accessibilityPanel}>
-                    <div className={styles.panelContent}>
-                        <h3>{translations.header?.accessibilitySettings}</h3>
+                <div className={styles.controls}>
+                    <Select
+                        defaultValue={lang}
+                        style={{ width: 100 }}
+                        onChange={handleLanguageChange}
+                        options={[
+                            { value: 'ru', label: 'Рус' },
+                            { value: 'he', label: 'עב' },
+                            { value: 'en', label: 'Eng' }
+                        ]}
+                    />
 
-                        <Space direction="vertical" size="middle">
-                            <div className={styles.settingItem}>
+                    <Button
+                        type="primary"
+                        className={styles.ctaButton}
+                        onClick={() => scrollToSection('contact')}
+                    >
+                        {t.header.contact}
+                    </Button>
 
-                                <span>{translations.header?.highContrast}</span>
-
-                                <Switch
-                                    checked={accessibilitySettings.highContrast}
-                                    onChange={(checked) => handleAccessibilitySettingChange('highContrast', checked)}
-                                    aria-label={translations.header?.highContrast}
-                                />
-                            </div>
-
-                            <div className={styles.settingItem}>
-                                <span>{translations.header?.grayscaleMode}</span>
-                                <Switch
-                                    checked={accessibilitySettings.grayscale}
-                                    onChange={(checked) => handleAccessibilitySettingChange('grayscale', checked)}
-                                    aria-label={translations.header?.grayscaleMode}
-                                />
-                            </div>
-
-                            <Button
-                                type="default"
-                                icon={<UndoOutlined/>}
-                                onClick={resetAccessibilitySettings}
-                                className={styles.resetButton}
-                            >
-                                {translations.header?.resetSettings}
-                            </Button>
-                        </Space>
-                    </div>
+                    <button
+                        className={styles.mobileToggle}
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        <MenuOutlined />
+                    </button>
                 </div>
-            )}
-        </>
+            </div>
+        </header>
     )
 }
-
-export default Header

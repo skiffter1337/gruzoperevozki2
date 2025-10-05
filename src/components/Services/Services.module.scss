@@ -1,349 +1,52 @@
 .services {
-  padding: 100px 0;
-  background-image: url("/background.PNG");
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 80px 0;
+  background: #fff;
 }
 
 .container {
-  max-width: var(--container-width);
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.header {
-  padding: 16px;
-  border-radius: 16px;
-  background: darkslategray;
-  margin-bottom: 30px;
-}
-
 .title {
-  text-align: center;
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-  color: white;
-  font-weight: 700;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: var(--primary-green);
-    border-radius: 2px;
-  }
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 1.2rem;
-  color: white;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cardWrapper {
-  position: relative;
-  height: 100%;
-}
-
-.card {
-  border: none !important;
-  border-radius: 20px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  height: 100%;
-  overflow: hidden;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-
-    .iconWrapper {
-      transform: scale(1.1);
-    }
-
-    .icon {
-      background: var(--primary-green);
-      color: white;
-    }
-
-  }
-
-  :global(.ant-card-body) {
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-}
-
-.iconWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25px;
-  transition: transform 0.3s ease;
-}
-
-.icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #ffd666;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: var(--font-heading);
   font-size: 2.5rem;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.cardTitle {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 60px;
+  color: var(--color-dark);
 }
 
-.description {
-  color: #7f8c8d;
+.serviceCard {
+  text-align: center;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: #f0f8ff;
+  }
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.serviceTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.serviceDescription {
+  color: #666;
   line-height: 1.6;
-  margin-bottom: 20px;
-  text-align: center;
-  flex-grow: 1;
-}
-
-.featuresList {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 25px 0;
-}
-
-.featureItem {
-  padding: 8px 0;
-  color: #5a6c7d;
-  position: relative;
-  padding-left: 20px;
-
-  &::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #27ae60;
-    font-weight: bold;
-  }
-}
-
-.pricing {
-  margin: 20px 0;
-}
-
-.priceSlider {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.priceLabel {
-  display: block;
-  font-size: 1rem;
-  color: #7f8c8d;
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-
-// Обертка для слайдера с dir="ltr"
-.sliderWrapper {
-  // dir="ltr" применяется только к слайдеру
-  // чтобы слайдер работал корректно, но не влиял на остальной текст
-  direction: ltr;
-
-  // Сбрасываем текстовое выравнивание для контента внутри слайдера
-  text-align: center;
-}
-
-// Контейнер слайдера
-.sliderContainer {
-  position: relative;
-  touch-action: pan-y;
-  user-select: none;
-  margin: 0 0 15px 0;
-}
-
-.sliderTrack {
-  overflow: hidden;
-  border-radius: 12px;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-}
-
-.sliderItems {
-  display: flex;
-  transition: transform 0.3s ease;
-}
-
-.sliderItem {
-  flex: 0 0 100%;
-  min-width: 100%;
-  padding: 25px 20px;
-  box-sizing: border-box;
-}
-
-.sliderContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-
-  // Сбрасываем направление для контента внутри слайдера
-  direction: initial;
-  text-align: center;
-}
-
-.roomCount {
-  color: #5a6c7d;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.priceValue {
-  color: #e74c3c;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-// Кнопки навигации
-.sliderButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  z-index: 2;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  &:hover {
-    background: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-50%) scale(1.1);
-  }
-
-}
-
-// Показываем кнопки при ховере на контейнере
-.sliderContainer:hover .sliderButton {
-  opacity: 1;
-}
-
-// Индикаторы
-.sliderIndicators {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 15px;
-
-  // Сбрасываем направление для индикаторов
-  direction: initial;
-}
-
-.indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: #ddd;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-
-  &.active {
-    background: var(--primary-green);
-    transform: scale(1.2);
-  }
-
-  &:hover {
-    background: #ccc;
-  }
-}
-
-.fixedPrice {
-  text-align: center;
-  margin: 20px 0;
-
-  .priceValue {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #27ae60;
-    display: block;
-  }
-}
-
-// Скрытый список для SEO
-.seoPriceList {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.button {
-  width: 100%;
-  height: 48px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  background: var(--primary-green);
-  border: none;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-  }
-}
-
-@media (max-width: 992px) {
-  .services {
-    padding: 80px 0;
-    background-repeat: repeat;
-    background-size: contain;
-  }
-
-  .title {
-    font-size: 2.4rem;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .card {
-    :global(.ant-card-body) {
-      padding: 30px 25px;
-    }
-  }
 }
 
 @media (max-width: 768px) {
@@ -353,64 +56,6 @@
 
   .title {
     font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .icon {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
-  }
-
-  .cardTitle {
-    font-size: 1.3rem;
-  }
-
-  .sliderItem {
-    padding: 20px 15px;
-  }
-
-  .priceValue {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .services {
-    padding: 40px 0;
-  }
-
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .subtitle {
-    font-size: 0.95rem;
-  }
-
-  .card {
-    :global(.ant-card-body) {
-      padding: 25px 20px;
-    }
-  }
-
-  .sliderItem {
-    padding: 15px 10px;
-  }
-
-  .roomCount {
-    font-size: 1rem;
-  }
-
-  .priceValue {
-    font-size: 1.2rem;
-  }
-
-  .indicator {
-    width: 6px;
-    height: 6px;
+    margin-bottom: 40px;
   }
 }

@@ -16,7 +16,7 @@ type Props = {
     children: ReactNode
 }
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({children}: Props) {
     return (
         <html lang="ru">
         <body className={inter.className}>{children}</body>
