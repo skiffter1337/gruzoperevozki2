@@ -7,6 +7,8 @@ import { Footer } from "@/components/Footer/Footer"
 import { HeroSection } from "@/components/HeroSection/HeroSection"
 import { Contact } from "@/components/Contact/Contact"
 import {Articles} from "@/components/Articles";
+import {PhotoGallery} from "@/components/PhotoGallery";
+import {StickyButtons} from "@/components/StickyButtons";
 
 type Props = {
     params: Promise<{ lang: string }>
@@ -22,9 +24,11 @@ export default async function Home({ params }: Props) {
             <About lang={lang} />
             <Services lang={lang} />
             <Reviews lang={lang} />
+            <PhotoGallery />
             <Articles />
-            <Contact lang={lang} />
+            <Contact />
             <Footer lang={lang} />
+            <StickyButtons />
         </div>
     )
 }

@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Freight Transportation in Israel | Office & Apartment Moves",
     "description": "Professional freight transportation services in Israel. Office, apartment, and house moves. Quality services at affordable prices.",
-    "keywords": "israel freight transportation, moving israel, office relocation, apartment moving, transport services"
+    "keywords": "moving services Israel, relocation Israel, professional movers Israel, apartment moving Israel, office moving Israel, residential moving, commercial moving, local movers, long distance moving Israel, furniture transportation, cheap movers Israel, affordable moving company, experienced movers, reliable movers, moving with crane, packing services, small moves Israel, moving price, moving quote Israel, moving cost Israel, moving checklist, tips for moving, moving to Tel Aviv, moving in Tel Aviv, movers in Ramat Gan, moving in Central Israel, movers in Gush Dan, urban moving"
   },
   "header": {
     "home": "Home",
@@ -10,7 +10,8 @@
     "services": "Services",
     "reviews": "Reviews",
     "articles": "Articles",
-    "contact": "Contact"
+    "contact": "Contact",
+    "companyName": "Bull Moving"
   },
   "hero": {
     "title": "Professional Freight Transportation in Israel",
@@ -18,8 +19,8 @@
     "cta": "Get Consultation"
   },
   "about": {
-    "title": "About MoveIsrael Company",
-    "description": "MoveIsrael is a professional transportation company with an impeccable reputation, specializing in comprehensive logistics solutions throughout Israel.",
+    "title": "About Bull Moving Company",
+    "description": "Bull Moving is a professional transportation company with an impeccable reputation, specializing in comprehensive logistics solutions throughout Israel.",
     "fullDescription": "We provide professional transportation services for apartments of any size, offices, businesses, and individual items. Our diverse fleet includes modern trucks of various load capacities, specially equipped for the safe transportation of your property.",
     "features": {
       "experience": "10+ Years Experience",
@@ -109,7 +110,38 @@
     ]
   },
   "gallery": {
-    "title": "Our Work"
+    "title": "Our Work",
+    "photos": [
+      {
+        "id": 1,
+        "alt": "Modern truck for moving services across Israel"
+      },
+      {
+        "id": 2,
+        "alt": "Professional apartment moving with careful loading"
+      },
+      {
+        "id": 3,
+        "alt": "Organized office relocation with equipment safety"
+      },
+      {
+        "id": 4,
+        "alt": "Professional packing services for safe transportation"
+      },
+      {
+        "id": 5,
+        "alt": "Coordinated work of our professional team"
+      },
+      {
+        "id": 6,
+        "alt": "Reliable cargo delivery on time throughout Israel"
+      }
+    ],
+    "stats": {
+      "moves": "Successful Moves",
+      "clients": "Satisfied Clients",
+      "support": "Support"
+    }
   },
   "contact": {
     "title": "Contact Us",
@@ -117,12 +149,21 @@
     "phone": "Phone",
     "email": "Email",
     "message": "Message",
-    "submit": "Send"
+    "submit": "Send",
+    "successMessage": "Application sent! We will contact you shortly.",
+    "errorMessage": "Error sending application. Please try again."
   },
   "footer": {
     "rights": "All rights reserved",
     "phone": "Phone",
     "email": "Email",
-    "address": "Address"
+    "address": "Address",
+    "companyName": "Bull Moving"
+  },
+  "stickyButtons": {
+    "call": "Call",
+    "whatsapp": "WhatsApp",
+    "callUs": "Call us",
+    "whatsappUs": "Message on WhatsApp"
   }
 }

@@ -34,7 +34,7 @@ export function Footer({lang}: FooterProps) {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.info}>
-                        <h3>MoveIsrael</h3>
+                        <h3>{t.footer.companyName}</h3>
                         <p>{t.footer.rights}</p>
                     </div>
 
