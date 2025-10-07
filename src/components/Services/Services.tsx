@@ -18,14 +18,22 @@ export function Services({lang}: ServicesProps) {
         {key: 'apartment', icon: '🏢'},
         {key: 'office', icon: '💼'},
         {key: 'house', icon: '🏠'},
-        {key: 'international', icon: '🌍'},
         {key: 'furniture', icon: '🛋️'},
         {key: 'storage', icon: '📦'}
     ]
 
-    // Вспомогательная функция для получения описания услуги
     const getServiceDescription = (serviceKey: string): string => {
         const serviceName = t.services.items[serviceKey as keyof typeof t.services.items];
+       if(serviceKey ===  "furniture") {
+           switch (language) {
+               case 'ru':
+                   return "Сборка и разборка мебели";
+               case 'he':
+                   return "הרכבה ופירוק של רהיטים";
+               case 'en':
+                   return "Furniture assembly and disassembly";
+           }
+       }
 
         switch (language) {
             case 'ru':

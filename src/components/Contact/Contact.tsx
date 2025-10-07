@@ -320,6 +320,7 @@ export function Contact() {
                     </Form>
                 </div>
             </div>
+            <div className={styles.overlay}/>
         </section>
     )
 }

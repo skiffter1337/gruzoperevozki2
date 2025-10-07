@@ -1,8 +1,9 @@
 'use client'
 
-import {Card, Row, Col, Collapse} from 'antd'
+import {Card, Row, Col, Collapse, Flex} from 'antd'
 import styles from './About.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
+import Image from 'next/image';
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -28,10 +29,26 @@ export function About({lang}: AboutProps) {
     }
 
     const features = [
-        {key: 'experience', icon: '⏱️', title: t.about.features.experience},
-        {key: 'team', icon: '👥', title: t.about.features.team},
-        {key: 'insurance', icon: '🛡️', title: t.about.features.insurance},
-        {key: 'support', icon: '📞', title: t.about.features.support}
+        {
+            key: 'experience',
+            icon: <Image src="/experience.svg" width={60} height={60} unoptimized alt="experience"/>,
+            title: t.about.features.experience
+        },
+        {
+            key: 'team',
+            icon: <Image src="/team.svg" width={60} height={60} unoptimized alt="team"/>,
+            title: t.about.features.team
+        },
+        {
+            key: 'insurance',
+            icon: <Image src="/insurance.svg" width={60} height={60} unoptimized alt="insurance"/>,
+            title: t.about.features.insurance
+        },
+        {
+            key: 'support',
+            icon: <Image src="/support.svg" width={60} height={60} unoptimized alt="support"/>,
+            title: t.about.features.support
+        }
     ]
 
     const renderFleetContent = () => (
@@ -39,7 +56,8 @@ export function About({lang}: AboutProps) {
             <Row gutter={[16, 16]}>
                 <Col xs={24} md={12}>
                     <div className={styles.fleetItem}>
-                        <span className={styles.fleetIcon}>🚛</span>
+                        <Image src="/van.svg" className={styles.fleetIcon} unoptimized width={50} height={50}
+                               alt="van"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Крупногабаритные перевозки',
@@ -52,7 +70,8 @@ export function About({lang}: AboutProps) {
                 </Col>
                 <Col xs={24} md={12}>
                     <div className={styles.fleetItem}>
-                        <span className={styles.fleetIcon}>🚚</span>
+                        <Image src="/van2.svg" className={styles.fleetIcon} unoptimized width={50} height={50}
+                               alt="van"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Средние перевозки',
@@ -65,7 +84,8 @@ export function About({lang}: AboutProps) {
                 </Col>
                 <Col xs={24} md={12}>
                     <div className={styles.fleetItem}>
-                        <span className={styles.fleetIcon}>🚐</span>
+                        <Image src="/van3.svg" className={styles.fleetIcon} unoptimized width={50} height={50}
+                               alt="van"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Быстрые доставки',
@@ -78,7 +98,8 @@ export function About({lang}: AboutProps) {
                 </Col>
                 <Col xs={24} md={12}>
                     <div className={styles.fleetItem}>
-                        <span className={styles.fleetIcon}>🏗️</span>
+                        <Image src="/crane.svg" className={styles.fleetIcon} unoptimized width={50} height={50}
+                               alt="crane"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Спецтехника',
@@ -98,10 +119,11 @@ export function About({lang}: AboutProps) {
             <Row gutter={[16, 16]}>
                 <Col xs={24} md={12}>
                     <div className={styles.serviceItem}>
-                        <span className={styles.serviceIcon}>⚡</span>
+                        <Image src="/arrow-up.svg" className={styles.serviceIcon} unoptimized width={50} height={50}
+                               alt="arrow up"/>
                         <div>
                             <h4>{getLocalizedText(
-                                'Крановые услуги',
+                                'Услуги крана',
                                 'שירותי מנוף',
                                 'Crane services'
                             )}</h4>
@@ -111,7 +133,8 @@ export function About({lang}: AboutProps) {
                 </Col>
                 <Col xs={24} md={12}>
                     <div className={styles.serviceItem}>
-                        <span className={styles.serviceIcon}>🔨</span>
+                        <Image src="/tools.svg" className={styles.serviceIcon} unoptimized width={50} height={50}
+                               alt="tools"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Плотницкие работы',
@@ -124,7 +147,8 @@ export function About({lang}: AboutProps) {
                 </Col>
                 <Col xs={24} md={12}>
                     <div className={styles.serviceItem}>
-                        <span className={styles.serviceIcon}>📦</span>
+                        <Image src="/box.svg" className={styles.serviceIcon} unoptimized width={50} height={50}
+                               alt="box"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Упаковка',
@@ -137,7 +161,8 @@ export function About({lang}: AboutProps) {
                 </Col>
                 <Col xs={24} md={12}>
                     <div className={styles.serviceItem}>
-                        <span className={styles.serviceIcon}>🏪</span>
+                        <Image src="/key.svg" className={styles.serviceIcon} unoptimized width={50} height={50}
+                               alt="key"/>
                         <div>
                             <h4>{getLocalizedText(
                                 'Хранение',
@@ -155,7 +180,30 @@ export function About({lang}: AboutProps) {
     const renderTeamContent = () => (
         <div className={styles.panelContent}>
             <div className={styles.teamSection}>
-                <div className={styles.teamIcon}>👨‍💼👩‍💼</div>
+                <Flex justify="center">
+                    <Image
+                        src="/customer-service-woman.svg"
+                        unoptimized
+                        width={100}
+                        height={100}
+                        alt="customer service woman"
+                    />
+                    <Image
+                        src="/stamp-document.svg"
+                        unoptimized
+                        width={100}
+                        height={100}
+                        alt="stamp document"
+                    />
+                    <Image
+                        src="/delivery-truck.svg"
+                        unoptimized
+                        width={100}
+                        height={100}
+                        alt="delivery truck"
+                    />
+
+                </Flex>
                 <p>{t.about.team.description}</p>
                 <div className={styles.teamStats}>
                     <div className={styles.stat}>
@@ -183,7 +231,7 @@ export function About({lang}: AboutProps) {
                     <div>
                         <h4>{getLocalizedText('Индивидуальный подход', 'גישה אישית', 'Individual approach')}</h4>
                         <p>{getLocalizedText(
-                            'Каждый клиент получает персональное внимание и решение, tailored под его конкретные потребности',
+                            'Каждый клиент получает персональный подход под конкретные потребности',
                             'כל לקוח מקבל תשומת לב אישית ופתרון המותאם לצרכיו הספציפיים',
                             'Each client receives personal attention and solutions tailored to their specific needs'
                         )}</p>

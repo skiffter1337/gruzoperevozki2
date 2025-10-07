@@ -31,7 +31,7 @@
     "fleet": {
       "title": "Our Fleet",
       "large": "Large 7.5-ton trucks for large-scale moves",
-      "medium": "Medium Fiat Ducato trucks for standard transport",
+      "medium": "Medium trucks for standard transport",
       "small": "Compact vans for quick deliveries",
       "special": "Special equipment for complex cargo"
     },
@@ -39,7 +39,7 @@
       "title": "Additional Services",
       "crane": "Crane services for heavy and oversized cargo",
       "carpentry": "Professional carpentry work",
-      "packing": "Packing and unpacking of property",
+      "packing": "Careful packaging of your belongings",
       "storage": "Temporary cargo storage"
     },
     "team": {
@@ -52,7 +52,7 @@
     },
     "coverage": {
       "title": "Service Area",
-      "description": "The company operates from the central office in Tel Aviv and covers the entire territory of Israel - from the north of the country to the south. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
+      "description": "The company operates from the central office in Ramat Gan and covers the entire territory of Israel - from the north of the country to the south. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
     }
   },
   "services": {
@@ -61,7 +61,6 @@
       "apartment": "Apartment Moves",
       "office": "Office Relocation",
       "house": "House Moves",
-      "international": "International Transport",
       "furniture": "Furniture Assembly",
       "storage": "Storage Services"
     }

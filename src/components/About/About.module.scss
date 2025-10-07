@@ -119,7 +119,7 @@
   }
 }
 
-.fleetIcon, .serviceIcon {
+.serviceIcon {
   font-size: 2rem;
   flex-shrink: 0;
 }
@@ -127,10 +127,7 @@
 .teamSection {
   text-align: center;
 
-  .teamIcon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
+
 
   p {
     font-size: 1.1rem;
