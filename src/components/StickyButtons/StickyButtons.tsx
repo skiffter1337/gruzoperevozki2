@@ -3,14 +3,18 @@
 import { useState, useEffect } from 'react'
 import { PhoneOutlined, WhatsAppOutlined } from '@ant-design/icons'
 import styles from './StickyButtons.module.scss'
-import { useParams } from 'next/navigation'
 import {useTranslation} from "@/hooks/use-translation";
 
 type Language = 'ru' | 'he' | 'en'
 
-export function StickyButtons() {
-    const params = useParams()
-    const lang = params.lang as Language
+interface StickyButtonsProps {
+    lang: string
+}
+
+export function StickyButtons({lang}: StickyButtonsProps) {
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
+
     const [mounted, setMounted] = useState(false)
     const [isVisible, setIsVisible] = useState(true)
     const [lastScrollY, setLastScrollY] = useState(0)
@@ -33,8 +37,6 @@ export function StickyButtons() {
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [lastScrollY])
-
-    const t = useTranslation(lang)
 
     const phoneNumber = '+79012818032'
     const whatsappNumber = '+79012818032'

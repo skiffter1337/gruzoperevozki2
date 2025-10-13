@@ -27,7 +27,7 @@ export default async function Home({ params }: Props) {
             <Articles lang={lang} />
             <Contact lang={lang} />
             <Footer lang={lang} />
-            <StickyButtons />
+            <StickyButtons lang={lang} />
         </>
     )
 }

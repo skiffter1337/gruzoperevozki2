@@ -22,7 +22,7 @@ export default async function Home() {
             <Articles lang="he" />
             <Contact lang="he" />
             <Footer lang="he" />
-            <StickyButtons />
+            <StickyButtons lang="he" />
         </>
     )
 }
