@@ -23,9 +23,9 @@ export default async function Home({ params }: Props) {
             <About lang={lang} />
             <Services lang={lang} />
             <Reviews lang={lang} />
-            <PhotoGallery />
-            <Articles />
-            <Contact />
+            <PhotoGallery lang={lang} />
+            <Articles lang={lang} />
+            <Contact lang={lang} />
             <Footer lang={lang} />
             <StickyButtons />
         </>
