@@ -70,11 +70,13 @@ export function Articles() {
             <div className={styles.articleContent}>
                 <h3 className={styles.articleTitle}>{article.title}</h3>
                 <p className={styles.articleDescription}>{article.description}</p>
-                <Link href={`/${language}/articles/${article.id}`}>
-                    <Button type="primary" className={styles.readMoreButton}>
-                        {t.articles.readMore}
-                    </Button>
-                </Link>
+                <div className={styles.buttonContainer}>
+                    <Link href={`/${language}/articles/${article.id}`}>
+                        <Button type="primary" className={styles.readMoreButton}>
+                            {t.articles.readMore}
+                        </Button>
+                    </Link>
+                </div>
             </div>
         </Card>
     )
@@ -88,8 +90,13 @@ export function Articles() {
                     <div className={styles.mobileSlider}>
                         <Carousel
                             dots={{className: styles.carouselDots}}
-                            arrows
+                            arrows={false}
                             className={styles.carousel}
+                            swipe={true}
+                            draggable={true}
+                            touchMove={true}
+                            adaptiveHeight={false}
+                            infinite={true}
                         >
                             {t.articles.items.map((article: Article) => (
                                 <div key={article.id} className={styles.slide}>

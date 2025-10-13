@@ -166,7 +166,7 @@ export function About({lang}: AboutProps) {
                         <div>
                             <h4>{getLocalizedText(
                                 'Хранение',
-                                'אחסון',
+                                'אחסנה',
                                 'Storage'
                             )}</h4>
                             <p>{t.about.services.storage}</p>
@@ -212,11 +212,11 @@ export function About({lang}: AboutProps) {
                     </div>
                     <div className={styles.stat}>
                         <strong>5+</strong>
-                        <span>{getLocalizedText('Лет опыта', 'שנות ניסיון', 'Years of experience')}</span>
+                        <span>{getLocalizedText('Лет опыта', 'שנים ניסיון', 'Years of experience')}</span>
                     </div>
                     <div className={styles.stat}>
                         <strong>1000+</strong>
-                        <span>{getLocalizedText('Успешных переездов', 'מעברים מוצלחים', 'Successful moves')}</span>
+                        <span>{getLocalizedText('Успешных переездов', 'הובלות מוצלחים', 'Successful moves')}</span>
                     </div>
                 </div>
             </div>
@@ -232,7 +232,7 @@ export function About({lang}: AboutProps) {
                         <h4>{getLocalizedText('Индивидуальный подход', 'גישה אישית', 'Individual approach')}</h4>
                         <p>{getLocalizedText(
                             'Каждый клиент получает персональный подход под конкретные потребности',
-                            'כל לקוח מקבל תשומת לב אישית ופתרון המותאם לצרכיו הספציפיים',
+                            'כל לקוח מקבל יחס אישי ופתרון המותאם לצרכיו הספציפיים',
                             'Each client receives personal attention and solutions tailored to their specific needs'
                         )}</p>
                     </div>
@@ -243,7 +243,7 @@ export function About({lang}: AboutProps) {
                         <h4>{getLocalizedText('Профессионализм', 'מקצועיות', 'Professionalism')}</h4>
                         <p>{getLocalizedText(
                             'Все наши сотрудники проходят строгий отбор и постоянное обучение',
-                            'כל העובדים שלנו עוברים בחירה קפדנית והכשרה מתמדת',
+                            'העובדים שלנו עוברים תהליך מיון קפדני והכשרה מתמדת',
                             'All our employees undergo strict selection and ongoing training'
                         )}</p>
                     </div>
@@ -254,7 +254,7 @@ export function About({lang}: AboutProps) {
                         <h4>{getLocalizedText('Надежность', 'אמינות', 'Reliability')}</h4>
                         <p>{getLocalizedText(
                             'Строгое соблюдение сроков и полная сохранность вашего имущества',
-                            'עמידה קפדנית בלוחות זמנים ושמירה מלאה על הרכוש שלך',
+                            'הובלה של כל הפריטים שלכם תושלם בזמן ובטוח לחלוטין.',
                             'Strict adherence to deadlines and complete safety of your property'
                         )}</p>
                     </div>
@@ -269,7 +269,7 @@ export function About({lang}: AboutProps) {
                 <div className={styles.coverageMap}>
                     <div className={styles.mapPlaceholder}>
                         <span>🗺️</span>
-                        <p>{getLocalizedText('Вся территория Израиля', 'כל שטח ישראל', 'All territory of Israel')}</p>
+                        <p>{getLocalizedText('Обширная часть территории Израиля', 'רוב חלקי הארץ', 'Most of the territory of Israel')}</p>
                     </div>
                 </div>
                 <div className={styles.coverageList}>
@@ -281,14 +281,14 @@ export function About({lang}: AboutProps) {
                         </Col>
                         <Col xs={12} md={8}>
                             <span
-                                className={styles.city}>• {getLocalizedText('Иерусалим', 'ירושלים', 'Jerusalem')}</span>
+                                className={styles.city}>• {getLocalizedText('Ришон-ле-Цион', 'ראשון לציון', 'Rishon LeZion')}</span>
                         </Col>
                         <Col xs={12} md={8}>
                             <span className={styles.city}>• {getLocalizedText('Хайфа', 'חיפה', 'Haifa')}</span>
                         </Col>
                         <Col xs={12} md={8}>
                             <span
-                                className={styles.city}>• {getLocalizedText('Беэр-Шева', 'באר שבע', 'Beer Sheva')}</span>
+                                className={styles.city}>• {getLocalizedText('Петах-Тиква', 'פתח תקווה', 'Petah Tikva')}</span>
                         </Col>
                         <Col xs={12} md={8}>
                             <span className={styles.city}>• {getLocalizedText('Нетания', 'נתניה', 'Netanya')}</span>

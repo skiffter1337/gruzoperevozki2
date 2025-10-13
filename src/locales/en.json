@@ -14,7 +14,7 @@
     "companyName": "Bull Moving"
   },
   "hero": {
-    "title": "Professional Freight Transportation in Israel",
+    "title": "Professional Transportation in Israel",
     "subtitle": "Reliable office, apartment, and house moves. Quality, speed, and safety guaranteed.",
     "cta": "Get Consultation"
   },
@@ -52,7 +52,7 @@
     },
     "coverage": {
       "title": "Service Area",
-      "description": "The company operates from the central office in Ramat Gan and covers the entire territory of Israel - from the north of the country to the south. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
+      "description": "The company operates from the central office in Tel Aviv and covers the most of territory of Israel - from Haifa to Ashdod. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
     }
   },
   "services": {
@@ -105,11 +105,36 @@
         "title": "Office Moving: Step-by-Step Guide",
         "description": "Organizing a business move with minimal downtime for your company",
         "image": "/gruzchiki4.jpg"
+      },
+      {
+        "id": "local-moving-israel",
+        "title": "Moving in Israeli Cities",
+        "description": "Professional moving services in Netanya, Tel Aviv, Holon, Petah Tikva and throughout the Central District",
+        "image": "/gruzchiki5.jpg"
+      },
+      {
+        "id": "crane-moving-services",
+        "title": "Moving with a Crane",
+        "description": "Crane moving services for furniture, pianos, safes. Complex moves to high floors",
+        "image": "/gruzchiki6.jpg"
+      },
+      {
+        "id": "office-moving-center",
+        "title": "Office Moving in Central District",
+        "description": "Professional office moving in Tel Aviv, Ramat Gan, Bnei Brak with minimal business downtime",
+        "image": "/gruzchiki7.jpg"
+      },
+      {
+        "id": "urgent-moving",
+        "title": "Urgent Moving",
+        "description": "Urgent moving services across Israel. Moving today, furniture transportation urgently, we work 24/7",
+        "image": "/gruzchiki8.jpg"
       }
     ]
   },
   "gallery": {
     "title": "Our Work",
+    "videoTitle": "Our Video",
     "photos": [
       {
         "id": 1,

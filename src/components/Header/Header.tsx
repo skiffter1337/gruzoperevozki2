@@ -1,7 +1,7 @@
 'use client'
 
 import {useState} from 'react'
-import {Select, Button} from 'antd'
+import {Select} from 'antd'
 import {MenuOutlined} from '@ant-design/icons'
 import styles from './Header.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
@@ -62,7 +62,7 @@ export default function Header({lang}: HeaderProps) {
                         className={styles.mobileToggle}
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        <MenuOutlined/>
+                        <MenuOutlined />
                     </button>
                 </div>
             </div>

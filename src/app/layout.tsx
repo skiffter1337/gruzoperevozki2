@@ -10,6 +10,9 @@ export const metadata: Metadata = {
         template: '%s | UrbanMoving',
         default: 'Грузоперевозки и переезды | UrbanMoving',
     },
+    icons: {
+        icon: '/favicon.ico',
+    },
 }
 
 type Props = {

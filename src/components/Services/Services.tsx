@@ -22,31 +22,6 @@ export function Services({lang}: ServicesProps) {
         {key: 'storage', icon: '📦'}
     ]
 
-    const getServiceDescription = (serviceKey: string): string => {
-        const serviceName = t.services.items[serviceKey as keyof typeof t.services.items];
-       if(serviceKey ===  "furniture") {
-           switch (language) {
-               case 'ru':
-                   return "Сборка и разборка мебели";
-               case 'he':
-                   return "הרכבה ופירוק של רהיטים";
-               case 'en':
-                   return "Furniture assembly and disassembly";
-           }
-       }
-
-        switch (language) {
-            case 'ru':
-                return `${serviceName} в Израиле`;
-            case 'he':
-                return `${serviceName} בישראל`;
-            case 'en':
-                return `${serviceName} in Israel`;
-            default:
-                return `${serviceName} in Israel`;
-        }
-    }
-
     return (
         <section id="services" className={styles.services}>
             <div className={styles.container}>
@@ -60,9 +35,6 @@ export function Services({lang}: ServicesProps) {
                                 <h3 className={styles.serviceTitle}>
                                     {t.services.items[service.key as keyof typeof t.services.items]}
                                 </h3>
-                                <p className={styles.serviceDescription}>
-                                    {getServiceDescription(service.key)}
-                                </p>
                             </Card>
                         </Col>
                     ))}

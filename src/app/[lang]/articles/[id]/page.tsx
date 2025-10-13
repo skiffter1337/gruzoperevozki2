@@ -385,6 +385,397 @@ const articlesData: ArticlesData = {
             en: ['office moving', 'office relocation', 'business moving', 'commercial transportation'],
             he: ['מעבר משרד', 'העברת משרד', 'מעבר עסקי', 'הובלות מסחריות']
         }
+    },
+    'local-moving-israel': {
+        title: {
+            ru: 'Грузоперевозки по городам Израиля: Нетания, Тель-Авив, Холон, Петах-Тиква',
+            en: 'Local Moving in Israel: Netanya, Tel Aviv, Holon, Petah Tikva',
+            he: 'הובלות בערים המרכזיות: נתניה, תל אביב, חולון, פתח תקווה'
+        },
+        description: {
+            ru: 'Профессиональные грузоперевозки в Нетании, Тель-Авиве, Холоне, Петах-Тикве и по всему Центральному округу. Недорого и быстро.',
+            en: 'Professional moving services in Netanya, Tel Aviv, Holon, Petah Tikva and throughout the Central District. Affordable and fast.',
+            he: 'הובלות מקצועיות בנתניה, תל אביב, חולון, פתח תקווה ובכל מרחב המרכז. במחיר משתלם ומהר.'
+        },
+        content: {
+            ru: `
+        <h2>Грузоперевозки в Центральном округе Израиля</h2>
+        <p>Ищете надежные <strong>грузоперевозки в Нетании</strong>, <strong>перевозки в Тель-Авиве</strong> или <strong>перевозки в Холоне</strong>? Наша компания предлагает полный спектр услуг по переезду по всему Израилю. Мы специализируемся на быстрых и аккуратных <strong>мелких перевозках в Израиле</strong>, а также на комплексных <strong>перевозках квартир в Израиле</strong>.</p>
+
+        <h3>Популярные направления для переезда</h3>
+        <p><strong>Перевозка по Нетании</strong> и соседним городам (Рамат-Ган, Гиватаим) — одно из наших основных направлений. Мы также выполняем <strong>перевозки в Петах-Тиква</strong>, <strong>перевозки в Рамат-Ган</strong> и <strong>перевозки в Хадеру</strong>. Наши клиенты часто заказывают <strong>перевозки в Ришон ле-Цион</strong> и <strong>перевозки в Ор Акиву</strong>.</p>
+
+        <h3>Перевозка мебели недорого</h3>
+        <p>Мы понимаем, что стоимость важна, поэтому предлагаем <strong>перевозку мебели недорого</strong> без потери качества. Наши услуги включают <strong>перевозку мебели</strong> любой сложности — от одного предмета до полной комплектации дома.</p>
+
+        <h3>Сколько стоит перевозка квартиры в Израиле?</h3>
+        <p><strong>Сколько стоит перевозка квартиры в Израиле?</strong> Цена зависит от объема, расстояния и дополнительных услуг. Мы предлагаем прозрачный прайс-лист и бесплатные оценки. <strong>Перевозка квартиры с упаковкой</strong> — популярная услуга, которая экономит ваше время и нервы.</p>
+      `,
+            en: `
+        <h2>Local Moving in Central Israel</h2>
+        <p>Looking for reliable <strong>moving in Netanya</strong>, <strong>moving in Tel Aviv</strong>, or <strong>moving in Holon</strong>? Our company offers a full range of moving services throughout Israel. We specialize in fast and careful <strong>small moves in Israel</strong>, as well as comprehensive <strong>apartment transportation in Israel</strong>.</p>
+
+        <h3>Popular Moving Destinations</h3>
+        <p><strong>Transportation to Netanya</strong> and neighboring cities (Ramat Gan, Givatayim) is one of our main directions. We also perform <strong>moving in Petah Tikva</strong>, <strong>moving in Ramat Gan</strong>, and <strong>moving in Hadera</strong>. Our clients often order <strong>moving to Rishon LeZion</strong> and <strong>moving to Or Akiva</strong>.</p>
+
+        <h3>Furniture Transportation Affordable</h3>
+        <p>We understand that cost is important, so we offer <strong>furniture transportation affordable</strong> without quality loss. Our services include <strong>furniture transportation</strong> of any complexity - from one item to a complete house setup.</p>
+
+        <h3>How Much Does Apartment Moving Cost in Israel?</h3>
+        <p><strong>How much does apartment moving cost in Israel?</strong> The price depends on volume, distance, and additional services. We offer transparent <strong>moving price list</strong> and free estimates. <strong>Apartment transportation with packaging</strong> is a popular service that saves your time and nerves.</p>
+      `,
+            he: `
+        <h2>הובלות בערים המרכזיות בישראל</h2>
+        <p>מחפשים <strong>הובלות בנתניה</strong>, <strong>הובלות בתל אביב</strong> או <strong>הובלות בחולון</strong> אמינות? החברה שלנו מציעה מגוון מלא של שירותי הובלה בכל רחבי ישראל. אנחנו מתמחים ב<strong>הובלות קטנות</strong> מהירות ומדויקות, כמו גם ב<strong>הובלות דירות</strong> מקיפות.</p>
+
+        <h3>יעדים פופולריים למעבר</h3>
+        <p><strong>הובלות בשרון</strong> וערים שכנות (רמת גן, גבעתיים) היא אחת מהכיוונים העיקריים שלנו. אנחנו גם מבצעים <strong>הובלות ברעננה</strong>, <strong>הובלות ברמת גן</strong> ו<strong>הובלות בחדרה</strong>. הלקוחות שלנו מזמינים часто <strong>הובלות בראשון לציון</strong> ו<strong>הובלות באור עקיבא</strong>.</p>
+
+        <h3>הובלת רהיטים במחיר משתלם</h3>
+        <p>אנחנו מבינים שהמחיר חשוב, поэтому מציעים <strong>הובלת רהיטים</strong> במחיר משתלם без אובדן איכות. השירותים שלנו כוללים <strong>הובלות רהיטים</strong> בכל רמת מורכבות - מפריט בודד עד להסעת בית מלאה.</p>
+
+        <h3>כמה עולה הובלת דירה בישראל?</h3>
+        <p><strong>כמה עולה הובלת דירה בישראל?</strong> המחיר תלוי בהיקף, במרחק ובשירותים נוספים. אנחנו מציעים <strong>מחירון הובלות</strong> שקוף והערכות חינם. <strong>הובלה עם אריזה</strong> היא שירות פופולרי שחוסך לכם זמן ועצבים.</p>
+      `
+        },
+        image: '/gruzchiki5.jpg',
+        readTime: {
+            ru: '5 мин чтения',
+            en: '5 min read',
+            he: '5 דקות קריאה'
+        },
+        keywords: {
+            ru: ['грузоперевозки в израиле', 'перевозка по нетании', 'перевозки тель-авив', 'перевозки холон', 'перевозки петах тиква', 'перевозки ришон ле цион', 'перевозки рамат ган', 'перевозки хадера', 'перевозки ор акива', 'мелкие перевозки в израиле', 'перевозка квартир в израиле', 'перевозка мебели недорого', 'сколько стоит перевозка квартиры в израиле', 'перевозка квартиры с упаковкой'],
+            en: ['moving israel', 'moving netanya', 'moving tel aviv', 'moving holon', 'moving petah tikva', 'moving rishon lezion', 'moving ramat gan', 'moving hadera', 'moving or akiva', 'small move israel', 'apartment transportation israel', 'furniture transportation affordable', 'moving price list', 'apartment transportation with packaging'],
+            he: ['הובלות בנתניה', 'הובלות בתל אביב', 'הובלות בחולון', 'הובלות בפתח תקווה', 'הובלות בראשון לציון', 'הובלות ברמת גן', 'הובלות בחדרה', 'הובלות באור עקיבא', 'הובלות קטנות', 'הובלות דירות', 'הובלות רהיטים', 'מחירון הובלות', 'הובלה עם אריזה', 'הובלות במרכז']
+        }
+    },
+
+    'crane-moving-services': {
+        title: {
+            ru: 'Перевозка с подъемным краном: для крупногабаритных предметов и сложных условий',
+            en: 'Moving with a Crane: For Large Items and Complex Conditions',
+            he: 'הובלה עם מנוף: לפריטים גדולים ותנאים מורכבים'
+        },
+        description: {
+            ru: 'Услуги перевозки с подъемным краном в Израиле для мебели, пианино, сейфов. Сложные перевозки на высоких этажах.',
+            en: 'Crane moving services in Israel for furniture, pianos, safes. Complex moves to high floors.',
+            he: 'שירותי הובלה עם מנוף בישראל לרהיטים, פסנתרים, כספות. הובלות מורכבות לקומות גבוהות.'
+        },
+        content: {
+            ru: `
+        <h2>Перевозка с подъемным краном — решение сложных задач</h2>
+        <p>Когда стандартные методы не работают, на помощь приходит <strong>перевозка с подъемным краном</strong>. Эта услуга незаменима для <strong>перевозки крупногабаритной мебели</strong>, пианино, сейфов и оборудования через окно или балкон.</p>
+
+        <h3>Когда нужна транспортировка мебели с краном?</h3>
+        <p><strong>Транспортировка мебели по Израилю</strong> часто требует нестандартных решений. <strong>Перевозка с подъемным краном</strong> необходима когда:</p>
+        <ul>
+          <li>Лестница слишком узкая для <strong>перевозки дивана</strong> или <strong>перевозки шкафа</strong></li>
+          <li>Нужна <strong>перевозка пианино</strong> на высокий этаж</li>
+          <li>Требуется <strong>перевозка сейфа</strong> или тяжелого оборудования</li>
+          <li>Доступ в здание ограничен</li>
+        </ul>
+
+        <h3>Преимущества перевозки с краном</h3>
+        <p>Наша услуга <strong>перевозка с подъемным краном</strong> обеспечивает:</p>
+        <ul>
+          <li>Безопасность — все работы страхуются</li>
+          <li>Скорость — экономия времени на подъеме</li>
+          <li>Сохранность имущества — профессиональное оборудование</li>
+          <li>Возможность <strong>срочной перевозки</strong> в сложных условиях</li>
+        </ul>
+
+        <h3>Города обслуживания</h3>
+        <p>Мы предоставляем услуги <strong>перевозки с краном</strong> по всему Израилю: <strong>перевозки в Тель-Авиве</strong>, <strong>перевозки в Нетании</strong>, <strong>перевозки в Холоне</strong>, <strong>перевозки в Петах-Тикве</strong> и других городах.</p>
+      `,
+            en: `
+        <h2>Moving with a Crane - Solving Complex Problems</h2>
+        <p>When standard methods don't work, <strong>moving with a lifting crane</strong> comes to the rescue. This service is indispensable for <strong>large furniture transportation</strong>, pianos, safes, and equipment through windows or balconies.</p>
+
+        <h3>When Do You Need Furniture Transportation with a Crane?</h3>
+        <p><strong>Furniture transportation across Israel</strong> often requires non-standard solutions. <strong>Transportation with a lifting crane</strong> is necessary when:</p>
+        <ul>
+          <li>Stairs are too narrow for <strong>sofa transportation</strong> or <strong>wardrobe transportation</strong></li>
+          <li>You need <strong>piano transportation</strong> to a high floor</li>
+          <li><strong>Safe transportation</strong> or heavy equipment is required</li>
+          <li>Building access is limited</li>
+        </ul>
+
+        <h3>Benefits of Crane Moving</h3>
+        <p>Our <strong>moving with a crane</strong> service provides:</p>
+        <ul>
+          <li>Safety - all work is insured</li>
+          <li>Speed - time saving on lifting</li>
+          <li>Property preservation - professional equipment</li>
+          <li>Possibility of <strong>urgent moving</strong> in complex conditions</li>
+        </ul>
+
+        <h3>Service Cities</h3>
+        <p>We provide <strong>crane moving services</strong> throughout Israel: <strong>moving in Tel Aviv</strong>, <strong>moving in Netanya</strong>, <strong>moving in Holon</strong>, <strong>moving in Petah Tikva</strong> and other cities.</p>
+      `,
+            he: `
+        <h2>הובלה עם מנוף - פתרון לבעיות מורכבות</h2>
+        <p>כשיטות סטנדרטיות לא עובדות, <strong>הובלה עם מנוף</strong> מגיעה להצלה. שירות זה הכרחי ל<strong>הובלת רהיטים גדולים</strong>, פסנתרים, כספות וציוד דרך חלונות או מרפסות.</p>
+
+        <h3>מתי צריך הובלת רהיטים עם מנוף?</h3>
+        <p><strong>הובלת רהיטים בישראל</strong> часто דורשת פתרונות לא סטנדרטיים. <strong>הובלה עם מנוף</strong> необходиמת כאשר:</p>
+        <ul>
+          <li>המדרגות צרות מדי עבור <strong>הובלת ספה</strong> או <strong>הובלת ארונית</strong></li>
+          <li>נדרשת <strong>הובלת פסנתר</strong> לקומה גבוהה</li>
+          <li>נדרשת <strong>הובלת כספת</strong> או ציוד כבד</li>
+          <li>גישה לבניין מוגבלת</li>
+        </ul>
+
+        <h3>יתרונות של הובלה עם מנוף</h3>
+        <p>השירות שלנו <strong>הובלה עם מנוף</strong> מספק:</p>
+        <ul>
+          <li>בטיחות - כל העבודה מבוטחת</li>
+          <li>מהירות - חיסכון בזמן בהרמה</li>
+          <li>שימור רכוש - ציוד מקצועי</li>
+          <li>אפשרות ל<strong>הובלה דחופה</strong> בתנאים מורכבים</li>
+        </ul>
+
+        <h3>ערי שירות</h3>
+        <p>אנו מספקים שירותי <strong>הובלה עם מנוף</strong> בכל רחבי ישראל: <strong>הובלות בתל אביב</strong>, <strong>הובלות בנתניה</strong>, <strong>הובלות בחולון</strong>, <strong>הובלות בפתח תקווה</strong> וערים נוספות.</p>
+      `
+        },
+        image: '/gruzchiki8.jpg',
+        readTime: {
+            ru: '6 мин чтения',
+            en: '6 min read',
+            he: '6 דקות קריאה'
+        },
+        keywords: {
+            ru: ['перевозка с подъемным краном', 'транспортировка мебели по израилю', 'перевозка мебели', 'перевозка дивана', 'перевозка шкафа', 'перевозка пианино', 'перевозка сейфа', 'срочная перевозка', 'перевозки в тель-авиве', 'перевозки в нетании', 'перевозки в холоне', 'перевозки в петах-тикве'],
+            en: ['moving with a lifting crane', 'furniture transportation israel', 'furniture transportation', 'sofa transportation', 'wardrobe transportation', 'piano transportation', 'safe transportation', 'urgent moving', 'moving tel aviv', 'moving netanya', 'moving holon', 'moving petah tikva'],
+            he: ['הובלה עם מנוף', 'הובלות רהיטים', 'הובלת רהיטים', 'הובלת ספה', 'הובלת ארונית', 'הובלת פסנתר', 'הובלת כספת', 'הובלה דחופה', 'הובלות בתל אביב', 'הובלות בנתניה', 'הובלות בחולון', 'הובלות בפתח תקווה']
+        }
+    },
+
+    'office-moving-center': {
+        title: {
+            ru: 'Переезд офиса в Центральном округе: Тель-Авив, Рамат-Ган, Бней-Брак',
+            en: 'Office Moving in the Central District: Tel Aviv, Ramat Gan, Bnei Brak',
+            he: 'הובלת משרדים במרכז: תל אביב, רמת גן, בני ברק'
+        },
+        description: {
+            ru: 'Профессиональный переезд офиса в Тель-Авиве, Рамат-Гане, Бней-Браке. Минимизация простоя бизнеса. Перевозка оргтехники и мебели.',
+            en: 'Professional office moving in Tel Aviv, Ramat Gan, Bnei Brak. Business downtime minimization. Office equipment and furniture transportation.',
+            he: 'הובלת משרדים מקצועית בתל אביב, רמת גן, בני ברק. מזעור זמן השבתה עסקי. הובלת ציוד משרדי ורהיטים.'
+        },
+        content: {
+            ru: `
+        <h2>Переезд офиса в бизнес-центрах Израиля</h2>
+        <p>Организация <strong>переезда офиса в Центральном округе</strong> требует особого подхода. Мы специализируемся на <strong>перевозках офисов в Тель-Авиве</strong>, <strong>перевозках офисов в Рамат-Гане</strong> и <strong>перевозках офисов в Бней-Браке</strong> с минимальным простоем.</p>
+
+        <h3>Особенности офисного переезда</h3>
+        <p><strong>Переезд офиса</strong> — это не просто <strong>перевозка мебели</strong>. Это сложный процесс, включающий:</p>
+        <ul>
+          <li><strong>Перевозку оргтехники</strong> и компьютеров</li>
+          <li>Демонтаж и сборку офисной мебели</li>
+          <li>Упаковку документов и архивов</li>
+          <li>Переподключение IT-инфраструктуры</li>
+        </ul>
+
+        <h3>Почему выбирают нашу компанию для переезда офиса?</h3>
+        <p>Мы — <strong>рекомендуемые перевозчики</strong> для бизнеса потому что:</p>
+        <ul>
+          <li>Имеем опыт <strong>переездов офисов в Центральном округе</strong></li>
+          <li>Предлагаем <strong>срочные перевозки</strong> для бизнеса</li>
+          <li>Гарантируем сохранность оборудования</li>
+          <li>Работаем в выходные — <strong>перевозки в субботу</strong> по запросу</li>
+        </ul>
+
+        <h3>Города для офисного переезда</h3>
+        <p>Помимо <strong>переездов офисов в Тель-Авиве</strong>, мы выполняем <strong>переезды офисов в Рамат-Гане</strong>, <strong>переезды офисов в Бней-Браке</strong>, <strong>переезды офисов в Гиватаиме</strong> и <strong>переезды офисов в Герцлии</strong>.</p>
+      `,
+            en: `
+        <h2>Office Moving in Business Centers of Israel</h2>
+        <p>Organizing <strong>office moving in the Central District</strong> requires a special approach. We specialize in <strong>office moving in Tel Aviv</strong>, <strong>office moving in Ramat Gan</strong>, and <strong>office moving in Bnei Brak</strong> with minimal downtime.</p>
+
+        <h3>Office Moving Features</h3>
+        <p><strong>Office moving</strong> is not just <strong>furniture transportation</strong>. It's a complex process including:</p>
+        <ul>
+          <li><strong>Office equipment transportation</strong> and computers</li>
+          <li>Office furniture disassembly and assembly</li>
+          <li>Document and archive packing</li>
+          <li>IT infrastructure reconnection</li>
+        </ul>
+
+        <h3>Why Choose Our Company for Office Moving?</h3>
+        <p>We are <strong>recommended movers</strong> for business because:</p>
+        <ul>
+          <li>We have experience with <strong>office moves in the Central District</strong></li>
+          <li>We offer <strong>urgent moving</strong> for business</li>
+          <li>We guarantee equipment safety</li>
+          <li>We work on weekends - <strong>moving on Saturday</strong> upon request</li>
+        </ul>
+
+        <h3>Cities for Office Moving</h3>
+        <p>In addition to <strong>office moving in Tel Aviv</strong>, we perform <strong>office moving in Ramat Gan</strong>, <strong>office moving in Bnei Brak</strong>, <strong>office moving in Givatayim</strong>, and <strong>office moving in Herzliya</strong>.</p>
+      `,
+            he: `
+        <h2>הובלת משרדים במרכז העסקים של ישראל</h2>
+        <p>ארגון <strong>הובלת משרדים במרכז</strong> דורש גישה מיוחדת. אנחנו מתמחים ב<strong>הובלת משרדים בתל אביב</strong>, <strong>הובלת משרדים ברמת גן</strong> ו<strong>הובלת משרדים בבני ברק</strong> עם מינימום זמן השבתה.</p>
+
+        <h3>מאפייני הובלת משרדים</h3>
+        <p><strong>הובלת משרדים</strong> היא לא רק <strong>הובלת רהיטים</strong>. זה תהליך מורכב הכולל:</p>
+        <ul>
+          <li><strong>הובלת ציוד משרדי</strong> ומחשבים</li>
+          <li>פירוק והרכבה של רהיטי משרד</li>
+          <li>אריזת מסמכים וארכיונים</li>
+          <li>חיבור מחדש של תשתיות IT</li>
+        </ul>
+
+        <h3>למה לבחור בחברה שלנו להובלת משרדים?</h3>
+        <p>אנחנו <strong>מובילים מומלצים</strong> לעסקים потому ש:</p>
+        <ul>
+          <li>יש לנו ניסיון ב<strong>הובלות משרדים במרכז</strong></li>
+          <li>אנחנו מציעים <strong>הובלה דחופה</strong> לעסקים</li>
+          <li>אנחנו מבטיחים שמירה על הציוד</li>
+          <li>אנחנו עובדים בסופ"ש - <strong>הובלות בשבת</strong> לפי בקשה</li>
+        </ul>
+
+        <h3>ערים להובלת משרדים</h3>
+        <p>בנוסף ל<strong>הובלות משרדים בתל אביב</strong>, אנחנו מבצעים <strong>הובלות משרדים ברמת גן</strong>, <strong>הובלות משרדים בבני ברק</strong>, <strong>הובלות משרדים בגבעתיים</strong> ו<strong>הובלות משרדים בהרצליה</strong>.</p>
+      `
+        },
+        image: '/gruzchiki6.jpg',
+        readTime: {
+            ru: '7 мин чтения',
+            en: '7 min read',
+            he: '7 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд офиса', 'переезд офиса в центральном округе', 'перевозки офисов в тель-авиве', 'перевозки офисов в рамат-гане', 'перевозки офисов в бней-браке', 'перевозка оргтехники', 'рекомендуемые перевозчики', 'срочные перевозки', 'перевозки в субботу', 'переезды офисов в герцлии'],
+            en: ['office moving', 'office moving central district', 'office moving tel aviv', 'office moving ramat gan', 'office moving bnei brak', 'office equipment transportation', 'recommended movers', 'urgent moving', 'moving on saturday', 'office moving herzliya'],
+            he: ['הובלת משרדים', 'הובלת משרדים במרכז', 'הובלות משרדים בתל אביב', 'הובלות משרדים ברמת גן', 'הובלות משרדים בבני ברק', 'הובלת ציוד משרדי', 'מובילים מומלצים', 'הובלה דחופה', 'הובלות בשבת', 'הובלות משרדים בהרצליה']
+        }
+    },
+
+    'urgent-moving': {
+        title: {
+            ru: 'Срочные перевозки: быстро, надежно, в любое время',
+            en: 'Urgent Moving: Fast, Reliable, Anytime',
+            he: 'הובלה דחופה: מהר, אמין, בכל זמן'
+        },
+        description: {
+            ru: 'Срочные грузоперевозки по Израилю. Переезд сегодня, перевозка мебели срочно, экстренные перевозки. Работаем 24/7.',
+            en: 'Urgent moving services across Israel. Moving today, furniture transportation urgently, emergency moves. We work 24/7.',
+            he: 'שירותי הובלה דחופה ברחבי ישראל. מעבר היום, הובלת רהיטים דחוף, הובלות חירום. אנחנו עובדים 24/7.'
+        },
+        content: {
+            ru: `
+        <h2>Срочные перевозки — когда время критично</h2>
+        <p>Нужна <strong>срочная перевозка</strong> сегодня? Мы специализируемся на <strong>экстренных переездах</strong> по всему Израилю. Наши услуги <strong>перевозка сейчас</strong> доступны 24/7 включая выходные.</p>
+
+        <h3>Когда нужна срочная перевозка?</h3>
+        <p><strong>Срочная перевозка</strong> может потребоваться в разных ситуациях:</p>
+        <ul>
+          <li>Внезапная смена аренды или покупка жилья</li>
+          <li>Срочный переезд офиса</li>
+          <li>Необходимость <strong>перевезти холодильник</strong> или другую технику срочно</li>
+          <li>Переезд по рабочим или семейным обстоятельствам</li>
+        </ul>
+
+        <h3>Наши преимущества для срочных перевозок</h3>
+        <p>Мы понимаем что <strong>срочная перевозка</strong> — это стресс, поэтому предлагаем:</p>
+        <ul>
+          <li><strong>Перевозка сегодня</strong> — минимальное время ожидания</li>
+          <li>Возможность <strong>перевозки в субботу</strong> и праздники</li>
+          <li>Полный спектр услуг — от <strong>мелкой перевозки</strong> до <strong>переезда квартиры</strong></li>
+          <li>Доступные цены даже на <strong>экстренные перевозки</strong></li>
+        </ul>
+
+        <h3>Что мы перевозим срочно?</h3>
+        <p>Мы выполняем <strong>срочные перевозки</strong> любого типа:</p>
+        <ul>
+          <li><strong>Перевозка холодильника</strong> и другой бытовой техники</li>
+          <li><strong>Перевозка дивана</strong> и корпусной мебели</li>
+          <li><strong>Переезд квартиры</strong> или офиса</li>
+          <li><strong>Мелкие перевозки</strong> нескольких предметов</li>
+        </ul>
+
+        <p>Независимо от того, нужна ли вам <strong>перевозка в Тель-Авиве</strong>, <strong>перевозка в Нетании</strong> или <strong>перевозка в Холоне</strong> — мы доставим быстро и надежно.</p>
+      `,
+            en: `
+        <h2>Urgent Moving - When Time is Critical</h2>
+        <p>Need <strong>urgent moving</strong> today? We specialize in <strong>emergency moves</strong> throughout Israel. Our <strong>moving now</strong> services are available 24/7 including weekends.</p>
+
+        <h3>When Do You Need Urgent Moving?</h3>
+        <p><strong>Urgent moving</strong> may be needed in various situations:</p>
+        <ul>
+          <li>Sudden rental change or home purchase</li>
+          <li>Urgent office moving</li>
+          <li>Need to <strong>transport a refrigerator</strong> or other appliance urgently</li>
+          <li>Moving for work or family reasons</li>
+        </ul>
+
+        <h3>Our Advantages for Urgent Moving</h3>
+        <p>We understand that <strong>urgent moving</strong> is stressful, so we offer:</p>
+        <ul>
+          <li><strong>Moving today</strong> - minimum waiting time</li>
+          <li>Possibility of <strong>moving on Saturday</strong> and holidays</li>
+          <li>Full range of services - from <strong>small moves</strong> to <strong>apartment moving</strong></li>
+          <li>Affordable prices even for <strong>emergency moves</strong></li>
+        </ul>
+
+        <h3>What Do We Move Urgently?</h3>
+        <p>We perform <strong>urgent moving</strong> of any type:</p>
+        <ul>
+          <li><strong>Refrigerator transportation</strong> and other household appliances</li>
+          <li><strong>Sofa transportation</strong> and cabinet furniture</li>
+          <li><strong>Apartment moving</strong> or office</li>
+          <li><strong>Small moves</strong> of several items</li>
+        </ul>
+
+        <p>Regardless of whether you need <strong>moving in Tel Aviv</strong>, <strong>moving in Netanya</strong> or <strong>moving in Holon</strong> - we'll deliver fast and reliably.</p>
+      `,
+            he: `
+        <h2>הובלה דחופה - כאשר הזמן קריטי</h2>
+        <p>צריך <strong>הובלה דחופה</strong> היום? אנחנו מתמחים ב<strong>הובלות חירום</strong> בכל רחבי ישראל. השירותים שלנו <strong>הובלה לעכשיו</strong> זמינים 24/7 כולל סופ"ש.</p>
+
+        <h3>מתי צריך הובלה דחופה?</h3>
+        <p><strong>הובלה דחופה</strong> может להידרש במצבים שונים:</p>
+        <ul>
+          <li>שינוי שכירות פתאומי או קניית דירה</li>
+          <li>מעבר משרד דחוף</li>
+          <li>צורך <strong>להוביל מקרר</strong> או מכשיר אחר בדחיפות</li>
+          <li>מעבר מסיבות עבודה או משפחה</li>
+        </ul>
+
+        <h3>היתרונות שלנו להובלות דחופות</h3>
+        <p>אנחנו מבינים ש<strong>הובלה דחופה</strong> היא מלחיצה, поэтому מציעים:</p>
+        <ul>
+          <li><strong>הובלה היום</strong> - זמן המתנה מינימלי</li>
+          <li>אפשרות ל<strong>הובלות בשבת</strong> וחגים</li>
+          <li>מגוון מלא של שירותים - מ<strong>הובלות קטנות</strong> עד <strong>מעבר דירה</strong></li>
+          <li>מחירים משתלמים даже ל<strong>הובלות חירום</strong></li>
+        </ul>
+
+        <h3>מה אנחנו מובילים בדחיפות?</h3>
+        <p>אנחנו מבצעים <strong>הובלה דחופה</strong> מכל סוג:</p>
+        <ul>
+          <li><strong>הובלת מקרר</strong> ומכשירי חשמל ביתיים אחרים</li>
+          <li><strong>הובלת ספה</strong> ורהיטי קיר</li>
+          <li><strong>מעבר דירה</strong> או משרד</li>
+          <li><strong>הובלות קטנות</strong> של מספר פריטים</li>
+        </ul>
+
+        <p>לא משנה אם אתה צריך <strong>הובלות בתל אביב</strong>, <strong>הובלות בנתניה</strong> או <strong>הובלות בחולון</strong> - אנחנו נספק מהר ובאמינות.</p>
+      `
+        },
+        image: '/gruzchiki8.jpg',
+        readTime: {
+            ru: '5 мин чтения',
+            en: '5 min read',
+            he: '5 דקות קריאה'
+        },
+        keywords: {
+            ru: ['срочные перевозки', 'перевозка сегодня', 'экстренные перевозки', 'переезд срочно', 'перевозка мебели срочно', 'перевозка сейчас', 'перевозка холодильника', 'перевозка в субботу', 'мелкая перевозка', 'переезд квартиры', 'перевозки в тель-авиве', 'перевозки в нетании', 'перевозки в холоне'],
+            en: ['urgent moving', 'moving today', 'emergency moves', 'moving urgently', 'furniture transportation urgent', 'moving now', 'refrigerator transportation', 'moving on saturday', 'small move', 'apartment moving', 'moving tel aviv', 'moving netanya', 'moving holon'],
+            he: ['הובלה דחופה', 'הובלה היום', 'הובלות חירום', 'מעבר דחוף', 'הובלת רהיטים דחוף', 'הובלה לעכשיו', 'הובלת מקרר', 'הובלות בשבת', 'הובלות קטנות', 'מעבר דירה', 'הובלות בתל אביב', 'הובלות בנתניה', 'הובלות בחולון']
+        }
     }
 }
 
@@ -429,7 +820,6 @@ export default async function ArticlePage({ params }: Props) {
         notFound()
     }
 
-    // Функция для замены плейсхолдеров в ссылках
     const processContent = (content: string) => {
         return content.replace(/\/\[lang\]\//g, `/${lang}/`)
     }

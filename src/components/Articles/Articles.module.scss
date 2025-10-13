@@ -28,6 +28,8 @@
   transition: all 0.3s ease;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-5px);
@@ -36,12 +38,16 @@
 
   .ant-card-body {
     padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 }
 
 .articleImage {
   height: 200px;
   overflow: hidden;
+  flex-shrink: 0;
 
   img {
     width: 100%;
@@ -55,6 +61,11 @@
   }
 }
 
+.articleContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 .articleTitle {
   font-family: var(--font-heading);
@@ -77,6 +88,12 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
+}
+
+.buttonContainer {
+  margin-top: auto;
+  padding-top: 10px;
 }
 
 .readMoreButton {
@@ -92,7 +109,6 @@
   }
 }
 
-// Мобильный слайдер
 .mobileSlider {
   margin: 0 -10px;
 }
@@ -101,19 +117,27 @@
   .slick-list {
     padding: 10px 0;
   }
+
+  .slick-track {
+    display: flex;
+    align-items: stretch;
+  }
 }
 
 .slide {
   padding: 0 10px;
+  height: auto;
+  margin-bottom: 15px;
 
   .articleCard {
     margin: 0 auto;
     max-width: 400px;
+    height: 100%;
   }
 }
 
 .carouselDots {
-  bottom: -40px;
+  bottom: -40px !important;
 
   li {
     button {
@@ -127,7 +151,7 @@
   }
 }
 
-// Скелетон загрузки
+
 .skeletonGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -193,8 +217,6 @@
     margin-bottom: 40px;
   }
 
-
-
   .articleTitle {
     font-size: 1.1rem;
   }
@@ -202,6 +224,16 @@
   .articleDescription {
     min-height: 66px;
     -webkit-line-clamp: 2;
+  }
+
+  .carousel {
+    .slick-slide {
+      height: auto;
+
+      > div {
+        height: 100%;
+      }
+    }
   }
 }
 

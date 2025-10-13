@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: calc(100vh + 70px);
   background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
   display: flex;
   align-items: center;
@@ -8,44 +8,92 @@
   color: white;
   text-align: center;
   overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container {
   position: relative;
   z-index: 2;
-  max-width: 800px;
-  padding: 0 20px;
+  max-width: min(800px, 90vw);
+  width: 100%;
+  padding: clamp(20px, 5vh, 60px) 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
   animation: fadeInUp 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: clamp(20px, 4vh, 40px);
+}
+
+.logoWrapper {
+  width: 100%;
+  max-width: min(300px, 50vw, 50vh);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    max-width: 300px;
+  }
+
+
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 10%;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .title {
   font-family: var(--font-heading);
-  font-size: 3.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: 20px;
+  margin: 0;
   line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  flex-shrink: 0;
 }
 
 .subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 40px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin: 0;
   opacity: 0.9;
-  line-height: 1.6;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  flex-shrink: 0;
 }
 
 .ctaButton {
   background: #fff;
   color: #1890ff;
   border: none;
-  height: 50px;
-  padding: 0 40px;
-  font-size: 18px;
+  height: auto;
+  min-height: clamp(40px, 6vh, 48px);
+  padding: clamp(8px, 1.5vh, 12px) clamp(15px, 3vw, 25px);
+  font-size: clamp(14px, 1.8vw, 16px);
   font-weight: 600;
   border-radius: 25px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
 
   &:hover {
     background: #f0f0f0 !important;
@@ -62,6 +110,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 @keyframes fadeInUp {
@@ -76,17 +125,94 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 15px;
+  }
+
+  .container {
+    max-width: 95vw;
+    padding: clamp(15px, 4vh, 40px) 10px;
+  }
+
+  .content {
+    gap: clamp(15px, 3vh, 30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 10px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 98vw;
+    padding: clamp(10px, 3vh, 30px) 5px;
+  }
+
+  .content {
+    gap: clamp(12px, 2.5vh, 25px);
+  }
+
   .title {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 5vw, 1.6rem);
   }
 
   .subtitle {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding: 5px 0;
+  }
+
+  .container {
+    padding: 5px 10px;
+  }
+
+  .content {
+    gap: 10px;
+  }
+
+  .logoWrapper {
+    max-width: min(120px, 35vw, 35vh);
+  }
+
+  .title {
     font-size: 1.1rem;
   }
 
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
   .ctaButton {
-    height: 45px;
-    padding: 0 30px;
-    font-size: 16px;
+    min-height: 32px;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Дополнительная защита для очень высоких разрешений и масштабирования */
+@media (min-height: 800px) and (min-width: 1200px) {
+  .logoWrapper {
+    max-width: min(280px, 40vw, 40vh);
+  }
+}
+
+/* Гарантия что контент не выйдет за пределы экрана */
+@media (max-height: 600px) {
+  .container {
+    padding: 10px 20px;
+  }
+
+  .content {
+    gap: 15px;
+  }
+
+  .logoWrapper {
+    max-width: min(200px, 35vw, 35vh);
   }
 }

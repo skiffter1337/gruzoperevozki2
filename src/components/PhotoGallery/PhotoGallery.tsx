@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Carousel } from 'antd'
+import {useState, useEffect} from 'react'
+import {Carousel} from 'antd'
 import styles from './PhotoGallery.module.scss'
-import { useParams } from 'next/navigation'
+import {useParams} from 'next/navigation'
 import {useTranslation} from "@/hooks/use-translation";
 import {GalleryPhoto} from "@/components/PhotoGallery/model/types";
 
@@ -24,27 +24,32 @@ export function PhotoGallery() {
         {
             id: 1,
             src: '/works1.jpg',
-            alt: t.gallery.photos.find(p => p.id === 1)?.alt || 'Грузовой автомобиль'
+            alt: t.gallery.photos.find(p => p.id === 1)?.alt || ""
         },
         {
             id: 2,
             src: '/works2.jpg',
-            alt: t.gallery.photos.find(p => p.id === 2)?.alt || 'Переезд квартиры'
+            alt: t.gallery.photos.find(p => p.id === 2)?.alt || ""
         },
         {
             id: 3,
             src: '/works3.jpg',
-            alt: t.gallery.photos.find(p => p.id === 3)?.alt || 'Офисный переезд'
+            alt: t.gallery.photos.find(p => p.id === 3)?.alt || ""
         },
         {
             id: 4,
             src: '/works4.jpg',
-            alt: t.gallery.photos.find(p => p.id === 4)?.alt || 'Упаковка вещей'
+            alt: t.gallery.photos.find(p => p.id === 4)?.alt || ""
         },
         {
             id: 5,
             src: '/works5.jpg',
-            alt: t.gallery.photos.find(p => p.id === 5)?.alt || 'Работа команды'
+            alt: t.gallery.photos.find(p => p.id === 5)?.alt || ""
+        },
+        {
+            id: 6,
+            src: '/works6.jpg',
+            alt: t.gallery.photos.find(p => p.id === 5)?.alt || ""
         },
     ]
 
@@ -59,6 +64,10 @@ export function PhotoGallery() {
                     <h2 className={styles.title}>{t.gallery.title}</h2>
                     <div className={styles.skeletonCarousel}>
                         <div className={styles.skeletonSlide}></div>
+                    </div>
+                    <div className={styles.videoSection}>
+                        <h3 className={styles.videoTitle}>{t.gallery.videoTitle || "Наше видео"}</h3>
+                        <div className={styles.skeletonVideo}></div>
                     </div>
                 </div>
             </section>
@@ -75,7 +84,7 @@ export function PhotoGallery() {
                         autoplay
                         autoplaySpeed={4000}
                         speed={1000}
-                        dots={{ className: styles.carouselDots }}
+                        dots={{className: styles.carouselDots}}
                         arrows={false}
                         pauseOnHover={true}
                         className={styles.carousel}
@@ -89,7 +98,6 @@ export function PhotoGallery() {
                                         alt={photo.alt}
                                         className={styles.photo}
                                         onError={(e) => {
-                                            // Если изображение не загружается, показываем placeholder
                                             e.currentTarget.style.display = 'none'
                                             const placeholder = document.getElementById(`placeholder-${photo.id}`)
                                             if (placeholder) {
@@ -100,7 +108,7 @@ export function PhotoGallery() {
                                     <div
                                         id={`placeholder-${photo.id}`}
                                         className={styles.photoPlaceholder}
-                                        style={{ display: 'none' }}
+                                        style={{display: 'none'}}
                                     >
                     <span className={styles.placeholderIcon}>
                       {placeholderImages[index] || '📷'}
@@ -115,6 +123,20 @@ export function PhotoGallery() {
                     {/* Декоративные элементы */}
                     <div className={styles.gradientOverlay}></div>
                     <div className={styles.pattern}></div>
+                </div>
+
+                <div className={styles.videoSection}>
+                    <h3 className={styles.videoTitle}>{t.gallery.videoTitle}</h3>
+                    <div className={styles.videoWrapper}>
+                        <iframe
+                            src="https://www.youtube.com/embed/9M0D9NyhV9E"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className={styles.video}
+                        ></iframe>
+                    </div>
                 </div>
 
             </div>
