@@ -8,6 +8,14 @@ type Props = {
 
 export async function generateMetadata({params}: Props): Promise<Metadata> {
     const {lang} = await params
+
+    if (lang === 'he') {
+        return {
+            title: 'גרירה והובלות | MoveIsrael',
+            description: 'שירותי גרירה והובלות מקצועיים בישראל',
+        }
+    }
+
     const {metadata} = await import(`@/locales/${lang}.json`)
 
     const localeMap: Record<string, string> = {
@@ -15,9 +23,6 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
         'ru': 'ru_RU',
         'en': 'en_US'
     }
-
-    const isHebrew = lang === 'he'
-    const isEnglish = lang === 'en'
 
     return {
         title: metadata.title,
@@ -30,16 +35,14 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
             locale: localeMap[lang] || 'en_US',
         },
         robots: 'index, follow',
-        ...((isHebrew || isEnglish) && {
-            alternates: {
-                canonical: 'https://moveisrael.com', // TODO исправить
-                languages: {
-                    'ru': 'https://moveisrael.com/ru',
-                    'he': 'https://moveisrael.com/he',
-                    'en': 'https://moveisrael.com/en',
-                }
+        alternates: {
+            canonical: `https://moveisrael.com/${lang === 'he' ? '' : lang}`,
+            languages: {
+                'ru': 'https://moveisrael.com/ru',
+                'he': 'https://moveisrael.com',
+                'en': 'https://moveisrael.com/en',
             }
-        })
+        }
     }
 }
 

@@ -16,9 +16,14 @@ interface Article {
     image: string
 }
 
-export function Articles() {
-    const params = useParams()
-    const lang = params.lang as string
+interface ArticlesProps {
+    lang: string
+}
+
+export function Articles({lang}: ArticlesProps) {
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
+
     const [mounted, setMounted] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
 
@@ -29,9 +34,6 @@ export function Articles() {
         window.addEventListener('resize', checkMobile)
         return () => window.removeEventListener('resize', checkMobile)
     }, [])
-
-    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
-    const t = useTranslation(language)
 
     if (!mounted) {
         return (

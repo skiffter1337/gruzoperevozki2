@@ -1,10 +1,10 @@
 'use client'
 
 import {useState} from 'react'
-import {Form, Input, Button, message, Checkbox, DatePicker, Row, Col} from 'antd'
+import {Button, Checkbox, Col, DatePicker, Form, Input, message, Row} from 'antd'
 import styles from './Contact.module.scss'
-import {useParams} from 'next/navigation'
 import {useTranslation} from "@/hooks/use-translation";
+
 type Language = 'ru' | 'he' | 'en'
 
 interface FormValues {
@@ -25,13 +25,17 @@ interface FormValues {
     comment?: string
 }
 
-export function Contact() {
-    const params = useParams()
-    const lang = params.lang as Language
+interface ContactProps {
+    lang: string
+}
+
+export function Contact({lang}: ContactProps) {
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
+
     const [form] = Form.useForm()
     const [loading, setLoading] = useState(false)
 
-    const t = useTranslation(lang)
 
     const onFinish = async (values: FormValues) => {
         setLoading(true)

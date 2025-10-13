@@ -6,6 +6,7 @@ import {MenuOutlined} from '@ant-design/icons'
 import styles from './Header.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation'
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -14,13 +15,25 @@ interface HeaderProps {
 }
 
 export default function Header({lang}: HeaderProps) {
-
-    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'he') as Language
     const t = useTranslation(language)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const router = useRouter()
+    const pathname = usePathname()
 
     const handleLanguageChange = (value: string) => {
-        window.location.href = `/${value}`
+        let currentPath = pathname
+        if (pathname.startsWith('/ru/') || pathname.startsWith('/en/')) {
+            currentPath = pathname.substring(3)
+        } else if (pathname === '/ru' || pathname === '/en') {
+            currentPath = '/'
+        }
+
+        if (value === 'he') {
+            router.push(currentPath || '/')
+        } else {
+            router.push(`/${value}${currentPath}`)
+        }
     }
 
     const scrollToSection = (sectionId: string) => {
@@ -49,12 +62,12 @@ export default function Header({lang}: HeaderProps) {
 
                 <div className={styles.controls}>
                     <Select
-                        defaultValue={language}
+                        value={language}
                         style={{width: 60}}
                         onChange={handleLanguageChange}
                         options={[
-                            {value: 'ru', label: 'ru'},
                             {value: 'he', label: 'עב'},
+                            {value: 'ru', label: 'ru'},
                             {value: 'en', label: 'en'}
                         ]}
                     />

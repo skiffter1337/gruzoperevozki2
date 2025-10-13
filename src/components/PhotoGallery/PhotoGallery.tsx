@@ -1,24 +1,27 @@
 'use client'
 
-import {useState, useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {Carousel} from 'antd'
 import styles from './PhotoGallery.module.scss'
-import {useParams} from 'next/navigation'
 import {useTranslation} from "@/hooks/use-translation";
 import {GalleryPhoto} from "@/components/PhotoGallery/model/types";
 
 type Language = 'ru' | 'he' | 'en'
 
-export function PhotoGallery() {
-    const params = useParams()
-    const lang = params.lang as Language
+interface PhotoGalleryProps {
+    lang: string
+}
+
+export function PhotoGallery({lang}: PhotoGalleryProps) {
+    const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
+    const t = useTranslation(language)
+
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
         setMounted(true)
     }, [])
 
-    const t = useTranslation(lang)
 
     const photos: GalleryPhoto[] = [
         {
