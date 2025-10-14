@@ -18,6 +18,8 @@
 }
 
 .logo {
+  all: unset;
+  cursor: pointer;
   font-family: var(--font-heading);
   display: flex;
   align-items: center;
@@ -49,12 +51,13 @@
   display: flex;
   gap: 30px;
 
-  button {
+  button, a {
+    all: unset;
+    cursor: pointer;
     background: none;
     border: none;
     font-family: var(--font-primary);
     font-size: 16px;
-    cursor: pointer;
     transition: color 0.3s;
     color: #ccc;
 

@@ -1,10 +1,9 @@
 'use client'
 
-import {Card, Button, Row, Col, Carousel} from 'antd'
+import {Button, Card, Carousel, Col, Row} from 'antd'
 import styles from './Articles.module.scss'
 import Link from 'next/link'
-import {useParams} from 'next/navigation'
-import {useState, useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {useTranslation} from "@/hooks/use-translation";
 
 type Language = 'ru' | 'he' | 'en'
@@ -34,6 +33,14 @@ export function Articles({lang}: ArticlesProps) {
         window.addEventListener('resize', checkMobile)
         return () => window.removeEventListener('resize', checkMobile)
     }, [])
+
+    const getArticlePath = (articleId: string) => {
+        if (language === 'he') {
+            return `/articles/${articleId}`
+        } else {
+            return `/${language}/articles/${articleId}`
+        }
+    }
 
     if (!mounted) {
         return (
@@ -73,7 +80,7 @@ export function Articles({lang}: ArticlesProps) {
                 <h3 className={styles.articleTitle}>{article.title}</h3>
                 <p className={styles.articleDescription}>{article.description}</p>
                 <div className={styles.buttonContainer}>
-                    <Link href={`/${language}/articles/${article.id}`}>
+                    <Link href={getArticlePath(article.id)}>
                         <Button type="primary" className={styles.readMoreButton}>
                             {t.articles.readMore}
                         </Button>
@@ -87,7 +94,12 @@ export function Articles({lang}: ArticlesProps) {
         <section id="articles" className={styles.articles}>
             <div className={styles.container}>
                 <h2 className={styles.title}>{t.articles.title}</h2>
-
+                <Link href={language === 'he' ? '/articles' : `/${language}/articles`}
+                      className={styles.allArticlesLink}>
+                    <Button type="link" className={styles.allArticlesButton}>
+                        {t.articles.viewAll}
+                    </Button>
+                </Link>
                 {isMobile ? (
                     <div className={styles.mobileSlider}>
                         <Carousel
@@ -100,20 +112,26 @@ export function Articles({lang}: ArticlesProps) {
                             adaptiveHeight={false}
                             infinite={true}
                         >
-                            {t.articles.items.map((article: Article) => (
-                                <div key={article.id} className={styles.slide}>
-                                    <ArticleCard article={article}/>
-                                </div>
-                            ))}
+                            {t.articles.items.map((article: Article, index) => {
+                                if (index > 5) return
+                                return (
+                                    <div key={article.id} className={styles.slide}>
+                                        <ArticleCard article={article}/>
+                                    </div>
+                                )
+                            })}
                         </Carousel>
                     </div>
                 ) : (
                     <Row gutter={[24, 24]} className={styles.articlesGrid}>
-                        {t.articles.items.map((article: Article) => (
-                            <Col xs={24} md={12} lg={6} key={article.id}>
-                                <ArticleCard article={article}/>
-                            </Col>
-                        ))}
+                        {t.articles.items.map((article: Article, index) => {
+                            if (index > 7) return
+                            return (
+                                <Col xs={24} md={12} lg={6} key={article.id}>
+                                    <ArticleCard article={article}/>
+                                </Col>
+                            )
+                        })}
                     </Row>
                 )}
             </div>

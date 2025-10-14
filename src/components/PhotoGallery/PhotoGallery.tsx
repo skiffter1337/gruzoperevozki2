@@ -84,8 +84,6 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
 
                 <div className={styles.carouselWrapper}>
                     <Carousel
-                        autoplay
-                        autoplaySpeed={4000}
                         speed={1000}
                         dots={{className: styles.carouselDots}}
                         arrows={false}

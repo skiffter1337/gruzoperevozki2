@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
 import {ReactNode} from "react"
-
+import '../globals.css'
 type Props = {
     children: ReactNode
     params: Promise<{ lang: string }>
@@ -58,11 +58,15 @@ export default async function LangLayout({
         'en': 'ltr'
     }
 
+    const htmlLangMap: Record<string, string> = {
+        'he': 'he',
+        'ru': 'ru',
+        'en': 'en'
+    }
+
     return (
-        <div dir={directionMap[lang] || 'ltr'}>
-            <main>
-                {children}
-            </main>
+        <div className="layout" lang={htmlLangMap[lang] || 'en'} dir={directionMap[lang] || 'ltr'}>
+            {children}
         </div>
     )
 }

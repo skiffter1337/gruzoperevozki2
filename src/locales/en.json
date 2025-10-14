@@ -81,6 +81,7 @@
   "articles": {
     "title": "Useful Articles",
     "readMore": "Read More",
+    "viewAll": "Read all",
     "items": [
       {
         "id": "moving-tips",
@@ -129,8 +130,80 @@
         "title": "Urgent Moving",
         "description": "Urgent moving services across Israel. Moving today, furniture transportation urgently, we work 24/7",
         "image": "/gruzchiki8.jpg"
+      },
+      {
+        "id": "sharon-moving",
+        "title": "Moving in Sharon: Reliable Moving Services in the Region",
+        "description": "Professional moving services in Sharon. Fast, quality and affordable for residents of the region.",
+        "image": "/gruzchiki9.jpg"
+      },
+      {
+        "id": "raanana-moving",
+        "title": "Moving in Ra'anana: Professional Moving Services",
+        "description": "Organization of moving in Ra'anana of any complexity. Apartment and office moves, furniture and appliance transportation.",
+        "image": "/gruzchiki10.jpg"
+      },
+      {
+        "id": "harish-moving",
+        "title": "Moving in Harish: Relocations to the New Developing City",
+        "description": "Specialized moving services to Harish - a new modern city in northern Israel. Assistance with moving to a new neighborhood.",
+        "image": "/gruzchiki11.jpg"
+      },
+      {
+        "id": "kfar-saba-moving",
+        "title": "Moving in Kfar Saba: Quality Moving Services in the Green City",
+        "description": "Professional moving services in Kfar Saba. We take into account the characteristics of the city and ensure careful transportation of your property.",
+        "image": "/gruzchiki12.jpg"
+      },
+      {
+        "id": "tel-aviv-moving",
+        "title": "Moving in Tel Aviv: Complex Urban Transportation",
+        "description": "Specialized moving services in Tel Aviv considering the characteristics of the metropolis. Parking, narrow streets, high-rise buildings.",
+        "image": "/gruzchiki13.jpg"
+      },
+      {
+        "id": "big-moves",
+        "title": "Big Moves: Organization of Large-Scale Relocations",
+        "description": "Professional organization of large moves: villas, large apartments, office centers. Special equipment and machinery",
+        "image": "/gruzchiki14.jpg"
+      },
+      {
+        "id": "apartment-moving",
+        "title": "Apartment Moving: Complete Range of Services",
+        "description": "Comprehensive apartment moving services: packing, loading, transportation, unloading, furniture arrangement. Turnkey.",
+        "image": "/gruzchiki15.jpg"
+      },
+      {
+        "id": "herzliya-moving",
+        "title": "Moving in Herzliya: Premium Moving Services",
+        "description": "Elite moving services in Herzliya. Careful attitude to your property, insurance, individual approach.",
+        "image": "/gruzchiki16.jpg"
+      },
+      {
+        "id": "rosh-haayin-moving",
+        "title": "Moving in Rosh HaAyin: Reliable Moving Services in the Developing City",
+        "description": "Professional moving services in Rosh HaAyin. We consider the dynamic development of the city and the growing needs of residents.",
+        "image": "/gruzchiki17.jpg"
+      },
+      {
+        "id": "furniture-moving",
+        "title": "Furniture Moving: Careful Transportation of Any Items",
+        "description": "Specialized furniture moving services: sofas, cabinets, beds, tables. Disassembly, packing, assembly in the new place.",
+        "image": "/gruzchiki18.jpg"
+      },
+      {
+        "id": "saturday-moving",
+        "title": "Moving on Saturday: Services for Special Occasions",
+        "description": "Special moving services on Saturday for urgent and special occasions. Preliminary coordination and preparation.",
+        "image": "/gruzchiki19.jpg"
       }
-    ]
+    ],
+    "allArticles": "All Articles",
+    "allArticlesTitle": "Useful Articles About Moving",
+    "allArticlesDescription": "Complete collection of articles and guides for organizing moves, packing items and transportation in Israel",
+    "home": "Home",
+    "noResults": "No articles found",
+    "tryAnotherCategory": "Try selecting another category"
   },
   "gallery": {
     "title": "Our Work",

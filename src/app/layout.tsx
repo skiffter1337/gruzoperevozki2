@@ -5,27 +5,62 @@ import {ReactNode} from "react";
 
 const inter = Inter({subsets: ['latin']})
 
-export const metadata: Metadata = {
-    title: {
-        template: '%s | MoveIsrael',
-        default: 'גרירה והובלות | MoveIsrael',
-    },
-    icons: {
-        icon: '/favicon.ico',
-    },
-}
-
 type Props = {
     children: ReactNode
+    params: Promise<{ lang?: string }>
 }
 
-export default function RootLayout({children}: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { lang = 'he' } = await params
+
+    const titles = {
+        he: 'גרירה והובלות | MoveIsrael',
+        ru: 'Грузоперевозки и переезды | MoveIsrael',
+        en: 'Moving and Transportation | MoveIsrael'
+    }
+
+    const descriptions = {
+        he: 'שירותי גרירה והובלות מקצועיים בישראל',
+        ru: 'Профессиональные услуги по переезду и грузоперевозкам в Израиле',
+        en: 'Professional moving and transportation services in Israel'
+    }
+
+    return {
+        title: {
+            template: '%s | MoveIsrael',
+            default: titles[lang as keyof typeof titles] || titles.he,
+        },
+        description: descriptions[lang as keyof typeof descriptions] || descriptions.he,
+        icons: {
+            icon: '/favicon.ico',
+        },
+    }
+}
+
+export default async function RootLayout({ children, params }: Props) {
+    const { lang = 'he' } = await params
+
+    const directionMap: Record<string, 'rtl' | 'ltr'> = {
+        'he': 'rtl',
+        'ru': 'ltr',
+        'en': 'ltr'
+    }
+
+    const htmlLangMap: Record<string, string> = {
+        'he': 'he',
+        'ru': 'ru',
+        'en': 'en'
+    }
+
+    const direction = directionMap[lang] || 'rtl'
+    const htmlLang = htmlLangMap[lang] || 'he'
+
     return (
-        <html lang="he">
+        <html lang={htmlLang} dir={direction}>
         <head>
             <meta name="google-site-verification" content="0r38RyQh61dBoLIyxVwILq9gnyn8glbioO4hbMH0oKg"/>
         </head>
-        <body className={inter.className} dir="rtl">
+        <body className={inter.className}>
         {children}
         </body>
         </html>

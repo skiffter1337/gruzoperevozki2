@@ -21,6 +21,18 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(newUrl)
     }
 
+    if (pathname.startsWith('/articles/') && !pathnameHasLocale) {
+        const articleId = pathname.replace('/articles/', '')
+        request.nextUrl.pathname = `/he/articles/${articleId}`
+        return NextResponse.rewrite(request.nextUrl)
+    }
+
+    if (pathname === '/articles' && !pathnameHasLocale) {
+        request.nextUrl.pathname = '/he/articles'
+        return NextResponse.rewrite(request.nextUrl)
+    }
+
+
     if (pathnameHasLocale) {
         return NextResponse.next()
     }

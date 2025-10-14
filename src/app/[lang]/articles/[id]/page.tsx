@@ -1,14 +1,10 @@
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { Button } from 'antd'
-import { ArrowLeftOutlined } from '@ant-design/icons'
-import styles from './article.module.scss'
+import {notFound} from 'next/navigation'
 import type {Metadata} from "next";
-import Image from 'next/image';
+import {ArticleContent} from "@/components/ArticleContent";
 
 type Language = 'ru' | 'en' | 'he';
 
-type ArticleContent = Record<Language, string>;
+type ArticleContentType = Record<Language, string>;
 
 type ArticleTitle = Record<Language, string>;
 
@@ -21,7 +17,7 @@ type ArticleKeywords = Record<Language, string[]>;
 interface ArticleData {
     title: ArticleTitle;
     description: ArticleDescription;
-    content: ArticleContent;
+    content: ArticleContentType;
     image: string;
     readTime: ArticleReadTime;
     keywords: ArticleKeywords;
@@ -29,9 +25,6 @@ interface ArticleData {
 
 type ArticlesData = Record<string, ArticleData>;
 
-type Props = {
-    params: Promise<{ lang: Language; id: string }>
-}
 
 const articlesData: ArticlesData = {
     'moving-tips': {
@@ -776,7 +769,369 @@ const articlesData: ArticlesData = {
             en: ['urgent moving', 'moving today', 'emergency moves', 'moving urgently', 'furniture transportation urgent', 'moving now', 'refrigerator transportation', 'moving on saturday', 'small move', 'apartment moving', 'moving tel aviv', 'moving netanya', 'moving holon'],
             he: ['הובלה דחופה', 'הובלה היום', 'הובלות חירום', 'מעבר דחוף', 'הובלת רהיטים דחוף', 'הובלה לעכשיו', 'הובלת מקרר', 'הובלות בשבת', 'הובלות קטנות', 'מעבר דירה', 'הובלות בתל אביב', 'הובלות בנתניה', 'הובלות בחולון']
         }
+    },
+    'sharon-moving': {
+        title: {
+            ru: 'Грузоперевозки в Шароне: надежные переезды по региону',
+            en: 'Moving in Sharon: Reliable Moving Services in the Region',
+            he: 'הובלות בשרון: שירותי הובלה אמינים באזור'
+        },
+        description: {
+            ru: 'Профессиональные услуги переезда в Шароне. Быстро, качественно и по доступным ценам для жителей региона.',
+            en: 'Professional moving services in Sharon. Fast, quality and affordable for residents of the region.',
+            he: 'שירותי הובלה מקצועיים בשרון. מהר, איכותי ובמחיר משתלם לתושבי האזור.'
+        },
+        content: {
+            ru: `<h2>Грузоперевозки в Шароне - комплексные решения для переезда</h2>
+            <p>Регион Шарон известен своими живописными городами и развитой инфраструктурой. Наша компания предлагает полный спектр услуг по переезду в этом регионе.</p>
+            <h3>Популярные направления в Шароне</h3>
+            <p>Мы обслуживаем все города Шарона, включая Нетанию, Раанану, Кфар-Сабу, Герцлию и другие населенные пункты.</p>`,
+            en: `<h2>Moving in Sharon - Comprehensive Moving Solutions</h2>
+            <p>The Sharon region is known for its picturesque cities and developed infrastructure. Our company offers a full range of moving services in this region.</p>
+            <h3>Popular Destinations in Sharon</h3>
+            <p>We serve all cities in Sharon, including Netanya, Ra'anana, Kfar Saba, Herzliya and other settlements.</p>`,
+            he: `<h2>הובלות בשרון - פתרונות הובלה מקיפים</h2>
+            <p>אזור השרון ידוע בערים הציוריות שלו ובתשתיות המפותחות. החברה שלנו מציעה מגוון מלא של שירותי הובלה באזור זה.</p>
+            <h3>יעדים פופולריים בשרון</h3>
+            <p>אנו משרתים את כל ערי השרון, כולל נתניה, רעננה, כפר סבא, הרצליה ויישובים נוספים.</p>`
+        },
+        image: '/gruzchiki9.jpg',
+        readTime: {
+            ru: '4 мин чтения',
+            en: '4 min read',
+            he: '4 דקות קריאה'
+        },
+        keywords: {
+            ru: ['грузоперевозки в шароне', 'переезд в шароне', 'перевозки в нетании', 'перевозки в раанане', 'перевозки в кфар-сабе', 'переезд в герцлии', 'услуги переезда в израиле'],
+            en: ['moving in sharon', 'sharon moving services', 'netanya moving', 'raanana moving', 'kfar saba moving', 'herzliya moving', 'israel moving services'],
+            he: ['הובלות בשרון', 'מעבר בשרון', 'הובלות בנתניה', 'הובלות ברעננה', 'הובלות בכפר סבא', 'הובלות בהרצליה', 'שירותי הובלה בישראל']
+        }
+    },
+
+    'raanana-moving': {
+        title: {
+            ru: 'Переезд в Раанане: профессиональные услуги грузоперевозок',
+            en: 'Moving in Ra\'anana: Professional Moving Services',
+            he: 'הובלות ברעננה: שירותי הובלה מקצועיים'
+        },
+        description: {
+            ru: 'Организация переезда в Раанане любой сложности. Квартирные и офисные переезды, перевозка мебели и техники.',
+            en: 'Organization of moving in Ra\'anana of any complexity. Apartment and office moves, furniture and appliance transportation.',
+            he: 'ארגון מעבר ברעננה בכל רמת מורכבות. מעברי דירות ומשרדים, הובלת רהיטים ומכשירים.'
+        },
+        content: {
+            ru: `<h2>Переезд в Раанане - комфорт и надежность</h2>
+            <p>Раанана - один из самых престижных городов в центре Израиля. Мы обеспечиваем качественные услуги переезда для жителей этого города.</p>`,
+            en: `<h2>Moving in Ra\'anana - Comfort and Reliability</h2>
+            <p>Ra\'anana is one of the most prestigious cities in central Israel. We provide quality moving services for residents of this city.</p>`,
+            he: `<h2>מעבר ברעננה - נוחות ואמינות</h2>
+            <p>רעננה היא אחת הערים היוקרתיות ביותר במרכז ישראל. אנו מספקים שירותי הובלה איכותיים לתושבי העיר הזו.</p>`
+        },
+        image: '/gruzchiki10.jpg',
+        readTime: {
+            ru: '5 мин чтения',
+            en: '5 min read',
+            he: '5 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд в раанане', 'грузоперевозки в раанане', 'перевозки мебели в раанане', 'квартирный переезд в раанане', 'офисный переезд в раанане', 'услуги грузчиков в раанане'],
+            en: ['moving in raanana', 'raanana moving services', 'furniture moving in raanana', 'apartment moving in raanana', 'office moving in raanana', 'movers in raanana'],
+            he: ['מעבר ברעננה', 'הובלות ברעננה', 'הובלת רהיטים ברעננה', 'מעבר דירה ברעננה', 'מעבר משרד ברעננה', 'שירותי סבלים ברעננה']
+        }
+    },
+
+    'harish-moving': {
+        title: {
+            ru: 'Грузоперевозки в Харише: переезды в новый развивающийся город',
+            en: 'Moving in Harish: Relocations to the New Developing City',
+            he: 'הובלות בחריש: מעבר לעיר החדשה המתפתחת'
+        },
+        description: {
+            ru: 'Специализированные услуги переезда в Хариш - новый современный город на севере Израиля. Помощь с переездом в новый район.',
+            en: 'Specialized moving services to Harish - a new modern city in northern Israel. Assistance with moving to a new neighborhood.',
+            he: 'שירותי הובלה מיוחדים לחריש - עיר מודרנית חדשה בצפון ישראל. סיוע במעבר לשכונה חדשה.'
+        },
+        content: {
+            ru: `<h2>Переезд в Хариш - новые возможности</h2>
+            <p>Хариш стремительно развивается и привлекает новых жителей. Мы помогаем с комфортным переездом в этот современный город.</p>`,
+            en: `<h2>Moving to Harish - New Opportunities</h2>
+            <p>Harish is rapidly developing and attracting new residents. We help with comfortable relocation to this modern city.</p>`,
+            he: `<h2>מעבר לחריש - הזדמנויות חדשות</h2>
+            <p>חריש מתפתחת במהירות ומושכת תושבים חדשים. אנו מסייעים עם מעבר נוח לעיר המודרנית הזו.</p>`
+        },
+        image: '/gruzchiki11.jpg',
+        readTime: {
+            ru: '4 мин чтения',
+            en: '4 min read',
+            he: '4 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд в хариш', 'грузоперевозки в харише', 'новый город хариш', 'переезд на север израиля', 'перевозки в развивающиеся города', 'услуги переезда в новые районы'],
+            en: ['moving to harish', 'harish moving services', 'new city harish', 'moving to northern israel', 'moving to developing cities', 'relocation services to new neighborhoods'],
+            he: ['מעבר לחריש', 'הובלות בחריש', 'עיר חדשה חריש', 'מעבר לצפון ישראל', 'הובלות לערים מתפתחות', 'שירותי מעבר לשכונות חדשות']
+        }
+    },
+
+    'kfar-saba-moving': {
+        title: {
+            ru: 'Переезд в Кфар-Сабе: качественные грузоперевозки в зеленом городе',
+            en: 'Moving in Kfar Saba: Quality Moving Services in the Green City',
+            he: 'הובלות בכפר סבא: שירותי הובלה איכותיים בעיר הירוקה'
+        },
+        description: {
+            ru: 'Профессиональные услуги переезда в Кфар-Сабе. Учитываем особенности города и обеспечиваем бережную перевозку вашего имущества.',
+            en: 'Professional moving services in Kfar Saba. We take into account the characteristics of the city and ensure careful transportation of your property.',
+            he: 'שירותי הובלה מקצועיים בכפר סבא. אנו לוקחים בחשבון את מאפייני העיר ומבטיחים הובלה זהירה של הרכוש שלך.'
+        },
+        content: {
+            ru: `<h2>Кфар-Саба - комфортный переезд в зеленый город</h2>
+            <p>Кфар-Саба известна своими парками и качественной жизнью. Мы делаем переезд в этот город максимально комфортным.</p>`,
+            en: `<h2>Kfar Saba - Comfortable Move to the Green City</h2>
+            <p>Kfar Saba is known for its parks and quality of life. We make moving to this city as comfortable as possible.</p>`,
+            he: `<h2>כפר סבא - מעבר נוח לעיר הירוקה</h2>
+            <p>כפר סבא ידועה בפארקים שלה ובאיכות חיים. אנו הופכים את המעבר לעיר זו לנוח ככל האפשר.</p>`
+        },
+        image: '/gruzchiki12.jpg',
+        readTime: {
+            ru: '5 мин чтения',
+            en: '5 min read',
+            he: '5 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд в кфар-сабу', 'грузоперевозки в кфар-сабе', 'перевозки мебели в кфар-сабе', 'квартирный переезд в кфар-сабе', 'офисный переезд в кфар-сабе', 'зеленый город переезд'],
+            en: ['moving to kfar saba', 'kfar saba moving services', 'furniture moving in kfar saba', 'apartment moving in kfar saba', 'office moving in kfar saba', 'green city moving'],
+            he: ['מעבר לכפר סבא', 'הובלות בכפר סבא', 'הובלת רהיטים בכפר סבא', 'מעבר דירה בכפר סבא', 'מעבר משרד בכפר סבא', 'מעבר לעיר ירוקה']
+        }
+    },
+
+    'tel-aviv-moving': {
+        title: {
+            ru: 'Переезд в Тель-Авиве: сложные городские перевозки',
+            en: 'Moving in Tel Aviv: Complex Urban Transportation',
+            he: 'הובלות בתל אביב: הובלות עירוניות מורכבות'
+        },
+        description: {
+            ru: 'Специализированные услуги переезда в Тель-Авиве с учетом особенностей мегаполиса. Парковка, узкие улицы, высотные дома.',
+            en: 'Specialized moving services in Tel Aviv considering the characteristics of the metropolis. Parking, narrow streets, high-rise buildings.',
+            he: 'שירותי הובלה מיוחדים בתל אביב בהתחשב במאפייני המטרופולין. חניה, רחובות צרים, בניינים גבוהים.'
+        },
+        content: {
+            ru: `<h2>Тель-Авив - переезд в условиях мегаполиса</h2>
+            <p>Переезд в Тель-Авиве требует особого подхода. Мы знаем все особенности города и обеспечиваем беспроблемный переезд.</p>`,
+            en: `<h2>Tel Aviv - Moving in Metropolis Conditions</h2>
+            <p>Moving in Tel Aviv requires a special approach. We know all the features of the city and ensure trouble-free moving.</p>`,
+            he: `<h2>תל אביב - מעבר בתנאי מטרופולין</h2>
+            <p>מעבר בתל אביב דורש גישה מיוחדת. אנו מכירים את כל מאפייני העיר ומבטיחים מעבר ללא בעיות.</p>`
+        },
+        image: '/gruzchiki13.jpg',
+        readTime: {
+            ru: '6 мин чтения',
+            en: '6 min read',
+            he: '6 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд в тель-авиве', 'грузоперевозки в тель-авиве', 'тель-авив переезд квартиры', 'перевозки в центре тель-авива', 'высотные дома переезд', 'городские перевозки тель-авив'],
+            en: ['moving in tel aviv', 'tel aviv moving services', 'tel aviv apartment moving', 'moving in central tel aviv', 'high-rise building moving', 'urban transportation tel aviv'],
+            he: ['מעבר בתל אביב', 'הובלות בתל אביב', 'מעבר דירה בתל אביב', 'הובלות במרכז תל אביב', 'מעבר לבניינים גבוהים', 'הובלות עירוניות תל אביב']
+        }
+    },
+
+    'big-moves': {
+        title: {
+            ru: 'Крупные перевозки: организация масштабных переездов',
+            en: 'Big Moves: Organization of Large-Scale Relocations',
+            he: 'הובלות גדולות: ארגון מעברים בקנה מידה גדול'
+        },
+        description: {
+            ru: 'Профессиональная организация крупных переездов: виллы, большие квартиры, офисные центры. Специальная техника и оборудование.',
+            en: 'Professional organization of large moves: villas, large apartments, office centers. Special equipment and machinery.',
+            he: 'ארגון מקצועי של מעברים גדולים: וילות, דירות גדולות, מרכזי משרדים. ציוד וכלים מיוחדים.'
+        },
+        content: {
+            ru: `<h2>Крупные перевозки - профессиональный подход</h2>
+            <p>Организация масштабных переездов требует специальных знаний и оборудования. Мы имеем опыт работы с крупными объектами.</p>`,
+            en: `<h2>Big Moves - Professional Approach</h2>
+            <p>Organization of large-scale moves requires special knowledge and equipment. We have experience with large facilities.</p>`,
+            he: `<h2>הובלות גדולות - גישה מקצועית</h2>
+            <p>ארגון מעברים בקנה מידה גדול דורש ידע וציוד מיוחד. יש לנו ניסיון עם מתקנים גדולים.</p>`
+        },
+        image: '/gruzchiki14.jpg',
+        readTime: {
+            ru: '7 мин чтения',
+            en: '7 min read',
+            he: '7 דקות קריאה'
+        },
+        keywords: {
+            ru: ['крупные перевозки', 'масштабные переезды', 'переезд виллы', 'большие квартиры переезд', 'офисные центры переезд', 'специальная техника перевозки'],
+            en: ['big moves', 'large-scale relocations', 'villa moving', 'large apartment moving', 'office center moving', 'special equipment transportation'],
+            he: ['הובלות גדולות', 'מעברים בקנה מידה גדול', 'מעבר וילה', 'מעבר דירות גדולות', 'מעבר מרכז משרדים', 'הובלת ציוד מיוחד']
+        }
+    },
+
+    'apartment-moving': {
+        title: {
+            ru: 'Переезд квартиры: полный комплекс услуг',
+            en: 'Apartment Moving: Complete Range of Services',
+            he: 'הובלות דירות: מגוון שירותים מלא'
+        },
+        description: {
+            ru: 'Комплексные услуги по переезду квартиры: упаковка, погрузка, транспортировка, разгрузка, расстановка мебели. Под ключ.',
+            en: 'Comprehensive apartment moving services: packing, loading, transportation, unloading, furniture arrangement. Turnkey.',
+            he: 'שירותי הובלת דירות מקיפים: אריזה, טעינה, הובלה, פריקה, סידור רהיטים. מפתח.'
+        },
+        content: {
+            ru: `<h2>Квартирный переезд - забота о каждой детали</h2>
+            <p>Мы берем на себя все заботы по организации переезда вашей квартиры. От упаковки до расстановки мебели на новом месте.</p>`,
+            en: `<h2>Apartment Moving - Care for Every Detail</h2>
+            <p>We take care of all the concerns of organizing your apartment move. From packing to furniture arrangement in the new place.</p>`,
+            he: `<h2>מעבר דירה - דאגה לכל פרט</h2>
+            <p>אנו לוקחים על עצמנו את כל הדאגות לארגון מעבר הדירה שלך. מהאריזה ועד לסידור הרהיטים במקום החדש.</p>`
+        },
+        image: '/gruzchiki15.jpg',
+        readTime: {
+            ru: '6 мин чтения',
+            en: '6 min read',
+            he: '6 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд квартиры', 'квартирные перевозки', 'услуги переезда квартиры', 'переезд под ключ', 'упаковка квартиры', 'расстановка мебели при переезде'],
+            en: ['apartment moving', 'apartment transportation', 'apartment moving services', 'turnkey moving', 'apartment packing', 'furniture arrangement when moving'],
+            he: ['מעבר דירה', 'הובלות דירות', 'שירותי מעבר דירה', 'מעבר מפתח', 'אריזת דירה', 'סידור רהיטים במעבר']
+        }
+    },
+
+    'herzliya-moving': {
+        title: {
+            ru: 'Переезд в Герцлии: премиальные услуги грузоперевозок',
+            en: 'Moving in Herzliya: Premium Moving Services',
+            he: 'הובלות בהרצליה: שירותי הובלה פרמיים'
+        },
+        description: {
+            ru: 'Элитные услуги переезда в Герцлии. Бережное отношение к вашему имуществу, страховка, индивидуальный подход.',
+            en: 'Elite moving services in Herzliya. Careful attitude to your property, insurance, individual approach.',
+            he: 'שירותי הובלה elit בהרצליה. יחס זהיר לרכושך, ביטוח, גישה אישית.'
+        },
+        content: {
+            ru: `<h2>Герцлия - переезд с премиальным сервисом</h2>
+            <p>Герцлия известна своими высокими стандартами жизни. Мы соответствуем этим стандартам в наших услугах переезда.</p>`,
+            en: `<h2>Herzliya - Moving with Premium Service</h2>
+            <p>Herzliya is known for its high living standards. We meet these standards in our moving services.</p>`,
+            he: `<h2>הרצליה - מעבר עם שירות פרמיום</h2>
+            <p>הרצליה ידועה בסטנדרטים הגבוהים של החיים. אנו עומדים בסטנדרטים אלה בשירותי ההובלה שלנו.</p>`
+        },
+        image: '/gruzchiki16.jpg',
+        readTime: {
+            ru: '5 мин чтения',
+            en: '5 min read',
+            he: '5 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд в герцлии', 'грузоперевозки в герцлии', 'премиальные перевозки', 'элитный переезд', 'герцлия питуах переезд', 'услуги переезда для вип'],
+            en: ['moving to herzliya', 'herzliya moving services', 'premium moving', 'elite relocation', 'herzliya pituach moving', 'vip moving services'],
+            he: ['מעבר להרצליה', 'הובלות בהרצליה', 'הובלות פרמיות', 'מעבר elit', 'מעבר הרצליה פיתוח', 'שירותי מעבר ל-vip']
+        }
+    },
+
+    'rosh-haayin-moving': {
+        title: {
+            ru: 'Переезд в Рош-ха-Аин: надежные грузоперевозки в развивающемся городе',
+            en: 'Moving in Rosh HaAyin: Reliable Moving Services in the Developing City',
+            he: 'הובלות בראש העין: שירותי הובלה אמינים בעיר המתפתחת'
+        },
+        description: {
+            ru: 'Профессиональные услуги переезда в Рош-ха-Аин. Учитываем динамичное развитие города и растущие потребности жителей.',
+            en: 'Professional moving services in Rosh HaAyin. We consider the dynamic development of the city and the growing needs of residents.',
+            he: 'שירותי הובלה מקצועיים בראש העין. אנו מתחשבים בהתפתחות הדינמית של העיר ובצרכים הגדלים של התושבים.'
+        },
+        content: {
+            ru: `<h2>Рош-ха-Аин - переезд в город возможностей</h2>
+            <p>Рош-ха-Аин активно развивается и привлекает новые семьи. Мы помогаем с комфортным переездом в этот перспективный город.</p>`,
+            en: `<h2>Rosh HaAyin - Moving to the City of Opportunities</h2>
+            <p>Rosh HaAyin is actively developing and attracting new families. We help with comfortable relocation to this promising city.</p>`,
+            he: `<h2>ראש העין - מעבר לעיר ההזדמנויות</h2>
+            <p>ראש העין מתפתחת באופן פעיל ומושכת משפחות חדשות. אנו מסייעים עם מעבר נוח לעיר מבטיחה זו.</p>`
+        },
+        image: '/gruzchiki17.jpg',
+        readTime: {
+            ru: '4 мин чтения',
+            en: '4 min read',
+            he: '4 דקות קריאה'
+        },
+        keywords: {
+            ru: ['переезд в рош-ха-аин', 'грузоперевозки в рош-ха-аин', 'переезд в развивающийся город', 'новые районы рош-ха-аин', 'перевозки мебели в рош-ха-аин'],
+            en: ['moving to rosh haayin', 'rosh haayin moving services', 'moving to developing city', 'new neighborhoods rosh haayin', 'furniture moving in rosh haayin'],
+            he: ['מעבר לראש העין', 'הובלות בראש העין', 'מעבר לעיר מתפתחת', 'שכונות חדשות ראש העין', 'הובלת רהיטים בראש העין']
+        }
+    },
+
+    'furniture-moving': {
+        title: {
+            ru: 'Перевозка мебели: бережная транспортировка любых предметов',
+            en: 'Furniture Moving: Careful Transportation of Any Items',
+            he: 'הובלות רהיטים: הובלה זהירה של כל הפריטים'
+        },
+        description: {
+            ru: 'Специализированные услуги по перевозке мебели: диваны, шкафы, кровати, столы. Разборка, упаковка, сборка на новом месте.',
+            en: 'Specialized furniture moving services: sofas, cabinets, beds, tables. Disassembly, packing, assembly in the new place.',
+            he: 'שירותי הובלת רהיטים מיוחדים: ספות, ארונות, מיטות, שולחנות. פירוק, אריזה, הרכבה במקום החדש.'
+        },
+        content: {
+            ru: `<h2>Перевозка мебели - профессиональный подход</h2>
+            <p>Каждый предмет мебели требует особого подхода при перевозке. Мы гарантируем сохранность вашей мебели.</p>`,
+            en: `<h2>Furniture Moving - Professional Approach</h2>
+            <p>Each piece of furniture requires a special approach when moving. We guarantee the safety of your furniture.</p>`,
+            he: `<h2>הובלת רהיטים - גישה מקצועית</h2>
+            <p>כל פריט רהיטים דורש גישה מיוחדת בעת המעבר. אנו מבטיחים את בטיחות הרהיטים שלך.</p>`
+        },
+        image: '/gruzchiki18.jpg',
+        readTime: {
+            ru: '5 мин чтения',
+            en: '5 min read',
+            he: '5 דקות קריאה'
+        },
+        keywords: {
+            ru: ['перевозка мебели', 'транспортировка мебели', 'перевозка диванов', 'перевозка шкафов', 'разборка мебели', 'сборка мебели после переезда'],
+            en: ['furniture moving', 'furniture transportation', 'sofa moving', 'cabinet moving', 'furniture disassembly', 'furniture assembly after moving'],
+            he: ['הובלת רהיטים', 'הובלת רהיטים', 'הובלת ספות', 'הובלת ארונות', 'פירוק רהיטים', 'הרכבת רהיטים לאחר מעבר']
+        }
+    },
+
+    'saturday-moving': {
+        title: {
+            ru: 'Перевозки в субботу: услуги для особых случаев',
+            en: 'Moving on Saturday: Services for Special Occasions',
+            he: 'הובלות בשבת: שירותים לאירועים מיוחדים'
+        },
+        description: {
+            ru: 'Специальные услуги перевозки в субботу для срочных и особых случаев. Предварительное согласование и подготовка.',
+            en: 'Special moving services on Saturday for urgent and special occasions. Preliminary coordination and preparation.',
+            he: 'שירותי הובלה מיוחדים בשבת לאירועים דחופים ומיוחדים. תיאום והכנה מוקדמים.'
+        },
+        content: {
+            ru: `<h2>Перевозки в субботу - решение особых ситуаций</h2>
+            <p>Иногда обстоятельства требуют переезда в субботу. Мы предоставляем такие услуги с учетом всех особенностей.</p>`,
+            en: `<h2>Moving on Saturday - Solution for Special Situations</h2>
+            <p>Sometimes circumstances require moving on Saturday. We provide such services taking into account all features.</p>`,
+            he: `<h2>הובלות בשבת - פתרון למצבים מיוחדים</h2>
+            <p>לפעמים נסיבות דורשות מעבר בשבת. אנו מספקים שירותים כאלה תוך התחשבות בכל המאפיינים.</p>`
+        },
+        image: '/gruzchiki19.jpg',
+        readTime: {
+            ru: '4 мин чтения',
+            en: '4 min read',
+            he: '4 דקות קריאה'
+        },
+        keywords: {
+            ru: ['перевозки в субботу', 'субботние переезды', 'срочный переезд в субботу', 'особые случаи переезда', 'перевозки в выходные'],
+            en: ['moving on saturday', 'saturday moves', 'urgent moving on saturday', 'special moving occasions', 'weekend moving'],
+            he: ['הובלות בשבת', 'מעברים בשבת', 'מעבר דחוף בשבת', 'אירועי מעבר מיוחדים', 'הובלות בסופ"ש']
+        }
     }
+}
+
+
+type Props = {
+    params: Promise<{ lang: Language; id: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -820,54 +1175,13 @@ export default async function ArticlePage({ params }: Props) {
         notFound()
     }
 
-    const processContent = (content: string) => {
-        return content.replace(/\/\[lang\]\//g, `/${lang}/`)
-    }
+    const backUrl = lang === 'he' ? '/' : `/${lang}`
 
     return (
-        <div className={styles.articlePage}>
-            <div className={styles.container}>
-                <Link href={`/${lang}/`}>
-                    <Button
-                        type="text"
-                        icon={<ArrowLeftOutlined />}
-                        className={styles.backButton}
-                    >
-                        {{
-                            ru: 'Назад',
-                            en: 'Back',
-                            he: 'לַחֲזוֹר'
-                        }[lang]}
-                    </Button>
-                </Link>
-
-                <article className={styles.article}>
-                    <header className={styles.articleHeader}>
-                        <h1 className={styles.articleTitle}>{article.title[lang]}</h1>
-                        <div className={styles.articleMeta}>
-                            <span className={styles.readTime}>{article.readTime[lang]}</span>
-                        </div>
-                        {article.image && (
-                            <div className={styles.articleImage}>
-                                <Image
-                                    src={article.image}
-                                    alt={article.title[lang]}
-                                    loading="lazy"
-                                    width={1000}
-                                    height={1000}
-                                />
-                            </div>
-                        )}
-                    </header>
-
-                    <div
-                        className={styles.articleContent}
-                        dangerouslySetInnerHTML={{
-                            __html: processContent(article.content[lang])
-                        }}
-                    />
-                </article>
-            </div>
-        </div>
+        <ArticleContent
+            article={article}
+            lang={lang}
+            backUrl={backUrl}
+        />
     )
 }
