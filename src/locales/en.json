@@ -70,11 +70,19 @@
     "items": [
       {
         "name": "Michael",
-        "text": "Excellent service! Quickly and carefully moved all furniture."
+        "text": "Fast, professional, and stress-free! The team packed everything carefully and delivered on time. Couldn’t have asked for a smoother move."
       },
       {
-        "name": "Anna",
-        "text": "Professional team, very satisfied with the move."
+        "name": "Jessica",
+        "text": "We moved with our whole family, and I was worried it would be a nightmare. But these guys made it so easy! They arrived on time, handled everything with care, and even helped set up furniture in the new place. Truly amazing service!"
+      },
+      {
+        "name": "Ethan",
+        "text": "I didn’t have time to supervise the move, but they handled it like pros. Packing, loading, transport — everything was done perfectly and right on schedule. Highly recommend for anyone with a busy lifestyle."
+      },
+      {
+        "name": "Madison",
+        "text": "Excellent crew! Super friendly, punctual, and careful with our belongings. What’s usually a stressful process turned out to be quick and easy. I’ll definitely recommend them to friends and family."
       }
     ]
   },

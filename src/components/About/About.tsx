@@ -211,7 +211,7 @@ export function About({lang}: AboutProps) {
                         <span>{getLocalizedText('Специалистов', 'מומחים', 'Specialists')}</span>
                     </div>
                     <div className={styles.stat}>
-                        <strong>5+</strong>
+                        <strong>10+</strong>
                         <span>{getLocalizedText('Лет опыта', 'שנים ניסיון', 'Years of experience')}</span>
                     </div>
                     <div className={styles.stat}>

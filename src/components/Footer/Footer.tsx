@@ -27,7 +27,7 @@ export function Footer({lang}: FooterProps) {
                             <strong>{t.footer.phone}:</strong> +972-123-4567
                         </div>
                         <div className={styles.contactItem}>
-                            <strong>{t.footer.email}:</strong> info@moveisrael.com
+                            <strong>{t.footer.email}:</strong> bullmovings@gmail.com
                         </div>
                     </div>
                 </div>

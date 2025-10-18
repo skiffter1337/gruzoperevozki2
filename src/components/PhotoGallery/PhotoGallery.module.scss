@@ -435,3 +435,182 @@
     margin-bottom: 40px;
   }
 }
+
+// Секция с видео
+.videoSection {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.videoTitle {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-dark);
+  margin-bottom: 40px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #1890ff, #096dd9);
+    border-radius: 2px;
+  }
+}
+
+// Видео слайдер
+.videoCarouselWrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.videoCarousel {
+  border-radius: 15px;
+  overflow: hidden;
+
+  .slick-list {
+    border-radius: 15px;
+  }
+
+  .slick-track {
+    display: flex !important;
+  }
+
+  .slick-slide {
+    height: auto;
+
+    & > div {
+      height: 100%;
+    }
+  }
+}
+
+.videoSlide {
+  height: auto;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.video {
+  width: 100%;
+  height: 450px;
+  border: none;
+  display: block;
+
+  @media (max-width: 768px) {
+    height: 350px;
+  }
+
+  @media (max-width: 480px) {
+    height: 250px;
+  }
+}
+
+
+
+
+.videoCarouselDots {
+  bottom: 20px;
+
+  li {
+    margin: 0 6px;
+
+    button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5) !important;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &.slick-active {
+      button {
+        background: #fff !important;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+.videoGradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+                  45deg,
+                  transparent 0%,
+                  rgba(255, 255, 255, 0.05) 50%,
+                  transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.videoPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+          radial-gradient(circle at 30% 70%, rgba(120, 119, 198, 0.02) 0%, transparent 50%),
+          radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .videoSection {
+    margin-top: 40px;
+  }
+
+  .videoTitle {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+
+  .videoSlide {
+    min-height: 280px;
+    background: black;
+  }
+
+  .videoInfo {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoTitle {
+    font-size: 1.5rem;
+  }
+
+
+  .videoInfo {
+    padding: 10px;
+  }
+
+  .videoSlideTitle {
+    font-size: 1.2rem;
+  }
+}

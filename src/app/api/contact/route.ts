@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 
         const {data, error} = await resend.emails.send({
             from: `MoveIsrael <${fromEmail}>`,
-            to: process.env.EMAIL_TO || '1ilya.shemyakin@gmail.com',
+            to: process.env.EMAIL_TO || 'bullmovings@gmail.com',
             subject: `Новая заявка на переезд от ${formData.name || 'Клиент'}`,
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8f9fa; padding: 20px; border-radius: 10px;">

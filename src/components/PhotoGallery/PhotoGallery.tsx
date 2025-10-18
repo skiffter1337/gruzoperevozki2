@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import {Carousel} from 'antd'
 import styles from './PhotoGallery.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
-import {GalleryPhoto} from "@/components/PhotoGallery/model/types";
+import {GalleryPhoto, GalleryVideo} from "@/components/PhotoGallery/model/types";
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -21,7 +21,6 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
     useEffect(() => {
         setMounted(true)
     }, [])
-
 
     const photos: GalleryPhoto[] = [
         {
@@ -52,8 +51,23 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
         {
             id: 6,
             src: '/works6.jpg',
-            alt: t.gallery.photos.find(p => p.id === 5)?.alt || ""
+            alt: t.gallery.photos.find(p => p.id === 6)?.alt || ""
         },
+    ]
+
+    const videos: GalleryVideo[] = [
+        {
+            id: 1,
+            youtubeId: "5-PK3lPsyDg?si=YEJVYeTo28Dc1Lwc",
+        },
+        {
+            id: 2,
+            youtubeId: "5-PK3lPsyDg?si=YEJVYeTo28Dc1Lwc",
+        },
+        {
+            id: 3,
+            youtubeId: "5-PK3lPsyDg?si=YEJVYeTo28Dc1Lwc",
+        }
     ]
 
     const placeholderImages = [
@@ -69,7 +83,7 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
                         <div className={styles.skeletonSlide}></div>
                     </div>
                     <div className={styles.videoSection}>
-                        <h3 className={styles.videoTitle}>{t.gallery.videoTitle || "Наше видео"}</h3>
+                        <h3 className={styles.videoTitle}>{t.gallery.videoTitle || "Наши видео"}</h3>
                         <div className={styles.skeletonVideo}></div>
                     </div>
                 </div>
@@ -82,6 +96,7 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
             <div className={styles.container}>
                 <h2 className={styles.title}>{t.gallery.title}</h2>
 
+                {/* Фотогалерея */}
                 <div className={styles.carouselWrapper}>
                     <Carousel
                         speed={1000}
@@ -111,9 +126,9 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
                                         className={styles.photoPlaceholder}
                                         style={{display: 'none'}}
                                     >
-                    <span className={styles.placeholderIcon}>
-                      {placeholderImages[index] || '📷'}
-                    </span>
+                                        <span className={styles.placeholderIcon}>
+                                            {placeholderImages[index] || '📷'}
+                                        </span>
                                         <span className={styles.placeholderText}>{photo.alt}</span>
                                     </div>
                                 </div>
@@ -126,17 +141,37 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
                     <div className={styles.pattern}></div>
                 </div>
 
+                {/* Видеогалерея */}
                 <div className={styles.videoSection}>
-                    <h3 className={styles.videoTitle}>{t.gallery.videoTitle}</h3>
-                    <div className={styles.videoWrapper}>
-                        <iframe
-                            src="https://www.youtube.com/embed/9M0D9NyhV9E"
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className={styles.video}
-                        ></iframe>
+                    <h3 className={styles.videoTitle}>{t.gallery.videoTitle || "Наши видео"}</h3>
+
+                    <div className={styles.videoCarouselWrapper}>
+                        <Carousel
+                            speed={800}
+                            dots={{className: styles.videoCarouselDots}}
+                            arrows={false}
+                            pauseOnHover={true}
+                            className={styles.videoCarousel}
+                            effect="fade"
+                        >
+                            {videos.map((video) => (
+                                <div key={video.id} className={styles.videoSlide}>
+                                    <div className={styles.videoContainer}>
+                                        <iframe
+                                            src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            className={styles.video}
+                                        ></iframe>
+                                    </div>
+                                </div>
+                            ))}
+                        </Carousel>
+
+                        {/* Декоративные элементы для видео слайдера */}
+                        <div className={styles.videoGradientOverlay}></div>
+                        <div className={styles.videoPattern}></div>
                     </div>
                 </div>
 
