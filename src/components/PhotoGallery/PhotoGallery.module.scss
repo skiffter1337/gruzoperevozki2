@@ -40,6 +40,10 @@
   margin: 0 auto 80px;
   border-radius: 20px;
   overflow: hidden;
+
+  .slick-list {
+    touch-action: pan-y;
+  }
 }
 
 .carousel {
@@ -48,23 +52,33 @@
 
   .slick-list {
     border-radius: 20px;
+    touch-action: pan-y;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 
   .slick-track {
     display: flex !important;
+    user-select: none;
   }
 
   .slick-slide {
     height: auto;
+    touch-action: pan-y;
 
     & > div {
       height: 100%;
+      touch-action: pan-y;
     }
   }
 }
 
 .slide {
   height: 500px;
+  touch-action: pan-y;
 
   @media (max-width: 768px) {
     height: 400px;
@@ -82,6 +96,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: pan-y;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .photo {
@@ -89,6 +109,8 @@
   height: 100%;
   object-fit: contain;
   transition: transform 0.5s ease;
+  user-select: none;
+  -webkit-user-drag: none;
 
   .slick-active & {
     transform: scale(1.02);
@@ -105,12 +127,19 @@
   background: linear-gradient(135deg, #1890ff, #52c41a);
   color: white;
   padding: 20px;
+  touch-action: pan-y;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .placeholderIcon {
   font-size: 4rem;
   margin-bottom: 20px;
   display: block;
+  user-select: none;
 
   @media (max-width: 768px) {
     font-size: 3rem;
@@ -122,6 +151,7 @@
   font-weight: 500;
   text-align: center;
   max-width: 300px;
+  user-select: none;
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -130,6 +160,7 @@
 
 .carouselDots {
   bottom: 30px;
+  z-index: 3;
 
   li {
     margin: 0 6px;
@@ -157,10 +188,10 @@
   }
 }
 
-// Секция с видео
 .videoSection {
   margin-top: 60px;
   text-align: center;
+  position: relative;
 }
 
 .videoTitle {
@@ -183,20 +214,55 @@
   }
 }
 
-.videoWrapper {
+.videoCarouselWrapper {
   position: relative;
-  width: 100%;
   max-width: 800px;
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  .slick-list {
+    touch-action: pan-y;
   }
+}
+
+.videoCarousel {
+  border-radius: 15px;
+  overflow: hidden;
+
+  .slick-list {
+    border-radius: 15px;
+    touch-action: pan-y;
+  }
+
+  .slick-track {
+    display: flex !important;
+    user-select: none;
+  }
+
+  .slick-slide {
+    height: auto;
+    touch-action: pan-y;
+
+    & > div {
+      height: 100%;
+      touch-action: pan-y;
+    }
+  }
+}
+
+.videoSlide {
+  height: auto;
+  touch-action: pan-y;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  touch-action: pan-y;
 }
 
 .video {
@@ -204,6 +270,7 @@
   height: 450px;
   border: none;
   display: block;
+  user-select: none;
 
   @media (max-width: 768px) {
     height: 350px;
@@ -214,7 +281,132 @@
   }
 }
 
-// Декоративные элементы
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: #1890ff;
+
+  &:hover {
+    background: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.navArrowPrev {
+  left: 20px;
+
+  @media (max-width: 768px) {
+    left: 10px;
+  }
+
+  @media (max-width: 480px) {
+    left: 5px;
+  }
+}
+
+.navArrowNext {
+  right: 20px;
+
+  @media (max-width: 768px) {
+    right: 10px;
+  }
+
+  @media (max-width: 480px) {
+    right: 5px;
+  }
+}
+
+.videoCarouselDots {
+  bottom: 20px;
+  z-index: 5;
+
+  li {
+    margin: 0 6px;
+
+    button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5) !important;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &.slick-active {
+      button {
+        background: #fff !important;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+.videoGradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+                  45deg,
+                  transparent 0%,
+                  rgba(255, 255, 255, 0.05) 50%,
+                  transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.videoPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 30% 70%, rgba(120, 119, 198, 0.02) 0%, transparent 50%),
+  radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .gradientOverlay {
   position: absolute;
   top: 0;
@@ -237,14 +429,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
-          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  background-image: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
+  radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: 1;
 }
 
-// Статистика
 .stats {
   display: flex;
   justify-content: center;
@@ -284,7 +474,6 @@
   }
 }
 
-// Скелетон загрузки
 .skeletonCarousel {
   height: 500px;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -331,7 +520,6 @@
   }
 }
 
-// Анимации
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -347,7 +535,6 @@
   animation: fadeIn 1s ease-out;
 }
 
-// Адаптивность
 @media (max-width: 768px) {
   .gallery {
     padding: 60px 0;
@@ -433,184 +620,5 @@
   .skeletonCarousel {
     height: 300px;
     margin-bottom: 40px;
-  }
-}
-
-// Секция с видео
-.videoSection {
-  margin-top: 60px;
-  text-align: center;
-}
-
-.videoTitle {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  color: var(--color-dark);
-  margin-bottom: 40px;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, #1890ff, #096dd9);
-    border-radius: 2px;
-  }
-}
-
-// Видео слайдер
-.videoCarouselWrapper {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.videoCarousel {
-  border-radius: 15px;
-  overflow: hidden;
-
-  .slick-list {
-    border-radius: 15px;
-  }
-
-  .slick-track {
-    display: flex !important;
-  }
-
-  .slick-slide {
-    height: auto;
-
-    & > div {
-      height: 100%;
-    }
-  }
-}
-
-.videoSlide {
-  height: auto;
-}
-
-.videoContainer {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.video {
-  width: 100%;
-  height: 450px;
-  border: none;
-  display: block;
-
-  @media (max-width: 768px) {
-    height: 350px;
-  }
-
-  @media (max-width: 480px) {
-    height: 250px;
-  }
-}
-
-
-
-
-.videoCarouselDots {
-  bottom: 20px;
-
-  li {
-    margin: 0 6px;
-
-    button {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5) !important;
-      border: 2px solid transparent;
-      transition: all 0.3s ease;
-
-      &::before {
-        display: none;
-      }
-    }
-
-    &.slick-active {
-      button {
-        background: #fff !important;
-        transform: scale(1.2);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      }
-    }
-  }
-}
-
-.videoGradientOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-                  45deg,
-                  transparent 0%,
-                  rgba(255, 255, 255, 0.05) 50%,
-                  transparent 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-.videoPattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-          radial-gradient(circle at 30% 70%, rgba(120, 119, 198, 0.02) 0%, transparent 50%),
-          radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .videoSection {
-    margin-top: 40px;
-  }
-
-  .videoTitle {
-    font-size: 1.75rem;
-    margin-bottom: 30px;
-  }
-
-  .videoSlide {
-    min-height: 280px;
-    background: black;
-  }
-
-  .videoInfo {
-    padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .videoTitle {
-    font-size: 1.5rem;
-  }
-
-
-  .videoInfo {
-    padding: 10px;
-  }
-
-  .videoSlideTitle {
-    font-size: 1.2rem;
   }
 }

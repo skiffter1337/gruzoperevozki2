@@ -14,9 +14,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang = 'he' } = await params
 
     const titles = {
-        he: 'גרירה והובלות | MoveIsrael',
-        ru: 'Грузоперевозки и переезды | MoveIsrael',
-        en: 'Moving and Transportation | MoveIsrael'
+        he: 'גרירה והובלות | Bull Moving',
+        ru: 'Грузоперевозки и переезды | Bull Moving',
+        en: 'Moving and Transportation | Bull Moving'
     }
 
     const descriptions = {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     return {
         title: {
-            template: '%s | MoveIsrael',
+            template: '%s | Bull Moving',
             default: titles[lang as keyof typeof titles] || titles.he,
         },
         description: descriptions[lang as keyof typeof descriptions] || descriptions.he,

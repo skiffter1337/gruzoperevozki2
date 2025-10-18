@@ -11,7 +11,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
 
     if (lang === 'he') {
         return {
-            title: 'גרירה והובלות | MoveIsrael',
+            title: 'גרירה והובלות | Bull Moving',
             description: 'שירותי גרירה והובלות מקצועיים בישראל',
         }
     }
@@ -36,7 +36,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
         },
         robots: 'index, follow',
         alternates: {
-            canonical: `https://moveisrael.com/${lang === 'he' ? '' : lang}`,
+            canonical: `https://moveisrael.com/${lang === 'he' ? '' : lang}`, // TODO поменять на реальный домен
             languages: {
                 'ru': 'https://moveisrael.com/ru',
                 'he': 'https://moveisrael.com',

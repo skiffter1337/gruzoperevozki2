@@ -17,13 +17,40 @@
   color: var(--color-dark);
 }
 
-.carousel {
+.carouselWrapper {
   max-width: 800px;
   margin: 0 auto;
+
+  .slick-list {
+    touch-action: pan-y;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+.carousel {
+  .slick-track {
+    display: flex !important;
+    user-select: none;
+  }
+
+  .slick-slide {
+    height: auto;
+    touch-action: pan-y;
+
+    & > div {
+      height: 100%;
+      touch-action: pan-y;
+    }
+  }
 }
 
 .slide {
   padding: 0 20px;
+  touch-action: pan-y;
 }
 
 .reviewCard {
@@ -31,11 +58,18 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: #fff;
+  cursor: grab;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .reviewContent {
   padding: 40px;
   text-align: center;
+  touch-action: pan-y;
 }
 
 .reviewText {
@@ -44,12 +78,14 @@
   color: #666;
   margin-bottom: 20px;
   font-style: italic;
+  user-select: none;
 }
 
 .reviewAuthor {
   font-weight: 600;
   color: var(--color-dark);
   font-size: 1rem;
+  user-select: none;
 }
 
 .carouselDots {

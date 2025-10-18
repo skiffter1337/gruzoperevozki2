@@ -1,10 +1,10 @@
 'use client'
 
-import {useEffect, useState} from 'react'
-import {Carousel} from 'antd'
+import { useEffect, useState, useRef, useCallback } from 'react'
+import { Carousel } from 'antd'
 import styles from './PhotoGallery.module.scss'
-import {useTranslation} from "@/hooks/use-translation";
-import {GalleryPhoto, GalleryVideo} from "@/components/PhotoGallery/model/types";
+import { useTranslation } from "@/hooks/use-translation"
+import { GalleryPhoto, GalleryVideo } from "@/components/PhotoGallery/model/types"
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -12,11 +12,17 @@ interface PhotoGalleryProps {
     lang: string
 }
 
-export function PhotoGallery({lang}: PhotoGalleryProps) {
+type CarouselRef = {
+    next: () => void
+    prev: () => void
+}
+
+export function PhotoGallery({ lang }: PhotoGalleryProps) {
     const language = (['ru', 'he', 'en'].includes(lang) ? lang : 'en') as Language
     const t = useTranslation(language)
 
     const [mounted, setMounted] = useState(false)
+    const videoCarouselRef = useRef<CarouselRef | null>(null)
 
     useEffect(() => {
         setMounted(true)
@@ -58,21 +64,33 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
     const videos: GalleryVideo[] = [
         {
             id: 1,
-            youtubeId: "5-PK3lPsyDg?si=YEJVYeTo28Dc1Lwc",
+            youtubeId: "5-PK3lPsyDg",
         },
         {
             id: 2,
-            youtubeId: "5-PK3lPsyDg?si=YEJVYeTo28Dc1Lwc",
+            youtubeId: "5-PK3lPsyDg",
         },
         {
             id: 3,
-            youtubeId: "5-PK3lPsyDg?si=YEJVYeTo28Dc1Lwc",
+            youtubeId: "5-PK3lPsyDg",
         }
     ]
 
     const placeholderImages = [
         '🚛', '📦', '🏢', '👥', '🏠', '📱'
     ]
+
+    const nextVideo = useCallback(() => {
+        videoCarouselRef.current?.next()
+    }, [])
+
+    const prevVideo = useCallback(() => {
+        videoCarouselRef.current?.prev()
+    }, [])
+
+    const setCarouselRef = useCallback((ref: CarouselRef | null) => {
+        videoCarouselRef.current = ref
+    }, [])
 
     if (!mounted) {
         return (
@@ -96,15 +114,18 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
             <div className={styles.container}>
                 <h2 className={styles.title}>{t.gallery.title}</h2>
 
-                {/* Фотогалерея */}
                 <div className={styles.carouselWrapper}>
                     <Carousel
-                        speed={1000}
-                        dots={{className: styles.carouselDots}}
+                        speed={100}
+                        dots={{ className: styles.carouselDots }}
                         arrows={false}
-                        pauseOnHover={true}
                         className={styles.carousel}
                         effect="fade"
+                        swipe={true}
+                        touchMove={true}
+                        draggable={true}
+                        touchThreshold={10}
+                        swipeToSlide={true}
                     >
                         {photos.map((photo, index) => (
                             <div key={photo.id} className={styles.slide}>
@@ -120,15 +141,16 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
                                                 placeholder.style.display = 'flex'
                                             }
                                         }}
+                                        style={{ pointerEvents: 'none' }}
                                     />
                                     <div
                                         id={`placeholder-${photo.id}`}
                                         className={styles.photoPlaceholder}
-                                        style={{display: 'none'}}
+                                        style={{ display: 'none' }}
                                     >
-                                        <span className={styles.placeholderIcon}>
-                                            {placeholderImages[index] || '📷'}
-                                        </span>
+                    <span className={styles.placeholderIcon}>
+                      {placeholderImages[index] || '📷'}
+                    </span>
                                         <span className={styles.placeholderText}>{photo.alt}</span>
                                     </div>
                                 </div>
@@ -136,45 +158,68 @@ export function PhotoGallery({lang}: PhotoGalleryProps) {
                         ))}
                     </Carousel>
 
-                    {/* Декоративные элементы */}
                     <div className={styles.gradientOverlay}></div>
                     <div className={styles.pattern}></div>
                 </div>
 
-                {/* Видеогалерея */}
                 <div className={styles.videoSection}>
                     <h3 className={styles.videoTitle}>{t.gallery.videoTitle || "Наши видео"}</h3>
 
                     <div className={styles.videoCarouselWrapper}>
+                        <button
+                            className={`${styles.navArrow} ${styles.navArrowPrev}`}
+                            onClick={prevVideo}
+                            aria-label="Предыдущее видео"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </button>
+
+                        <button
+                            className={`${styles.navArrow} ${styles.navArrowNext}`}
+                            onClick={nextVideo}
+                            aria-label="Следующее видео"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </button>
+
                         <Carousel
+                            ref={setCarouselRef}
                             speed={800}
-                            dots={{className: styles.videoCarouselDots}}
+                            dots={{ className: styles.videoCarouselDots }}
                             arrows={false}
                             pauseOnHover={true}
                             className={styles.videoCarousel}
                             effect="fade"
+                            swipe={true}
+                            touchMove={true}
+                            draggable={true}
+                            swipeToSlide={true}
                         >
                             {videos.map((video) => (
                                 <div key={video.id} className={styles.videoSlide}>
                                     <div className={styles.videoContainer}>
                                         <iframe
-                                            src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                                            src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}
                                             frameBorder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
                                             className={styles.video}
-                                        ></iframe>
+                                            title={`video-${video.id}`}
+                                            loading="lazy"
+                                        />
                                     </div>
                                 </div>
                             ))}
                         </Carousel>
 
-                        {/* Декоративные элементы для видео слайдера */}
                         <div className={styles.videoGradientOverlay}></div>
                         <div className={styles.videoPattern}></div>
                     </div>
                 </div>
-
             </div>
         </section>
     )

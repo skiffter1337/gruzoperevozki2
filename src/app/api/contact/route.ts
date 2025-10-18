@@ -27,10 +27,10 @@ export async function POST(request: NextRequest) {
 
         const fromEmail = process.env.NODE_ENV === 'development'
             ? 'onboarding@resend.dev'
-            : 'noreply@moveisrael.com';
+            : 'noreply@moveisrael.com'; // TODO сделать как на первом сайте
 
         const {data, error} = await resend.emails.send({
-            from: `MoveIsrael <${fromEmail}>`,
+            from: `Bull Moving <${fromEmail}>`,
             to: process.env.EMAIL_TO || 'bullmovings@gmail.com',
             subject: `Новая заявка на переезд от ${formData.name || 'Клиент'}`,
             html: `
@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
 
             <div style="text-align: center; color: #666; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
               <p>📧 Отправлено: ${new Date().toLocaleString('ru-RU')}</p>
-              <p>🏠 MoveIsrael - Профессиональные грузоперевозки по Израилю</p>
+              <p>🏠 Bull Moving - Профессиональные грузоперевозки по Израилю</p>
             </div>
           </div>
         </div>
