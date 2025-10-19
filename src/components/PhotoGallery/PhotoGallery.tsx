@@ -120,12 +120,13 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
                         dots={{ className: styles.carouselDots }}
                         arrows={false}
                         className={styles.carousel}
-                        effect="fade"
                         swipe={true}
                         touchMove={true}
                         draggable={true}
-                        touchThreshold={10}
+                        touchThreshold={50}
                         swipeToSlide={true}
+                        slidesToShow={1}
+                        slidesToScroll={1}
                     >
                         {photos.map((photo, index) => (
                             <div key={photo.id} className={styles.slide}>
