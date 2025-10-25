@@ -37,10 +37,12 @@
 .logoWrapper {
   width: 100%;
   max-width: min(300px, 50vw, 50vh);
-  margin: 0 auto 60px;
+  margin: 0 auto 30px;
   display: flex;
   justify-content: center;
   flex-shrink: 0;
+  flex-direction: column;
+  gap: 40px;
 
   @media (max-width: 768px) {
     max-width: 300px;
@@ -138,6 +140,21 @@
     gap: clamp(15px, 3vh, 30px);
   }
 }
+
+.phoneNumber {
+  all: unset;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 24px;
+  justify-content: center;
+}
+
 
 @media (max-width: 480px) {
   .hero {

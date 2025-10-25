@@ -4,6 +4,7 @@ import {Button} from 'antd'
 import styles from './HeroSection.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
 import Image from 'next/image';
+import {PhoneFilled, PhoneOutlined} from "@ant-design/icons";
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -26,6 +27,7 @@ export function HeroSection({lang}: HeroSectionProps) {
         <section className={styles.hero}>
             <div className={styles.container}>
                 <div className={styles.content}>
+
                     <div className={styles.logoWrapper}>
                         <Image
                             src='/logo.PNG'
@@ -35,6 +37,13 @@ export function HeroSection({lang}: HeroSectionProps) {
                             className={styles.logo}
                             priority
                         />
+                        <a
+                            href="tel:0503073160"
+                            className={styles.phoneNumber}
+                        >
+                            <div>{t.hero.call} - 050-307-3160</div>
+                            <PhoneOutlined/>
+                        </a>
                     </div>
                     <h1 className={styles.title}>{t.hero.title}</h1>
                     <p className={styles.subtitle}>{t.hero.subtitle}</p>

@@ -1,11 +1,5 @@
-
 .stickyButtons {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
   z-index: 9999;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -19,23 +13,34 @@
     transform: translateY(100px);
     pointer-events: none;
   }
+
+  &.desktop {
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &.mobile {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
 }
 
 .button {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
   color: white;
   text-decoration: none;
-  box-shadow:
-          0 8px 25px rgba(0, 0, 0, 0.15),
-          0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+  0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  position: relative;
 
   &::before {
     content: '';
@@ -49,19 +54,15 @@
     transition: opacity 0.3s ease;
   }
 
-  &:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow:
-            0 12px 35px rgba(0, 0, 0, 0.2),
-            0 6px 20px rgba(0, 0, 0, 0.15);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2),
+      0 6px 20px rgba(0, 0, 0, 0.15);
 
-    &::before {
-      opacity: 1;
-    }
-
-    .tooltip {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-10px);
+      &::before {
+        opacity: 1;
+      }
     }
   }
 
@@ -70,9 +71,19 @@
   }
 }
 
-.phoneButton {
-  background: linear-gradient(135deg, #52c41a, #73d13d);
-  background: linear-gradient(135deg, #1890ff, #40a9ff);
+.desktop .button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .tooltip {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+  }
 
   &::after {
     content: '';
@@ -92,25 +103,57 @@
   }
 }
 
-.whatsappButton {
-  background: linear-gradient(135deg, #25d366, #128c7e);
+.mobileButtons {
+  display: flex;
+  width: 100%;
+}
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-                    45deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.1),
-                    transparent
-    );
-    transform: rotate(45deg);
-    animation: shine 3s infinite 1.5s;
+.mobile .button {
+  flex: 1;
+  height: 100%;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 14px;
+
+  &:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
   }
+
+  &:hover {
+    transform: none;
+  }
+
+}
+
+.buttonText {
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.phoneButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1890ff, #40a9ff);
+}
+
+.whatsappButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.desktop .phoneButton::after {
+  animation: shine 3s infinite;
+}
+
+.desktop .whatsappButton::after {
+  animation: shine 3s infinite 1.5s;
+}
+
+.desktop .phoneButton {
+  animation: pulse 2s infinite;
 }
 
 .icon {
@@ -150,52 +193,37 @@
   }
 }
 
-@keyframes shine {
-  0% {
-    transform: rotate(45deg) translateX(-100%);
+@media (min-width: 769px) {
+  @keyframes shine {
+    0% {
+      transform: rotate(45deg) translateX(-100%);
+    }
+    100% {
+      transform: rotate(45deg) translateX(100%);
+    }
   }
-  100% {
-    transform: rotate(45deg) translateX(100%);
-  }
-}
 
-@keyframes pulse {
-  0% {
-    box-shadow:
-            0 8px 25px rgba(0, 0, 0, 0.15),
-            0 4px 12px rgba(0, 0, 0, 0.1);
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      0 0 0 10px rgba(24, 144, 255, 0.1);
+    }
+    100% {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.1);
+    }
   }
-  50% {
-    box-shadow:
-            0 8px 25px rgba(0, 0, 0, 0.15),
-            0 4px 12px rgba(0, 0, 0, 0.1),
-            0 0 0 10px rgba(24, 144, 255, 0.1);
-  }
-  100% {
-    box-shadow:
-            0 8px 25px rgba(0, 0, 0, 0.15),
-            0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.phoneButton {
-  animation: pulse 2s infinite;
 }
 
 @media (max-width: 768px) {
-  .stickyButtons {
-    bottom: 20px;
-    right: 20px;
-    gap: 12px;
-  }
-
-  .button {
+  .desktop .button {
     width: 55px;
     height: 55px;
-
-    &:hover {
-      transform: translateY(-2px) scale(1.03);
-    }
   }
 
   .icon {
@@ -206,16 +234,28 @@
     font-size: 11px;
     padding: 6px 10px;
   }
+
+  .mobile .button {
+    font-size: 13px;
+    height: 55px;
+  }
+
+  .buttonText {
+    margin-left: 6px;
+    font-size: 13px;
+  }
+
+  .desktop .button::after {
+    animation: none;
+  }
+
+  .desktop .phoneButton {
+    animation: none;
+  }
 }
 
 @media (max-width: 480px) {
-  .stickyButtons {
-    bottom: 15px;
-    right: 15px;
-    gap: 10px;
-  }
-
-  .button {
+  .desktop .button {
     width: 50px;
     height: 50px;
   }
@@ -223,24 +263,38 @@
   .icon {
     font-size: 20px;
   }
+
+  .mobile .button {
+    height: 50px;
+    font-size: 12px;
+  }
+
+  .buttonText {
+    margin-left: 4px;
+    font-size: 12px;
+  }
 }
 
-
 [dir="rtl"] {
-  .stickyButtons {
+  .stickyButtons.desktop {
     right: auto;
     left: 30px;
   }
 
+  .buttonText {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
   @media (max-width: 768px) {
-    .stickyButtons {
+    .stickyButtons.desktop {
       right: auto;
       left: 20px;
     }
   }
 
   @media (max-width: 480px) {
-    .stickyButtons {
+    .stickyButtons.desktop {
       right: auto;
       left: 15px;
     }
