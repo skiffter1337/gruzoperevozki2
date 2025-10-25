@@ -45,6 +45,16 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
             alt: t.gallery.photos.find(p => p.id === 3)?.alt || ""
         },
         {
+            id: 7,
+            src: '/works7.jpg',
+            alt: t.gallery.photos.find(p => p.id === 7)?.alt || ""
+        },
+        {
+            id: 8,
+            src: '/works8.jpg',
+            alt: t.gallery.photos.find(p => p.id === 8)?.alt || ""
+        },
+        {
             id: 4,
             src: '/works4.jpg',
             alt: t.gallery.photos.find(p => p.id === 4)?.alt || ""
@@ -59,6 +69,7 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
             src: '/works6.jpg',
             alt: t.gallery.photos.find(p => p.id === 6)?.alt || ""
         },
+
     ]
 
     const videos: GalleryVideo[] = [
@@ -68,12 +79,8 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
         },
         {
             id: 2,
-            youtubeId: "5-PK3lPsyDg",
+            youtubeId: "U2Y2heTMV1U?si=R3A9w3EEmrzrQNYX",
         },
-        {
-            id: 3,
-            youtubeId: "5-PK3lPsyDg",
-        }
     ]
 
     const placeholderImages = [
