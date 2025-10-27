@@ -166,7 +166,7 @@ export function About({lang}: AboutProps) {
                         <div>
                             <h4>{getLocalizedText(
                                 'Хранение',
-                                'אחסנה',
+                                'אחסון',
                                 'Storage'
                             )}</h4>
                             <p>{t.about.services.storage}</p>
@@ -232,7 +232,7 @@ export function About({lang}: AboutProps) {
                         <h4>{getLocalizedText('Индивидуальный подход', 'גישה אישית', 'Individual approach')}</h4>
                         <p>{getLocalizedText(
                             'Каждый клиент получает персональный подход под конкретные потребности',
-                            'כל לקוח מקבל יחס אישי ופתרון המותאם לצרכיו הספציפיים',
+                            'כל לקוח מקבל יחס אישי ופתרון המותאם לצרכים הספציפיים שלו.',
                             'Each client receives personal attention and solutions tailored to their specific needs'
                         )}</p>
                     </div>
@@ -243,7 +243,7 @@ export function About({lang}: AboutProps) {
                         <h4>{getLocalizedText('Профессионализм', 'מקצועיות', 'Professionalism')}</h4>
                         <p>{getLocalizedText(
                             'Все наши сотрудники проходят строгий отбор и постоянное обучение',
-                            'העובדים שלנו עוברים תהליך מיון קפדני והכשרה מתמדת',
+                            'העובדים שלנו עוברים תהליך מיון קפדני והכשרות מתמדות',
                             'All our employees undergo strict selection and ongoing training'
                         )}</p>
                     </div>
@@ -254,7 +254,7 @@ export function About({lang}: AboutProps) {
                         <h4>{getLocalizedText('Надежность', 'אמינות', 'Reliability')}</h4>
                         <p>{getLocalizedText(
                             'Строгое соблюдение сроков и полная сохранность вашего имущества',
-                            'הובלה של כל הפריטים שלכם תושלם בזמן ובטוח לחלוטין.',
+                            'הובלת כל החפצים שלכם תתבצע בדיוק בזמן ועם אריזה זהירה',
                             'Strict adherence to deadlines and complete safety of your property'
                         )}</p>
                     </div>
@@ -284,7 +284,7 @@ export function About({lang}: AboutProps) {
                                 className={styles.city}>• {getLocalizedText('Ришон-ле-Цион', 'ראשון לציון', 'Rishon LeZion')}</span>
                         </Col>
                         <Col xs={12} md={8}>
-                            <span className={styles.city}>• {getLocalizedText('Хайфа', 'חיפה', 'Haifa')}</span>
+                            <span className={styles.city}>• {getLocalizedText('Герцлия', 'זכרון יעקב', 'Herzliya')}</span>
                         </Col>
                         <Col xs={12} md={8}>
                             <span
@@ -294,7 +294,7 @@ export function About({lang}: AboutProps) {
                             <span className={styles.city}>• {getLocalizedText('Нетания', 'נתניה', 'Netanya')}</span>
                         </Col>
                         <Col xs={12} md={8}>
-                            <span className={styles.city}>• {getLocalizedText('Ашдод', 'אשדוד', 'Ashdod')}</span>
+                            <span className={styles.city}>• {getLocalizedText('Зихрон-Яаков', 'הרצליה', 'Ashdod')}</span>
                         </Col>
                     </Row>
                 </div>

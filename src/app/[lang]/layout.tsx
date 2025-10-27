@@ -1,6 +1,7 @@
 import type {Metadata} from 'next'
 import {ReactNode} from "react"
 import '../globals.css'
+
 type Props = {
     children: ReactNode
     params: Promise<{ lang: string }>
@@ -36,7 +37,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
         },
         robots: 'index, follow',
         alternates: {
-            canonical: `https://moveisrael.com/${lang === 'he' ? '' : lang}`, // TODO поменять на реальный домен
+            canonical: `https://moveisrael.com/${lang === 'he' ? '' : lang}`,
             languages: {
                 'ru': 'https://moveisrael.com/ru',
                 'he': 'https://moveisrael.com',

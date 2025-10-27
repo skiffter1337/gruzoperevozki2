@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
 
             <div style="text-align: center; color: #666; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
               <p>📧 Отправлено: ${new Date().toLocaleString('ru-RU')}</p>
-              <p>🏠 Bull Moving - Профессиональные грузоперевозки по Израилю</p>
+              <p>🏠 Bull Moving - Перевозка квартир и домов с профессиональным и качественным обслуживанием</p>
             </div>
           </div>
         </div>

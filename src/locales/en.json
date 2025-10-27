@@ -14,19 +14,19 @@
     "companyName": "Bull Moving"
   },
   "hero": {
-    "title": "Professional Transportation in Israel",
-    "subtitle": "Reliable office, apartment, and house moves. Quality, speed, and safety guaranteed.",
+    "title": "Apartment and house moving with professional and high-quality service.",
+    "subtitle": "We care about your move as if it were our own!",
     "cta": "Get Consultation",
     "call": "Call"
   },
   "about": {
     "title": "About Bull Moving Company",
-    "description": "Bull Moving is a professional transportation company with an impeccable reputation, specializing in comprehensive logistics solutions throughout Israel.",
+    "description": "Bull Moving is a professional transportation company with an impeccable reputation, specializing in comprehensive logistics solutions in the central part of Israel.",
     "fullDescription": "We provide professional transportation services for apartments of any size, offices, businesses, and individual items. Our diverse fleet includes modern trucks of various load capacities, specially equipped for the safe transportation of your property.",
     "features": {
       "experience": "10+ Years Experience",
       "team": "Professional Team",
-      "insurance": "Cargo Insurance",
+      "insurance": "Large Vehicle Fleet",
       "support": "24/7 Support"
     },
     "fleet": {
@@ -53,7 +53,7 @@
     },
     "coverage": {
       "title": "Service Area",
-      "description": "The company operates from the central office in Tel Aviv and covers the most of territory of Israel - from Haifa to Ashdod. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
+      "description": "The company operates from the central office in Netanya and covers the most of territory of Israel - From Zichron Yaakov in the north to Rehovot in the south. We guarantee fast, professional and high-quality service based on values such as reliability, safety and complete customer satisfaction."
     }
   },
   "services": {

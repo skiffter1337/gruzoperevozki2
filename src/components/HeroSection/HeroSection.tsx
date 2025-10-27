@@ -1,6 +1,6 @@
 'use client'
 
-import {Button} from 'antd'
+import {Button, Flex} from 'antd'
 import styles from './HeroSection.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
 import Image from 'next/image';
@@ -41,8 +41,9 @@ export function HeroSection({lang}: HeroSectionProps) {
                             href="tel:0503073160"
                             className={styles.phoneNumber}
                         >
-                            <div>{t.hero.call} - 050-307-3160</div>
-                            <PhoneOutlined/>
+                            <div>{t.hero.call}</div>
+                            <Flex align="center" gap={8}> 050-307-3160 <PhoneOutlined/></Flex>
+
                         </a>
                     </div>
                     <h1 className={styles.title}>{t.hero.title}</h1>

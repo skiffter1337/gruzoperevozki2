@@ -4,13 +4,13 @@ import {useState} from 'react'
 import {Button, Checkbox, Col, DatePicker, Form, Input, message, Row} from 'antd'
 import styles from './Contact.module.scss'
 import {useTranslation} from "@/hooks/use-translation";
+import { ContactSuccessModal } from '@/components/ContactSuccessModal/ContactSuccessModal';
 
 type Language = 'ru' | 'he' | 'en'
 
 interface FormValues {
     name: string
     phone: string
-    email: string
     fromAddress?: string
     fromFloor?: string
     fromHasLift?: boolean
@@ -35,7 +35,7 @@ export function Contact({lang}: ContactProps) {
 
     const [form] = Form.useForm()
     const [loading, setLoading] = useState(false)
-
+    const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false)
 
     const onFinish = async (values: FormValues) => {
         setLoading(true)
@@ -51,7 +51,8 @@ export function Contact({lang}: ContactProps) {
             const result = await response.json()
 
             if (result.success) {
-                message.success(t.contact.successMessage || 'Сообщение отправлено!')
+                // Показываем модальное окно вместо стандартного сообщения
+                setIsSuccessModalVisible(true)
                 form.resetFields()
             } else {
                 message.error(t.contact.errorMessage || 'Ошибка при отправке')
@@ -64,35 +65,31 @@ export function Contact({lang}: ContactProps) {
         }
     }
 
+    const handleSuccessModalClose = () => {
+        setIsSuccessModalVisible(false)
+    }
+
     const getValidationMessages = () => {
         switch (lang) {
             case 'ru':
                 return {
                     nameRequired: 'Пожалуйста, введите ваше имя',
                     phoneRequired: 'Пожалуйста, введите ваш телефон',
-                    emailRequired: 'Пожалуйста, введите ваш email',
-                    emailInvalid: 'Введите корректный email'
                 }
             case 'he':
                 return {
                     nameRequired: 'אנא הזן את שמך',
                     phoneRequired: 'אנא הזן את מספר הטלפון שלך',
-                    emailRequired: 'אנא הזן את הדוא"ל שלך',
-                    emailInvalid: 'הזן כתובת דוא"ל תקינה'
                 }
             case 'en':
                 return {
                     nameRequired: 'Please enter your name',
                     phoneRequired: 'Please enter your phone number',
-                    emailRequired: 'Please enter your email',
-                    emailInvalid: 'Please enter a valid email'
                 }
             default:
                 return {
                     nameRequired: 'Please enter your name',
                     phoneRequired: 'Please enter your phone number',
-                    emailRequired: 'Please enter your email',
-                    emailInvalid: 'Please enter a valid email'
                 }
         }
     }
@@ -137,20 +134,6 @@ export function Contact({lang}: ContactProps) {
                                         <Input
                                             size="large"
                                             placeholder={t.contact.phone}
-                                        />
-                                    </Form.Item>
-                                </Col>
-                                <Col xs={24} md={8}>
-                                    <Form.Item
-                                        name="email"
-                                        rules={[
-                                            {required: true, message: validationMessages.emailRequired},
-                                            {type: 'email', message: validationMessages.emailInvalid}
-                                        ]}
-                                    >
-                                        <Input
-                                            size="large"
-                                            placeholder={t.contact.email}
                                         />
                                     </Form.Item>
                                 </Col>
@@ -292,7 +275,7 @@ export function Contact({lang}: ContactProps) {
                                     <Form.Item name="needAssembly" valuePropName="checked">
                                         <Checkbox>
                                             {lang === 'ru' ? 'Сборка/разборка мебели' :
-                                                lang === 'he' ? 'הרכבה/פירוק רהיטים' :
+                                                lang === 'he' ? 'פירוק/הרכבה רהיטים' :
                                                     'Furniture assembly/disassembly'}
                                         </Checkbox>
                                     </Form.Item>
@@ -325,6 +308,12 @@ export function Contact({lang}: ContactProps) {
                 </div>
             </div>
             <div className={styles.overlay}/>
+
+            <ContactSuccessModal
+                isVisible={isSuccessModalVisible}
+                onClose={handleSuccessModalClose}
+                lang={language}
+            />
         </section>
     )
 }
