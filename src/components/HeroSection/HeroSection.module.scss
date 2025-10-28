@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: calc(100vh + 70px);
+  min-height: calc(100vh + 170px);
   background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
   display: flex;
   align-items: center;
@@ -160,7 +160,7 @@
 @media (max-width: 480px) {
   .hero {
     padding: 10px;
-    min-height: 100vh;
+    min-height: 130vh;
   }
 
   .container {
