@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
             : 'info@shor-hovalot.co.il';
 
         const {data, error} = await resend.emails.send({
-            from: `Bull Moving <${fromEmail}>`,
+            from: `onboarding@resend.dev`,
             to: process.env.EMAIL_TO || 'bullmovings@gmail.com',
             subject: `Новая заявка на переезд от ${formData.name || 'Клиент'}`,
             html: `
