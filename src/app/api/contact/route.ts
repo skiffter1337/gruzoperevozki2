@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
         const fromEmail = process.env.NODE_ENV === 'development'
             ? 'onboarding@resend.dev'
-            : 'noreply@moveisrael.com'; // TODO сделать как на первом сайте
+            : 'info@shor-hovalot.co.il';
 
         const {data, error} = await resend.emails.send({
             from: `Bull Moving <${fromEmail}>`,

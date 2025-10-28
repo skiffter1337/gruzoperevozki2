@@ -37,11 +37,11 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
         },
         robots: 'index, follow',
         alternates: {
-            canonical: `https://moveisrael.com/${lang === 'he' ? '' : lang}`,
+            canonical: `https://shor-hovalot.co.il/${lang === 'he' ? '' : lang}`,
             languages: {
-                'ru': 'https://moveisrael.com/ru',
-                'he': 'https://moveisrael.com',
-                'en': 'https://moveisrael.com/en',
+                'ru': 'https://shor-hovalot.co.il//ru',
+                'he': 'https://shor-hovalot.co.il/',
+                'en': 'https://shor-hovalot.co.il/',
             }
         }
     }
