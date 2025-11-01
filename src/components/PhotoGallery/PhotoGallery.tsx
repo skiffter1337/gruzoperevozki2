@@ -69,6 +69,26 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
             src: '/works6.jpg',
             alt: t.gallery.photos.find(p => p.id === 6)?.alt || ""
         },
+        {
+            id: 9,
+            src: '/works9.jpg',
+            alt: t.gallery.photos.find(p => p.id === 9)?.alt || ""
+        },
+        {
+            id: 10,
+            src: '/works10.jpg',
+            alt: t.gallery.photos.find(p => p.id === 10)?.alt || ""
+        },
+        {
+            id: 11,
+            src: '/works11.jpg',
+            alt: t.gallery.photos.find(p => p.id === 11)?.alt || ""
+        },
+        {
+            id: 12,
+            src: '/works12.jpg',
+            alt: t.gallery.photos.find(p => p.id === 12)?.alt || ""
+        },
 
     ]
 
@@ -80,6 +100,14 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
         {
             id: 2,
             youtubeId: "U2Y2heTMV1U?si=R3A9w3EEmrzrQNYX",
+        },
+        {
+            id: 3,
+            youtubeId: "jmBmVDfAhkg?si=gvoZLKj9wlHcdLnk",
+        },
+        {
+            id: 4,
+            youtubeId: "FWg78AXatsI?si=1h7dmQuNDBAH6e2c",
         },
     ]
 
