@@ -9,13 +9,6 @@ import {Articles} from "@/components/Articles";
 import {PhotoGallery} from "@/components/PhotoGallery";
 import {StickyButtons} from "@/components/StickyButtons";
 
-export async function generateStaticParams() {
-    return [
-        { lang: 'en' },
-        { lang: 'ru' },
-        { lang: 'he' }
-    ]
-}
 type Props = {
     params: Promise<{ lang: string }>
 }
