@@ -5,6 +5,7 @@ import { Carousel } from 'antd'
 import styles from './PhotoGallery.module.scss'
 import { useTranslation } from "@/hooks/use-translation"
 import { GalleryPhoto, GalleryVideo } from "@/components/PhotoGallery/model/types"
+import Image from "next/image";
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -166,7 +167,9 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
                         {photos.map((photo, index) => (
                             <div key={photo.id} className={styles.slide}>
                                 <div className={styles.photoContainer}>
-                                    <img
+                                    <Image
+                                        width={200}
+                                        height={200}
                                         src={photo.src}
                                         alt={photo.alt}
                                         className={styles.photo}

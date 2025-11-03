@@ -5,6 +5,7 @@ import styles from './Articles.module.scss'
 import Link from 'next/link'
 import {useEffect, useState} from 'react'
 import {useTranslation} from "@/hooks/use-translation";
+import Image from "next/image";
 
 type Language = 'ru' | 'he' | 'en'
 
@@ -69,9 +70,11 @@ export function Articles({lang}: ArticlesProps) {
             className={styles.articleCard}
             cover={
                 <div className={styles.articleImage}>
-                    <img
+                    <Image
                         src={article.image}
                         alt={article.title}
+                        width={200}
+                        height={200}
                     />
                 </div>
             }
