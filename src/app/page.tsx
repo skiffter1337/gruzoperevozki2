@@ -10,9 +10,7 @@ import {PhotoGallery} from "@/components/PhotoGallery";
 import {StickyButtons} from "@/components/StickyButtons";
 
 export default function Home() {
-    window.onload = function() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
+
     return (
         <>
             <Header lang="he"/>
