@@ -26,10 +26,6 @@ export default function Header({lang}: HeaderProps) {
     const isArticlesPage = pathname.includes('/articles') && !pathname.includes('/articles/')
     const isSingleArticlePage = pathname.includes('/articles/')
 
-
-    window.onload = function() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
     const handleLanguageChange = (value: string) => {
         let currentPath = pathname
         if (pathname.startsWith('/ru/') || pathname.startsWith('/en/')) {
