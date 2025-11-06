@@ -15,7 +15,9 @@ type Props = {
 
 export default async function Home({ params }: Props) {
     const { lang } = await params
-
+    window.onload = function() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
     return (
         <>
             <Header lang={lang} />
