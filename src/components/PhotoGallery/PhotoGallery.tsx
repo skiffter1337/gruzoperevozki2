@@ -89,10 +89,19 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
             src: '/works12.jpg',
             alt: t.gallery.photos.find(p => p.id === 12)?.alt || ""
         },
+        {
+            id: 13,
+            src: '/works13.jpg',
+            alt: t.gallery.photos.find(p => p.id === 13)?.alt || ""
+        },
 
     ]
 
     const videos: GalleryVideo[] = [
+        {
+            id: 0,
+            youtubeId: "jxQMHyenN_U?si=Wokgt480Tetkolqr",
+        },
         {
             id: 1,
             youtubeId: "5-PK3lPsyDg",
