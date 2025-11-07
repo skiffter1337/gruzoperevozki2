@@ -1,6 +1,7 @@
 import type {Metadata} from 'next'
 import {ReactNode} from "react"
 import '../globals.css'
+import GoogleAnalytics from "@/analytics/GoogleAnalytics";
 
 type Props = {
     children: ReactNode
@@ -68,6 +69,7 @@ export default async function LangLayout({
     return (
         <div className="layout" lang={htmlLangMap[lang] || 'en'} dir={directionMap[lang] || 'ltr'}>
             {children}
+            <GoogleAnalytics/>
         </div>
     )
 }

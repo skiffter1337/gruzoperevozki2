@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import './globals.css'
 import {ReactNode} from "react";
+import GoogleAnalytics from "@/analytics/GoogleAnalytics";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -62,6 +63,7 @@ export default async function RootLayout({ children, params }: Props) {
         </head>
         <body className={inter.className}>
         {children}
+        <GoogleAnalytics/>
         </body>
         </html>
     )

@@ -35,11 +35,6 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
             alt: t.gallery.photos.find(p => p.id === 1)?.alt || ""
         },
         {
-            id: 2,
-            src: '/works2.jpg',
-            alt: t.gallery.photos.find(p => p.id === 2)?.alt || ""
-        },
-        {
             id: 3,
             src: '/works3.jpg',
             alt: t.gallery.photos.find(p => p.id === 3)?.alt || ""
