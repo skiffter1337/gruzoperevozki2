@@ -18,6 +18,12 @@ const GoogleAnalytics = () => {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'AW-17708877266');
+            
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17708877266/AvHVCPHSi7sbENKLoPxB',
+                'value': 1.0,
+                'currency': 'ILS'
+            });
           `,
                 }}
             />
