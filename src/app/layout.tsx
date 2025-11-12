@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang = 'he' } = await params
 
     const titles = {
-        he: 'גרירה והובלות | Bull Moving',
+        he: 'הובלות דירות ומשרדים',
         ru: 'Грузоперевозки и переезды | Bull Moving',
         en: 'Moving and Transportation | Bull Moving'
     }

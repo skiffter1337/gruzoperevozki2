@@ -13,7 +13,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
 
     if (lang === 'he') {
         return {
-            title: 'גרירה והובלות | Bull Moving',
+            title: 'הובלות דירות ומשרדים',
             description: 'שירותי גרירה והובלות מקצועיים בישראל',
         }
     }
