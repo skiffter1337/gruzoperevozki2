@@ -88,6 +88,15 @@ export function PhotoGallery({ lang }: PhotoGalleryProps) {
             id: 13,
             src: '/works13.jpg',
             alt: t.gallery.photos.find(p => p.id === 13)?.alt || ""
+        },{
+            id: 14,
+            src: '/works14.jpg',
+            alt: t.gallery.photos.find(p => p.id === 14)?.alt || ""
+        },
+        {
+            id: 15,
+            src: '/works15.jpg',
+            alt: t.gallery.photos.find(p => p.id === 15)?.alt || ""
         },
 
     ]
